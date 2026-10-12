@@ -1,3 +1,5 @@
+// 
+
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
@@ -5,148 +7,48 @@ import "./Navbar.css";
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
-      {/* =====================================================
-          TOP INFORMATION BAR
-      ===================================================== */}
-      <div className="top-bar">
-        <div className="navbar-container top-bar-inner">
+      {/* Top information bar */}
+      <div className="hospital-topbar">
+        <div className="hospital-header-container topbar-content">
+          <p>
+            <span className="topbar-star">✦</span>
+            Trusted Healthcare Since 1995
+          </p>
 
-          <div className="top-left">
-            <span className="top-dot"></span>
-            <span>Trusted Healthcare Since 2009</span>
-          </div>
-
-          <a
-            href="tel:9494456007"
-            className="emergency-link"
-          >
-            <span className="emergency-icon">+</span>
-            Emergency: 9494456007
+          <a href="tel:+919876543210" className="topbar-phone">
+            <span>☎</span> Emergency: +91 98765 43210
           </a>
-
         </div>
       </div>
 
+      {/* Main Navbar */}
+      <header className="hospital-header">
+        <div className="hospital-header-container navbar-content">
 
-      {/* =====================================================
-          MAIN NAVBAR
-      ===================================================== */}
-      <header className="main-navbar">
-
-        <div className="navbar-container navbar-inner">
-
-          {/* LOGO */}
+          {/* Logo */}
           <Link
             to="/"
-            className="hospital-logo"
+            className="hospital-brand"
             onClick={closeMenu}
           >
-            <span className="logo-symbol">✚</span>
+            <div className="brand-icon">✚</div>
 
-            <span className="logo-text">
-              <strong>Sri Sakthi</strong>
-              <small>Hospital & Healthcare</small>
-            </span>
+            <div className="brand-text">
+              <h2>Sri Shakthi</h2>
+              <span>HOSPITAL & HEALTHCARE</span>
+            </div>
           </Link>
 
-
-          {/* DESKTOP NAVIGATION */}
-          <nav className="desktop-navigation">
-
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              Home
-            </NavLink>
-
-            <NavLink
-              to="/about"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              About
-            </NavLink>
-
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              Services
-            </NavLink>
-
-            <NavLink
-              to="/doctor"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              Doctors
-            </NavLink>
-
-            <NavLink
-              to="/facilities"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              Facilities
-            </NavLink>
-
-            <NavLink
-              to="/gallery"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              Gallery
-            </NavLink>
-
-            <NavLink
-              to="/contact"
-              className={({ isActive }) =>
-                isActive ? "nav-link active" : "nav-link"
-              }
-            >
-              Contact
-            </NavLink>
-
-          </nav>
-
-
-          {/* DESKTOP APPOINTMENT */}
-          <Link
-            to="/appointment"
-            className="navbar-appointment"
-          >
-            Appointment
-            <span>→</span>
-          </Link>
-
-
-          {/* MOBILE MENU BUTTON */}
+          {/* Mobile Menu Button */}
           <button
             type="button"
-            className={`mobile-menu-button ${
-              menuOpen ? "menu-open" : ""
-            }`}
+            className={`mobile-menu-btn ${menuOpen ? "active" : ""}`}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={
-              menuOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
-            }
+            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
           >
             <span></span>
@@ -154,150 +56,45 @@ function Navbar() {
             <span></span>
           </button>
 
-        </div>
-
-
-        {/* =====================================================
-            MOBILE NAVIGATION
-        ===================================================== */}
-        <div
-          className={`mobile-navigation ${
-            menuOpen ? "mobile-navigation-open" : ""
-          }`}
-        >
-
-          <div className="mobile-navigation-inner">
-
-            <NavLink
-              to="/"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? "mobile-nav-link active"
-                  : "mobile-nav-link"
-              }
-            >
-              <span className="mobile-nav-number">01</span>
-              <span>Home</span>
-              <span className="mobile-nav-arrow">→</span>
+          {/* Navigation Links */}
+          <nav className={`hospital-nav ${menuOpen ? "nav-open" : ""}`}>
+            <NavLink to="/" end onClick={closeMenu}>
+              Home
             </NavLink>
 
-            <NavLink
-              to="/about"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? "mobile-nav-link active"
-                  : "mobile-nav-link"
-              }
-            >
-              <span className="mobile-nav-number">02</span>
-              <span>About</span>
-              <span className="mobile-nav-arrow">→</span>
+            <NavLink to="/about" onClick={closeMenu}>
+              About
             </NavLink>
 
-            <NavLink
-              to="/services"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? "mobile-nav-link active"
-                  : "mobile-nav-link"
-              }
-            >
-              <span className="mobile-nav-number">03</span>
-              <span>Services</span>
-              <span className="mobile-nav-arrow">→</span>
+            <NavLink to="/services" onClick={closeMenu}>
+              Services
             </NavLink>
 
-            <NavLink
-              to="/doctor"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? "mobile-nav-link active"
-                  : "mobile-nav-link"
-              }
-            >
-              <span className="mobile-nav-number">04</span>
-              <span>Doctors</span>
-              <span className="mobile-nav-arrow">→</span>
+            <NavLink to="/doctor" onClick={closeMenu}>
+              Doctors
             </NavLink>
 
-            <NavLink
-              to="/facilities"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? "mobile-nav-link active"
-                  : "mobile-nav-link"
-              }
-            >
-              <span className="mobile-nav-number">05</span>
-              <span>Facilities</span>
-              <span className="mobile-nav-arrow">→</span>
+            <NavLink to="/facilities" onClick={closeMenu}>
+              Facilities
             </NavLink>
 
-            <NavLink
-              to="/gallery"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? "mobile-nav-link active"
-                  : "mobile-nav-link"
-              }
-            >
-              <span className="mobile-nav-number">06</span>
-              <span>Gallery</span>
-              <span className="mobile-nav-arrow">→</span>
+            <NavLink to="/gallery" onClick={closeMenu}>
+              Gallery
             </NavLink>
 
-            <NavLink
-              to="/contact"
-              onClick={closeMenu}
-              className={({ isActive }) =>
-                isActive
-                  ? "mobile-nav-link active"
-                  : "mobile-nav-link"
-              }
-            >
-              <span className="mobile-nav-number">07</span>
-              <span>Contact</span>
-              <span className="mobile-nav-arrow">→</span>
+            <NavLink to="/contact" onClick={closeMenu}>
+              Contact
             </NavLink>
-
 
             <Link
               to="/appointment"
+              className="navbar-appointment-btn"
               onClick={closeMenu}
-              className="mobile-appointment"
             >
-              <span>
-                <small>YOUR HEALTH MATTERS</small>
-                Book an Appointment
-              </span>
-
-              <strong>→</strong>
+              Book Appointment <span>↗</span>
             </Link>
-
-
-            <a
-              href="tel:9494456007"
-              className="mobile-emergency"
-              onClick={closeMenu}
-            >
-              <span className="mobile-emergency-icon">+</span>
-
-              <span>
-                <small>EMERGENCY</small>
-                9494456007
-              </span>
-            </a>
-
-          </div>
-
+          </nav>
         </div>
-
       </header>
     </>
   );
