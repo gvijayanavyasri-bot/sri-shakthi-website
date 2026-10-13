@@ -1,5 +1,3 @@
-// 
-
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
@@ -9,94 +7,124 @@ function Navbar() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  return (
-    <>
-      {/* Top information bar */}
-      <div className="hospital-topbar">
-        <div className="hospital-header-container topbar-content">
-          <p>
-            <span className="topbar-star">✦</span>
-            Trusted Healthcare Since 1995
-          </p>
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Doctors", path: "/doctor" },
+    { name: "Facilities", path: "/facilities" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Contact", path: "/contact" },
+  ];
 
-          <a href="tel:+919876543210" className="topbar-phone">
-            <span>☎</span> Emergency: +91 98765 43210
-          </a>
+  return (
+    <header className="hospital-header">
+      {/* TOP CONTACT BAR */}
+      <div className="hospital-topbar">
+        <div className="hospital-container hospital-topbar-inner">
+          <div className="topbar-item topbar-address">
+            <span className="topbar-icon">✦</span>
+            <span>Tilak Road, Rajahmundry, Andhra Pradesh</span>
+          </div>
+
+          <div className="topbar-item topbar-phones">
+            <a href="tel:9494456007">
+              ☎ 94944 56007
+            </a>
+
+            <span className="topbar-divider">|</span>
+
+            <a href="tel:08832422189">
+              0883-2422189
+            </a>
+          </div>
+
+          <div className="topbar-item topbar-hours">
+            <span>◷</span>
+            <span>
+              Mon–Sat: 9:00 AM–12:30 PM · 5:30 PM–9:00 PM
+            </span>
+          </div>
         </div>
       </div>
 
-      {/* Main Navbar */}
-      <header className="hospital-header">
-        <div className="hospital-header-container navbar-content">
+      {/* MAIN NAVIGATION */}
+      <div className="hospital-navbar">
+        <div className="hospital-container hospital-navbar-inner">
 
-          {/* Logo */}
+          {/* LOGO */}
           <Link
             to="/"
             className="hospital-brand"
             onClick={closeMenu}
+            aria-label="Sri Shakthi Hospital home"
           >
-            <div className="brand-icon">✚</div>
+            <div className="hospital-logo-symbol">
+              <span>✚</span>
+            </div>
 
-            <div className="brand-text">
-              <h2>Sri Shakthi</h2>
-              <span>HOSPITAL & HEALTHCARE</span>
+            <div className="hospital-brand-text">
+              <span className="brand-name">SRI SHAKTHI</span>
+              <span className="brand-hospital">HOSPITAL</span>
+              <span className="brand-tagline">
+                Care Today · Healthier Tomorrow
+              </span>
             </div>
           </Link>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE MENU BUTTON */}
           <button
-            type="button"
-            className={`mobile-menu-btn ${menuOpen ? "active" : ""}`}
+            className={`hospital-menu-toggle ${
+              menuOpen ? "menu-active" : ""
+            }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={menuOpen}
+            aria-controls="hospital-navigation"
+            type="button"
           >
             <span></span>
             <span></span>
             <span></span>
           </button>
 
-          {/* Navigation Links */}
-          <nav className={`hospital-nav ${menuOpen ? "nav-open" : ""}`}>
-            <NavLink to="/" end onClick={closeMenu}>
-              Home
-            </NavLink>
+          {/* NAVIGATION LINKS */}
+          <nav
+            id="hospital-navigation"
+            className={`hospital-navigation ${
+              menuOpen ? "navigation-open" : ""
+            }`}
+          >
+            <div className="hospital-nav-links">
+              {navItems.map((item) => (
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+                  end={item.path === "/"}
+                  onClick={closeMenu}
+                  className={({ isActive }) =>
+                    `hospital-nav-link ${isActive ? "active" : ""}`
+                  }
+                >
+                  {item.name}
+                </NavLink>
+              ))}
+            </div>
 
-            <NavLink to="/about" onClick={closeMenu}>
-              About
-            </NavLink>
-
-            <NavLink to="/services" onClick={closeMenu}>
-              Services
-            </NavLink>
-
-            <NavLink to="/doctor" onClick={closeMenu}>
-              Doctors
-            </NavLink>
-
-            <NavLink to="/facilities" onClick={closeMenu}>
-              Facilities
-            </NavLink>
-
-            <NavLink to="/gallery" onClick={closeMenu}>
-              Gallery
-            </NavLink>
-
-            <NavLink to="/contact" onClick={closeMenu}>
-              Contact
-            </NavLink>
-
+            {/* APPOINTMENT BUTTON */}
             <Link
               to="/appointment"
-              className="navbar-appointment-btn"
+              className="hospital-appointment-button"
               onClick={closeMenu}
             >
-              Book Appointment <span>↗</span>
+              <span className="appointment-icon">▣</span>
+              <span>Book Appointment</span>
+              <span className="appointment-arrow">↗</span>
             </Link>
           </nav>
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }
 

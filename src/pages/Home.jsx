@@ -5,487 +5,199 @@ import "./Home.css";
 const doctorImage =
   "https://www.srisakthihospital.com/assets/doctor-photo-EMUL-gY8.jpg";
 
+const hospitalImages = {
+  reception:
+    "https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?auto=format&fit=crop&w=1000&q=90",
+  room:
+    "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=90",
+  corridor:
+    "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=900&q=90",
+  laboratory:
+    "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=90",
+  consultation:
+    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=900&q=90",
+  care:
+    "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=900&q=90",
+};
+
 const services = [
-  {
-    number: "01",
-    icon: "🩺",
-    title: "General Consultation",
-    description:
-      "Personalised consultations, health assessments and treatment guidance focused on your wellbeing.",
-  },
-  {
-    number: "02",
-    icon: "❤️",
-    title: "Family Medicine",
-    description:
-      "Comprehensive healthcare for individuals and families at every stage of life.",
-  },
-  {
-    number: "03",
-    icon: "🏥",
-    title: "Inpatient Care",
-    description:
-      "Comfortable hospital care with professional medical attention and patient support.",
-  },
-  {
-    number: "04",
-    icon: "🔬",
-    title: "Diagnostic Services",
-    description:
-      "Diagnostic support to help doctors assess health conditions and guide treatment.",
-  },
-  {
-    number: "05",
-    icon: "💊",
-    title: "Preventive Healthcare",
-    description:
-      "Health check-ups and medical guidance to help you maintain a healthier lifestyle.",
-  },
-  {
-    number: "06",
-    icon: "🤝",
-    title: "Patient Support",
-    description:
-      "Friendly assistance and clear communication throughout your healthcare journey.",
-  },
+  { icon: "✚", title: "General Consultation", text: "Personalised medical consultations, health assessments and treatment guidance for your individual needs." },
+  { icon: "▤", title: "Inpatient Care", text: "Patient-focused hospital care with professional supervision and a supportive care environment." },
+  { icon: "◷", title: "Day Care Services", text: "Clinically guided observation and appropriate treatments that may not require an overnight stay." },
+  { icon: "⌕", title: "Diagnostic Support", text: "Diagnostic support to help your healthcare team assess concerns and plan suitable treatment." },
+  { icon: "♡", title: "Emergency Care", text: "Prompt assessment and medical assistance for urgent healthcare needs. Call the hospital for guidance." },
+  { icon: "＋", title: "IV Therapy & Nebulization", text: "Treatments provided under qualified medical supervision when clinically indicated." },
 ];
 
 const facilities = [
-  {
-    number: "01",
-    title: "Modern Medical Environment",
-    image:
-      "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1000&q=85",
-    description: "A professional clinical environment.",
-  },
-  {
-    number: "02",
-    title: "Quality Medical Care",
-    image:
-      "https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=85",
-    description: "Focused on quality and patient safety.",
-  },
-  {
-    number: "03",
-    title: "Patient Care Facilities",
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=85",
-    description: "Designed around patient comfort.",
-  },
-];
-
-const values = [
-  "Personalised attention for every patient",
-  "Experienced and dedicated medical care",
-  "Clear communication and guidance",
-  "A welcoming and supportive environment",
+  { image: hospitalImages.consultation, title: "Consultation Rooms", text: "A welcoming space for medical discussions and assessments." },
+  { image: hospitalImages.room, title: "Patient Rooms", text: "A calm, patient-centred environment for care and recovery." },
+  { image: hospitalImages.laboratory, title: "Diagnostic Support", text: "Clinical testing support to assist medical assessment." },
+  { image: hospitalImages.care, title: "Patient Care", text: "Attentive care with dignity, respect and clear communication." },
 ];
 
 function SectionLabel({ children }) {
-  return <span className="section-label">{children}</span>;
+  return <div className="ss-eyebrow"><span />{children}</div>;
 }
 
-function Home() {
+export default function Home() {
   return (
-    <main className="hospital-home">
-      {/* HERO */}
-      <section className="hero-section">
-        <div className="hero-background-circle hero-circle-one" />
-        <div className="hero-background-circle hero-circle-two" />
-
-        <div className="home-container hero-grid">
-          <div className="hero-content">
-            <div className="hero-kicker">
-              <span className="kicker-line" />
-              COMPASSIONATE HEALTHCARE
-            </div>
-
-            <h1>
-              Your Health.
-              <br />
-              Our <span>Priority.</span>
-            </h1>
-
-            <p className="hero-description">
-              Exceptional medical care begins with understanding. We are
-              committed to providing compassionate attention, trusted medical
-              guidance and a better healthcare experience for every patient.
-            </p>
-
-            <div className="hero-buttons">
-              <Link to="/appointment" className="btn btn-primary">
-                Book an Appointment
-                <span className="button-arrow">↗</span>
-              </Link>
-
-              <Link to="/services" className="btn btn-secondary">
-                Explore Our Services
-              </Link>
-            </div>
-
-            <div className="hero-assurance">
-              <span className="assurance-icon">✓</span>
-              Patient-focused care
-              <span className="assurance-divider" />
-              Trusted medical guidance
-            </div>
+    <main className="ss-home">
+      <div className="ss-topbar">
+        <div className="ss-container ss-topbar-inner">
+          <span>📍 Tilak Road, Rajahmundry, Andhra Pradesh</span>
+          <div className="ss-topbar-links">
+            <a href="tel:9494456007">☎ 94944 56007</a>
+            <span className="ss-topbar-divider">|</span>
+            <a href="tel:08832422189">0883-2422189</a>
           </div>
-
-          <div className="hero-visual">
-            <div className="hero-image-frame">
-              <img
-                src={doctorImage}
-                alt="Dr. Sakthi Narasimha Garikapati"
-                className="hero-doctor-image"
-                fetchPriority="high"
-              />
-
-              <div className="hero-image-overlay" />
-
-              <div className="doctor-image-caption">
-                <span className="caption-line" />
-                <div>
-                  <p>Dedicated to Your Health</p>
-                  <span>Care with compassion</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="floating-card floating-card-top">
-              <span className="floating-icon">✚</span>
-              <div>
-                <strong>Patient First</strong>
-                <small>Care that matters</small>
-              </div>
-            </div>
-
-            <div className="floating-card floating-card-bottom">
-              <span className="floating-check">✓</span>
-              <div>
-                <strong>Personalised Care</strong>
-                <small>Focused on your wellbeing</small>
-              </div>
-            </div>
-
-            <div className="hero-orbit" />
-          </div>
+          <span className="ss-hours">◷ Mon–Sat: 9:00 AM–12:30 PM&nbsp; | &nbsp;5:30 PM–9:00 PM</span>
         </div>
+      </div>
 
-        <div className="hero-bottom-line" />
-      </section>
-
-      {/* TRUST STRIP */}
-      <section className="trust-section">
-        <div className="home-container trust-grid">
-          <div className="trust-item">
-            <span className="trust-icon">♡</span>
-            <div>
-              <h3>Compassion First</h3>
-              <p>Every patient matters</p>
+      <section className="ss-hero">
+        <div className="ss-hero-photo" role="img" aria-label="Modern hospital building and healthcare environment" />
+        <div className="ss-hero-shade" />
+        <div className="ss-container ss-hero-content">
+          <div className="ss-hero-copy">
+            <div className="ss-hero-kicker"><span className="ss-cross">✚</span> LISTENING · CARING · HEALING</div>
+            <h1>Compassionate Care.<br /><em>Trusted Medicine.</em></h1>
+            <p className="ss-hero-lead">Professional medical guidance with a personal touch. Your health, comfort and peace of mind are at the heart of everything we do.</p>
+            <div className="ss-hero-actions">
+              <Link to="/appointment" className="ss-button ss-button-gold">Book an Appointment <span>↗</span></Link>
+              <Link to="/services" className="ss-button ss-button-outline">Explore Services <span>→</span></Link>
+            </div>
+            <div className="ss-hero-trust">
+              <span className="ss-trust-check">✓</span>
+              <div><strong>Care that puts people first</strong><small>Respectful, thoughtful and patient-focused healthcare</small></div>
             </div>
           </div>
-
-          <div className="trust-item">
-            <span className="trust-icon">✚</span>
-            <div>
-              <h3>Medical Expertise</h3>
-              <p>Professional healthcare</p>
-            </div>
-          </div>
-
-          <div className="trust-item">
-            <span className="trust-icon">◈</span>
-            <div>
-              <h3>Patient Comfort</h3>
-              <p>A welcoming environment</p>
-            </div>
-          </div>
-
-          <div className="trust-item">
-            <span className="trust-icon">✓</span>
-            <div>
-              <h3>Trusted Guidance</h3>
-              <p>Care with clarity</p>
-            </div>
+          <div className="ss-hero-side-note"><span>✧</span><strong>Your Health<br />Matters</strong><small>Every patient.<br />Every visit.</small></div>
+        </div>
+        <div className="ss-hero-bottom">
+          <div className="ss-container ss-hero-bottom-inner">
+            <span>COMPASSION</span><i>✦</i><span>COMMITMENT</span><i>✦</i><span>HEALTHCARE</span>
           </div>
         </div>
       </section>
 
-      {/* ABOUT */}
-      <section className="about-section section-padding">
-        <div className="home-container about-grid">
-          <div className="about-visual">
-            <div className="about-image-main">
-              <img
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=85"
-                alt="Healthcare professional providing medical care"
-                loading="lazy"
-              />
-            </div>
+      <section className="ss-quick-info">
+        <div className="ss-container ss-info-grid">
+          <article><span className="ss-info-icon">◷</span><div><small>CONSULTATION HOURS</small><strong>9:00 AM–12:30 PM</strong><strong>5:30 PM–9:00 PM</strong><em>Monday to Saturday</em></div></article>
+          <article><span className="ss-info-icon">☎</span><div><small>CALL OUR HOSPITAL</small><a href="tel:9494456007"><strong>94944 56007</strong></a><a href="tel:08832422189"><strong>0883-2422189</strong></a><em>We’re here to help</em></div></article>
+          <article><span className="ss-info-icon">✚</span><div><small>HEALTHCARE SERVICES</small><strong>OPD · IPD · Day Care</strong><strong>Medical Consultation</strong><em>Ask us about availability</em></div></article>
+          <article><span className="ss-info-icon">⌖</span><div><small>VISIT US</small><strong>Tilak Road, Rajahmundry</strong><strong>Andhra Pradesh – 533101</strong><a className="ss-mini-link" href="https://maps.google.com/?q=Sri+Shakthi+Hospital+Rajahmundry" target="_blank" rel="noreferrer">Get directions ↗</a></div></article>
+        </div>
+      </section>
 
-            <div className="about-image-decoration" />
-
-            <div className="about-note">
-              <span className="about-note-icon">✦</span>
-              <div>
-                <strong>Care With Purpose</strong>
-                <p>People at the heart of healthcare</p>
-              </div>
-            </div>
+      <section className="ss-about ss-section">
+        <div className="ss-container ss-about-grid">
+          <div className="ss-photo-collage">
+            <div className="ss-photo-main"><img src={hospitalImages.reception} alt="Hospital reception and welcoming interior" loading="lazy" /></div>
+            <div className="ss-photo-stack"><img src={hospitalImages.room} alt="Hospital patient room" loading="lazy" /><img src={hospitalImages.corridor} alt="Bright hospital corridor" loading="lazy" /></div>
+            <div className="ss-photo-stamp"><span>✚</span><strong>Care with<br />compassion</strong><small>Every step of the way</small></div>
           </div>
-
-          <div className="about-content">
-            <SectionLabel>WELCOME TO SRI SHAKTHI HOSPITAL</SectionLabel>
-
-            <h2 className="section-title">
-              Healthcare built on
-              <br />
-              <span>trust and compassion.</span>
-            </h2>
-
-            <p className="section-description">
-              At Sri Shakthi Hospital, we believe healthcare should be
-              professional, accessible and personal. Our approach places
-              patients at the centre of every consultation and healthcare
-              decision.
-            </p>
-
-            <p className="section-description">
-              We aim to help patients understand their health, make informed
-              decisions and receive attentive medical care in a supportive
-              environment.
-            </p>
-
-            <div className="values-list">
-              {values.map((value, index) => (
-                <div className="value-item" key={value}>
-                  <span className="value-check">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <span>{value}</span>
-                  <span className="value-arrow">↗</span>
-                </div>
-              ))}
+          <div className="ss-about-copy">
+            <SectionLabel>WELCOME TO SRI SHAKTHI</SectionLabel>
+            <h2>Healthcare built on <em>trust and compassion.</em></h2>
+            <p className="ss-intro">At Sri Shakthi Hospital, we believe good healthcare begins with listening, understanding and treating every person with dignity.</p>
+            <p>Our approach combines professional medical guidance with clear communication and thoughtful attention to each patient's concerns. We strive to make your healthcare experience reassuring, respectful and focused on your wellbeing.</p>
+            <div className="ss-check-list">
+              <span>✓ Patient-centred medical attention</span>
+              <span>✓ Clear communication and guidance</span>
+              <span>✓ Careful assessment and treatment planning</span>
+              <span>✓ Respectful care for every patient</span>
             </div>
-
-            <Link to="/about" className="text-link">
-              Discover Our Hospital <span>→</span>
-            </Link>
+            <Link to="/about" className="ss-text-link">Discover our hospital <span>→</span></Link>
           </div>
         </div>
       </section>
 
-      {/* SERVICES */}
-      <section className="services-section section-padding" id="services">
-        <div className="home-container">
-          <div className="section-heading-center">
+      <section className="ss-services ss-section">
+        <div className="ss-container">
+          <div className="ss-section-heading">
             <SectionLabel>OUR MEDICAL SERVICES</SectionLabel>
-
-            <h2 className="section-title">
-              Thoughtful care for
-              <br />
-              <span>your health journey.</span>
-            </h2>
-
-            <p className="section-description">
-              Explore our healthcare services, delivered with attention,
-              professionalism and a commitment to patient wellbeing.
-            </p>
+            <h2>Quality care for <em>your health.</em></h2>
+            <p>Explore our services and contact our team to confirm availability and the right next step for your needs.</p>
           </div>
-
-          <div className="services-grid">
-            {services.map((service) => (
-              <article className="service-card" key={service.number}>
-                <div className="service-card-top">
-                  <div className="service-icon">{service.icon}</div>
-                  <span className="service-number">{service.number}</span>
-                </div>
-
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-
-                <Link
-                  to="/services"
-                  className="service-link"
-                  aria-label={`Learn more about ${service.title}`}
-                >
-                  Learn More <span>↗</span>
-                </Link>
-
-                <div className="service-card-bottom-line" />
+          <div className="ss-services-grid">
+            {services.map((service, index) => (
+              <article className="ss-service-card" key={service.title} style={{ "--delay": `${index * 80}ms` }}>
+                <div className="ss-service-card-top"><span className="ss-service-icon">{service.icon}</span><small>0{index + 1}</small></div>
+                <h3>{service.title}</h3><p>{service.text}</p>
+                <Link to="/services" aria-label={`Learn more about ${service.title}`}>Learn more <span>→</span></Link>
+                <div className="ss-card-rule" />
               </article>
             ))}
           </div>
-
-          <div className="services-bottom">
-            <p>Looking for the right medical service?</p>
-            <Link to="/contact" className="text-link">
-              Talk to Our Team <span>→</span>
-            </Link>
-          </div>
+          <div className="ss-center-action"><Link to="/services" className="ss-button ss-button-navy">View all services <span>↗</span></Link></div>
         </div>
       </section>
 
-      {/* DOCTOR */}
-      <section className="doctor-section section-padding">
-        <div className="home-container doctor-grid">
-          <div className="doctor-content">
+      <section className="ss-doctor ss-section">
+        <div className="ss-container ss-doctor-grid">
+          <div className="ss-doctor-photo">
+            <div className="ss-doctor-photo-bg" />
+            <img src={doctorImage} alt="Dr. Sakthi Narasimha Garikapati" loading="lazy" />
+            <div className="ss-doctor-photo-tag"><span>✚</span><div><strong>Personalised guidance</strong><small>Medical care with compassion</small></div></div>
+          </div>
+          <div className="ss-doctor-copy">
             <SectionLabel>MEET YOUR DOCTOR</SectionLabel>
-
-            <h2 className="section-title">
-              Experience guided by
-              <br />
-              <span>care and understanding.</span>
-            </h2>
-
-            <p className="section-description">
-              Meet our medical professional, dedicated to providing
-              personalised consultations and thoughtful medical guidance.
-            </p>
-
-            <div className="doctor-profile">
-              <div className="doctor-profile-line" />
-              <div>
-                <h3>Dr. Sakthi Narasimha Garikapati</h3>
-                <p className="doctor-qualification">
-                  MBBS, DNB Family Medicine, FCD, FIIM, PGPID
-                </p>
-                <span className="doctor-speciality">
-                  Family &amp; Internal Medicine
-                </span>
-              </div>
+            <h2>Medical expertise with <em>a personal touch.</em></h2>
+            <h3>Dr. Sakthi Narasimha Garikapati</h3>
+            <p className="ss-credentials">MBBS · DNB Family Medicine · FCD · FIIM · PGPID</p>
+            <div className="ss-specialty"><span>✚</span> Family &amp; Internal Medicine</div>
+            <p>Focused on understanding each patient's concerns, careful clinical assessment and appropriate treatment guidance. The aim is to help patients make informed decisions about their health.</p>
+            <div className="ss-doctor-details">
+              <div><span>◷</span><p><strong>OPD Consultation</strong><small>Monday–Saturday</small></p></div>
+              <div><span>▣</span><p><strong>Registration No.</strong><small>66982</small></p></div>
             </div>
-
-            <div className="doctor-details">
-              <div className="doctor-detail">
-                <span>01</span>
-                <div>
-                  <strong>Consultation</strong>
-                  <p>Personalised medical guidance</p>
-                </div>
-              </div>
-
-              <div className="doctor-detail">
-                <span>02</span>
-                <div>
-                  <strong>Communication</strong>
-                  <p>Telugu, English and Hindi</p>
-                </div>
-              </div>
-            </div>
-
-            <Link to="/doctor" className="btn btn-primary">
-              Meet Our Doctor <span className="button-arrow">↗</span>
-            </Link>
+            <Link to="/doctor" className="ss-button ss-button-gold">View doctor profile <span>→</span></Link>
           </div>
-
-          <div className="doctor-visual">
-            <div className="doctor-image-border" />
-
-            <div className="doctor-image-wrap">
-              <img
-                src={doctorImage}
-                alt="Dr. Sakthi Narasimha Garikapati, Family and Internal Medicine"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="doctor-stamp">
-              <span className="stamp-symbol">✚</span>
-              <span>CARE</span>
-              <span>WITH</span>
-              <span>COMPASSION</span>
-            </div>
-          </div>
+          <aside className="ss-appointment-card">
+            <span className="ss-appointment-icon">▣</span>
+            <small>HERE FOR YOUR HEALTH</small>
+            <h3>Plan your next visit</h3>
+            <p>Contact our team for appointment enquiries and consultation timings.</p>
+            <Link to="/appointment" className="ss-button ss-button-navy">Book appointment <span>↗</span></Link>
+            <a href="tel:9494456007" className="ss-card-phone">☎ 94944 56007</a>
+          </aside>
         </div>
       </section>
 
-      {/* FACILITIES */}
-      <section className="facilities-section section-padding">
-        <div className="home-container">
-          <div className="facilities-heading">
-            <div>
-              <SectionLabel>OUR FACILITIES</SectionLabel>
-              <h2 className="section-title">
-                A welcoming environment
-                <br />
-                <span>for better care.</span>
-              </h2>
-            </div>
-
-            <Link to="/facilities" className="btn btn-outline">
-              Explore Facilities <span className="button-arrow">↗</span>
-            </Link>
+      <section className="ss-facilities ss-section">
+        <div className="ss-container">
+          <div className="ss-facilities-heading">
+            <div><SectionLabel>INSIDE OUR HOSPITAL</SectionLabel><h2>A welcoming space for <em>better care.</em></h2></div>
+            <p>Take a look at healthcare environments that reflect the calm, clean and supportive experience patients deserve. Images are illustrative and may not depict the actual premises.</p>
           </div>
-
-          <div className="facilities-grid">
-            {facilities.map((facility) => (
-              <article className="facility-card" key={facility.number}>
-                <div className="facility-image">
-                  <img
-                    src={facility.image}
-                    alt={facility.title}
-                    loading="lazy"
-                  />
-
-                  <span className="facility-index">{facility.number}</span>
-                  <div className="facility-image-overlay" />
-                </div>
-
-                <div className="facility-info">
-                  <div>
-                    <h3>{facility.title}</h3>
-                    <p>{facility.description}</p>
-                  </div>
-
-                  <Link
-                    to="/facilities"
-                    className="facility-arrow"
-                    aria-label={`Explore ${facility.title}`}
-                  >
-                    ↗
-                  </Link>
-                </div>
-              </article>
+          <div className="ss-facilities-grid">
+            {facilities.map((facility, index) => (
+              <Link to="/facilities" className="ss-facility-card" key={facility.title}>
+                <div className="ss-facility-image"><img src={facility.image} alt={facility.title} loading="lazy" /><span>0{index + 1}</span></div>
+                <div className="ss-facility-copy"><h3>{facility.title}</h3><p>{facility.text}</p><span className="ss-facility-arrow">↗</span></div>
+              </Link>
             ))}
           </div>
+          <div className="ss-center-action"><Link to="/facilities" className="ss-text-link">Explore hospital facilities <span>→</span></Link></div>
         </div>
       </section>
 
-      {/* APPOINTMENT CTA */}
-      <section className="appointment-section">
-        <div className="appointment-decoration appointment-decoration-one" />
-        <div className="appointment-decoration appointment-decoration-two" />
+      <section className="ss-commitment">
+        <div className="ss-container ss-commitment-inner">
+          <div className="ss-commitment-mark">✚</div>
+          <div><small>YOUR HEALTH IS OUR COMMITMENT</small><h2>One caring step can make a difference.</h2><p>Reach out to enquire about appointments, services and visiting hours.</p></div>
+          <div className="ss-commitment-actions"><Link to="/appointment" className="ss-button ss-button-gold">Book an appointment <span>↗</span></Link><a href="tel:9494456007" className="ss-call-button">☎ <span><small>CALL OUR TEAM</small><strong>94944 56007</strong></span></a></div>
+        </div>
+      </section>
 
-        <div className="home-container appointment-content">
-          <div className="appointment-icon">✚</div>
-
-          <SectionLabel>YOUR WELLBEING MATTERS</SectionLabel>
-
-          <h2>
-            Your health deserves
-            <br />
-            <span>thoughtful attention.</span>
-          </h2>
-
-          <p>
-            Take the next step towards better health. Contact our hospital
-            team to enquire about appointments and available medical services.
-          </p>
-
-          <div className="appointment-buttons">
-            <Link to="/appointment" className="btn btn-light">
-              Request an Appointment <span>↗</span>
-            </Link>
-
-            <Link to="/contact" className="btn btn-transparent">
-              Contact Our Hospital
-            </Link>
-          </div>
+      <section className="ss-contact-strip">
+        <div className="ss-container ss-contact-inner">
+          <div><span>✉</span><p><small>EMAIL US</small><a href="mailto:srisakthihospitalrjy@gmail.com">srisakthihospitalrjy@gmail.com</a></p></div>
+          <div><span>⌖</span><p><small>OUR ADDRESS</small><strong>79-16-6, Tilak Road, Rajahmundry, Andhra Pradesh – 533101</strong></p></div>
+          <Link to="/contact" className="ss-contact-link">Contact us <span>→</span></Link>
         </div>
       </section>
     </main>
   );
 }
-
-export default Home;
