@@ -1,764 +1,208 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import "./Doctor.css";
 
-const doctor = {
-  name: "Dr. Sakthi Narasimha Garikapati",
-  qualification: "MBBS, DNB Family Medicine, FCD, FIIM, PGPID",
-  registration: "66982",
-  experience: "15+ Years",
-  image:
-    "https://www.srisakthihospital.com/assets/doctor-photo-EMUL-gY8.jpg",
+const doctorImage =
+  "https://www.srisakthihospital.com/assets/doctor-photo-EMUL-gY8.jpg";
 
-  expertise: [
-    "Family Medicine",
-    "Internal Medicine",
-    "Clinical Diabetology",
-    "Infectious Diseases",
-  ],
-
-  timings: {
-    days: "Monday – Saturday",
-    morning: "9:00 AM – 12:30 PM",
-    evening: "5:30 PM – 9:00 PM",
+const expertise = [
+  {
+    number: "01",
+    title: "Family Medicine",
+    text: "Personalized healthcare for individuals and families, with attention to prevention and long-term wellness.",
+    icon: "✚",
   },
-};
+  {
+    number: "02",
+    title: "Internal Medicine",
+    text: "Assessment and management of a wide range of adult medical conditions.",
+    icon: "⚕",
+  },
+  {
+    number: "03",
+    title: "Clinical Diabetology",
+    text: "Individualized diabetes care, monitoring, and ongoing health management.",
+    icon: "♡",
+  },
+  {
+    number: "04",
+    title: "Infectious Diseases",
+    text: "Clinical assessment and treatment planning for a range of infectious illnesses.",
+    icon: "✳",
+  },
+];
 
 const qualifications = [
-  {
-    abbreviation: "MBBS",
-    title: "Bachelor of Medicine & Bachelor of Surgery",
-  },
-  {
-    abbreviation: "DNB",
-    title: "DNB Family Medicine",
-  },
-  {
-    abbreviation: "FCD",
-    title: "Fellowship in Clinical Diabetology",
-  },
-  {
-    abbreviation: "FIIM",
-    title: "Fellowship in Internal Medicine",
-  },
-  {
-    abbreviation: "PGPID",
-    title: "Postgraduate Program in Infectious Diseases",
-  },
+  ["MBBS", "Bachelor of Medicine and Bachelor of Surgery"],
+  ["DNB", "Family Medicine"],
+  ["FCD", "Fellowship in Clinical Diabetology"],
+  ["FIIM", "Fellowship in Internal Medicine"],
+  ["PGPID", "Postgraduate Program in Infectious Diseases"],
 ];
 
-const training = [
-  "Basic Life Support (BLS)",
-  "Advanced Cardiac Life Support (ACLS)",
-  "Emergency Care & Critical Care Management",
-  "Chronic Disease Follow-up Programs",
-];
-
-const achievements = [
-  "Advanced Management of Diabetes – Harvard Medical School",
-  "ESC Certification in Hypertension Management",
-  "Board Certified in Emergency & Pain Management",
-];
-
-function Doctor() {
+function Doctors() {
   return (
-    <main className="doctor-page">
-
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
-      <section className="doctor-hero">
-
-        <div className="doctor-hero-pattern"></div>
-
-        <div className="doctor-container doctor-hero-grid">
-
-          {/* LEFT CONTENT */}
-
-          <div className="doctor-hero-content">
-
-            <div className="doctor-kicker">
-              <span></span>
-              SRI SAKTHI HOSPITAL
-            </div>
+    <main className="hp-page hp-doctors">
+      <section className="hp-hero">
+        <div className="hp-container hp-hero-grid">
+          <div className="hp-hero-copy hp-reveal">
+            <span className="hp-eyebrow">
+              <span /> MEET YOUR DOCTOR
+            </span>
 
             <h1>
-              Meet Your
-              <strong>Doctor</strong>
+              Experience in Medicine.
+              <em> Compassion in Care.</em>
             </h1>
 
-            <div className="doctor-hero-line"></div>
-
             <p>
-              Compassionate healthcare backed by clinical
-              experience, accurate diagnosis and a patient-first
-              approach.
+              Meet the doctor behind Sri Sakthi Hospital's commitment to
+              thoughtful diagnosis, ethical treatment, and patient-focused
+              healthcare.
             </p>
 
-            <div className="doctor-hero-actions">
-
-              <Link
-                to="/appointment"
-                className="doctor-primary-button"
-              >
-                Book Appointment
-                <span>→</span>
+            <div className="hp-actions">
+              <Link to="/appointment" className="hp-btn hp-btn-primary">
+                Book an Appointment <span>↗</span>
               </Link>
-
-              <a
-                href="tel:+919494456007"
-                className="doctor-phone-button"
-              >
-                <span className="phone-circle">☎</span>
-
-                <span>
-                  <small>CALL HOSPITAL</small>
-                  94944 56007
-                </span>
+              <a href="tel:9494456007" className="hp-btn hp-btn-outline">
+                Call the Hospital
               </a>
-
             </div>
 
-            {/* HERO STATS */}
-
-            <div className="doctor-hero-stats">
-
-              <div className="hero-stat">
-                <strong>15+</strong>
-                <span>
-                  Years of
-                  <br />
-                  Experience
-                </span>
-              </div>
-
-              <div className="hero-stat-divider"></div>
-
-              <div className="hero-stat">
-                <strong>4</strong>
-                <span>
-                  Areas of
-                  <br />
-                  Expertise
-                </span>
-              </div>
-
-              <div className="hero-stat-divider"></div>
-
-              <div className="hero-stat">
-                <strong>24/7</strong>
-                <span>
-                  Emergency
-                  <br />
-                  Care
-                </span>
-              </div>
-
-            </div>
-
-          </div>
-
-
-          {/* RIGHT DOCTOR IMAGE */}
-
-          <div className="doctor-hero-image-area">
-
-            <div className="hero-image-border"></div>
-
-            <div className="doctor-portrait">
-
-              <img
-                src={doctor.image}
-                alt={doctor.name}
-              />
-
-            </div>
-
-            {/* NAME CARD */}
-
-            <div className="doctor-name-card">
-
-              <div className="verified-symbol">
-                ✓
-              </div>
-
+            <div className="hp-mini-trust">
+              <span className="hp-trust-icon">✦</span>
               <div>
-                <small>CONSULTANT PHYSICIAN</small>
-
-                <h2>
-                  Dr. Sakthi Narasimha
-                  <br />
-                  Garikapati
-                </h2>
+                <strong>Listening • Caring • Healing</strong>
+                <small>Healthcare with a personal touch</small>
               </div>
-
             </div>
-
-            {/* REGISTRATION */}
-
-            <div className="registration-card">
-
-              <span>MEDICAL REGISTRATION</span>
-
-              <strong>
-                No. {doctor.registration}
-              </strong>
-
-            </div>
-
           </div>
 
-        </div>
-      </section>
-
-
-      {/* =====================================================
-          DOCTOR INFORMATION BAR
-      ===================================================== */}
-
-      <section className="doctor-information-bar">
-
-        <div className="doctor-container doctor-info-grid">
-
-          <div className="doctor-info-item">
-
-            <div className="info-icon">
-              ✚
-            </div>
-
-            <div>
-              <small>QUALIFICATION</small>
-              <strong>MBBS • DNB Family Medicine</strong>
-            </div>
-
-          </div>
-
-
-          <div className="doctor-info-item">
-
-            <div className="info-icon">
-              ♡
-            </div>
-
-            <div>
-              <small>CARE PHILOSOPHY</small>
-              <strong>Compassionate Patient Care</strong>
-            </div>
-
-          </div>
-
-
-          <div className="doctor-info-item">
-
-            <div className="info-icon">
-              ◉
-            </div>
-
-            <div>
-              <small>LANGUAGES</small>
-              <strong>English • Telugu • Hindi</strong>
-            </div>
-
-          </div>
-
-
-          <div className="doctor-info-item">
-
-            <div className="info-icon">
-              ◷
-            </div>
-
-            <div>
-              <small>CONSULTATION</small>
-              <strong>OPD • Appointment Based</strong>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          ABOUT DOCTOR
-      ===================================================== */}
-
-      <section className="doctor-about">
-
-        <div className="doctor-container doctor-about-grid">
-
-          {/* IMAGE */}
-
-          <div className="about-image-side">
-
-            <div className="about-image">
-
+          <div className="hp-doctor-visual hp-reveal hp-delay-1">
+            <div className="hp-doctor-image-frame">
               <img
-                src={doctor.image}
-                alt={`${doctor.name} at Sri Sakthi Hospital`}
+                src={doctorImage}
+                alt="Dr. Sakthi Narasimha Garikapati"
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
               />
-
-            </div>
-
-            <div className="about-experience-box">
-
-              <strong>15+</strong>
-
-              <span>
-                YEARS OF
-                <br />
-                CLINICAL
-                <br />
-                EXPERIENCE
-              </span>
-
-            </div>
-
-            <div className="about-pattern"></div>
-
-          </div>
-
-
-          {/* CONTENT */}
-
-          <div className="about-content">
-
-            <div className="section-kicker">
-              ABOUT THE DOCTOR
-            </div>
-
-            <h2>
-              Medical expertise
-              <span>with a human touch.</span>
-            </h2>
-
-            <p className="about-lead">
-              Dr. Sakthi Narasimha Garikapati is a highly
-              trained physician with strong expertise in
-              family medicine, internal medicine, clinical
-              diabetology and infectious diseases.
-            </p>
-
-            <p>
-              His approach combines medical excellence with
-              compassionate patient care. Each consultation
-              begins with understanding the patient's concerns,
-              medical history and individual healthcare needs.
-            </p>
-
-            <p>
-              With an emphasis on accurate diagnosis,
-              evidence-based treatment and long-term wellness,
-              Dr. Sakthi focuses on helping patients make
-              informed decisions about their health.
-            </p>
-
-            <div className="doctor-signature">
-
-              <div className="signature-mark">
-                +
+              <div className="hp-image-fallback">
+                <span>⚕</span>
+                <strong>Sri Sakthi Hospital</strong>
+                <small>Listening • Caring • Healing</small>
               </div>
-
-              <div>
-                <strong>
-                  Dr. Sakthi Narasimha Garikapati
-                </strong>
-
-                <span>
-                  Consultant Physician
-                </span>
-              </div>
-
             </div>
 
-          </div>
+            <div className="hp-doctor-name-card">
+              <span className="hp-card-kicker">YOUR HEALTHCARE PARTNER</span>
+              <h2>Dr. Sakthi Narasimha Garikapati</h2>
+              <p>MBBS · DNB Family Medicine · FCD · FIIM · PGPID</p>
+            </div>
 
+            <span className="hp-orbit hp-orbit-one" />
+            <span className="hp-orbit hp-orbit-two" />
+          </div>
         </div>
-
       </section>
 
-
-      {/* =====================================================
-          AREAS OF EXPERTISE
-      ===================================================== */}
-
-      <section className="expertise-section">
-
-        <div className="doctor-container">
-
-          <div className="section-heading">
-
-            <div className="section-kicker">
-              AREAS OF EXPERTISE
-            </div>
-
+      <section className="hp-section hp-doctor-intro">
+        <div className="hp-container hp-two-col">
+          <div className="hp-section-copy hp-reveal">
+            <span className="hp-eyebrow">YOUR DOCTOR</span>
             <h2>
-              Comprehensive medical
-              <span>care for every stage of life.</span>
+              Medical knowledge,
+              <em> a human approach.</em>
             </h2>
-
             <p>
-              A broad clinical approach focused on prevention,
-              diagnosis, treatment and long-term health.
+              Dr. Sakthi Narasimha Garikapati focuses on accurate diagnosis,
+              evidence-based treatment, and long-term patient wellness.
+              His clinical interests include family medicine, internal
+              medicine, diabetes care, and infectious diseases.
             </p>
-
+            <p>
+              The goal is to help patients understand their health concerns
+              and make informed decisions about their care.
+            </p>
+            <Link to="/about" className="hp-text-link">
+              About Sri Sakthi Hospital <span>→</span>
+            </Link>
           </div>
 
-
-          <div className="expertise-grid">
-
-            {doctor.expertise.map((item, index) => (
-
-              <article
-                className="expertise-card"
-                key={item}
-              >
-
-                <div className="expertise-top">
-
-                  <span className="expertise-number">
-                    0{index + 1}
-                  </span>
-
-                  <span className="expertise-symbol">
-                    {index === 0 && "✚"}
-                    {index === 1 && "◉"}
-                    {index === 2 && "♡"}
-                    {index === 3 && "✦"}
-                  </span>
-
+          <div className="hp-qualification-panel hp-reveal hp-delay-1">
+            <span className="hp-eyebrow">EDUCATION & QUALIFICATIONS</span>
+            <h3>Professional qualifications</h3>
+            {qualifications.map(([name, detail]) => (
+              <div className="hp-qualification" key={name}>
+                <span className="hp-qualification-mark">✓</span>
+                <div>
+                  <strong>{name}</strong>
+                  <p>{detail}</p>
                 </div>
+              </div>
+            ))}
+            <p className="hp-note">
+              Medical registration number listed on the official website:
+              <strong> 66982</strong>
+            </p>
+          </div>
+        </div>
+      </section>
 
-                <h3>
-                  {item}
-                </h3>
+      <section className="hp-section hp-section-soft">
+        <div className="hp-container">
+          <div className="hp-section-heading hp-reveal">
+            <span className="hp-eyebrow">AREAS OF EXPERTISE</span>
+            <h2>
+              Care across important
+              <em> medical needs.</em>
+            </h2>
+            <p>
+              A patient-first approach to diagnosis, treatment, and continuing
+              care.
+            </p>
+          </div>
 
-                <p>
-                  Personalized consultation and professional
-                  medical management based on each patient's
-                  individual healthcare needs.
-                </p>
-
-                <span className="card-arrow">
-                  →
-                </span>
-
+          <div className="hp-card-grid hp-four-grid">
+            {expertise.map((item) => (
+              <article className="hp-feature-card" key={item.number}>
+                <div className="hp-feature-top">
+                  <span className="hp-feature-icon">{item.icon}</span>
+                  <span className="hp-feature-number">{item.number}</span>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+                <span className="hp-card-bottom-line" />
               </article>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
 
-
-      {/* =====================================================
-          QUALIFICATIONS
-      ===================================================== */}
-
-      <section className="qualifications-section">
-
-        <div className="doctor-container">
-
-          <div className="section-heading centered">
-
-            <div className="section-kicker">
-              EDUCATION & QUALIFICATIONS
-            </div>
-
-            <h2>
-              Professional training
-              <span>and specialization.</span>
-            </h2>
-
-          </div>
-
-
-          <div className="qualifications-grid">
-
-            {qualifications.map((item, index) => (
-
-              <div
-                className="qualification-card"
-                key={item.abbreviation}
-              >
-
-                <div className="qualification-number">
-                  {String(index + 1).padStart(2, "0")}
-                </div>
-
-                <div className="qualification-abbreviation">
-                  {item.abbreviation}
-                </div>
-
-                <h3>
-                  {item.title}
-                </h3>
-
-                <div className="qualification-line"></div>
-
-                <span>
-                  Verified Qualification
-                </span>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          TRAINING + ACHIEVEMENTS
-      ===================================================== */}
-
-      <section className="professional-section">
-
-        <div className="doctor-container professional-grid">
-
-          {/* TRAINING */}
-
-          <div className="training-box">
-
-            <div className="section-kicker">
-              TRAINING & CERTIFICATIONS
-            </div>
-
-            <h2>
-              Continuing professional
-              <span>development.</span>
-            </h2>
-
+      <section className="hp-cta-section">
+        <div className="hp-container hp-cta-content">
+          <div>
+            <span className="hp-eyebrow hp-eyebrow-light">
+              WE ARE HERE TO HELP
+            </span>
+            <h2>Take the next step towards better health.</h2>
             <p>
-              Ongoing professional training supports current,
-              evidence-based and responsible medical practice.
+              Contact Sri Sakthi Hospital to enquire about a consultation.
             </p>
-
-            <div className="training-list">
-
-              {training.map((item) => (
-
-                <div
-                  className="training-item"
-                  key={item}
-                >
-
-                  <span>✓</span>
-
-                  <p>
-                    {item}
-                  </p>
-
-                </div>
-
-              ))}
-
-            </div>
-
           </div>
-
-
-          {/* ACHIEVEMENTS */}
-
-          <div className="achievement-box">
-
-            <div className="achievement-heading">
-
-              <div>
-                <small>PROFESSIONAL</small>
-
-                <h3>
-                  Achievements
-                </h3>
-              </div>
-
-              <span>
-                ✦
-              </span>
-
-            </div>
-
-
-            <div className="achievement-list">
-
-              {achievements.map((item, index) => (
-
-                <div
-                  className="achievement"
-                  key={item}
-                >
-
-                  <span className="achievement-index">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <p>
-                    {item}
-                  </p>
-
-                </div>
-
-              ))}
-
-            </div>
-
-            <div className="achievement-footer">
-              Compassion • Excellence • Trust
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          CONSULTATION HOURS
-      ===================================================== */}
-
-      <section className="consultation-section">
-
-        <div className="doctor-container">
-
-          <div className="consultation-box">
-
-            <div className="consultation-intro">
-
-              <div className="section-kicker">
-                CONSULTATION HOURS
-              </div>
-
-              <h2>
-                Plan your visit
-                <span>with confidence.</span>
-              </h2>
-
-              <p>
-                Consultations are available during the hospital's
-                regular OPD hours. Please contact the hospital
-                before visiting to confirm availability.
-              </p>
-
-            </div>
-
-
-            <div className="consultation-times">
-
-              <div className="time-card">
-
-                <div className="time-icon">
-                  ☀
-                </div>
-
-                <div>
-                  <small>
-                    MORNING
-                  </small>
-
-                  <strong>
-                    9:00 AM – 12:30 PM
-                  </strong>
-                </div>
-
-              </div>
-
-
-              <div className="time-card">
-
-                <div className="time-icon">
-                  ◐
-                </div>
-
-                <div>
-                  <small>
-                    EVENING
-                  </small>
-
-                  <strong>
-                    5:30 PM – 9:00 PM
-                  </strong>
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <Link
-              to="/appointment"
-              className="consultation-button"
-            >
-              Schedule Appointment
-              <span>→</span>
+          <div className="hp-actions">
+            <Link to="/appointment" className="hp-btn hp-btn-gold">
+              Request an Appointment <span>↗</span>
             </Link>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          FINAL CTA
-      ===================================================== */}
-
-      <section className="doctor-final">
-
-        <div className="final-decoration final-left"></div>
-        <div className="final-decoration final-right"></div>
-
-        <div className="doctor-container final-content">
-
-          <div className="final-kicker">
-            SRI SAKTHI HOSPITAL
-          </div>
-
-          <h2>
-            Compassionate care.
-            <br />
-            <span>Trusted medicine.</span>
-          </h2>
-
-          <p>
-            Your health deserves careful attention,
-            professional expertise and genuine compassion.
-          </p>
-
-          <div className="final-actions">
-
-            <Link
-              to="/appointment"
-              className="final-primary"
-            >
-              Book an Appointment
-              <span>→</span>
-            </Link>
-
-            <a
-              href="tel:+919494456007"
-              className="final-secondary"
-            >
-              ☎ &nbsp; 94944 56007
+            <a href="tel:9494456007" className="hp-phone-link">
+              ☎ 9494456007
             </a>
-
           </div>
-
         </div>
-
       </section>
-
     </main>
   );
 }
 
-export default Doctor;
+export default Doctors;

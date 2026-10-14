@@ -1,543 +1,1190 @@
-/* =====================================================
-   SRI SAKTHI HOSPITAL
-   FACILITIES PAGE
-   CLASSIC + PROFESSIONAL DESIGN
-===================================================== */
+/* =========================================
+   SRI SHAKTHI HOSPITAL
+   FACILITIES PAGE — CLASSIC PREMIUM THEME
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+:root {
+  --fac-navy: #092b40;
+  --fac-navy-dark: #061d2d;
+  --fac-teal: #087f83;
+  --fac-teal-dark: #056469;
+  --fac-gold: #c5a15d;
+  --fac-cream: #faf8f3;
+  --fac-white: #ffffff;
+  --fac-text: #172f3c;
+  --fac-muted: #526675;
+  --fac-border: #dce5e7;
+  --fac-shadow: 0 18px 45px rgba(6, 29, 45, 0.10);
+}
 
 .facilities-page {
-  width: 100%;
-  min-height: 100vh;
-  background: #f8f6f0;
-  color: #111111;
-  font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
+  background: var(--fac-white);
+  color: var(--fac-text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
-/* =====================================================
-   PAGE HEADER
-===================================================== */
+.facilities-page *,
+.facilities-page *::before,
+.facilities-page *::after {
+  box-sizing: border-box;
+}
 
-.facilities-header {
-  min-height: 430px;
-  position: relative;
-  display: flex;
+.facilities-page img {
+  display: block;
+  max-width: 100%;
+}
+
+.facilities-page a {
+  text-decoration: none;
+}
+
+.facilities-container {
+  width: min(1200px, calc(100% - 48px));
+  margin-inline: auto;
+}
+
+/* =========================================
+   REUSABLE TYPOGRAPHY
+========================================= */
+
+.facilities-eyebrow {
+  display: inline-flex;
   align-items: center;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(7, 42, 56, 0.97),
-      rgba(7, 42, 56, 0.86),
-      rgba(7, 42, 56, 0.60)
-    ),
-    url("https://www.srisakthihospital.com/assets/doctor-photo-EMUL-gY8.jpg");
-
-  background-size: cover;
-  background-position: center;
-  border-bottom: 4px solid #c59b42;
-}
-
-.facilities-header::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 6px;
-  height: 100%;
-  background: #c59b42;
-}
-
-.facilities-header-content {
-  width: min(1200px, 88%);
-  margin: 50px auto 0;
-  position: relative;
-  z-index: 2;
-}
-
-.facilities-header-content p {
-  margin: 0 0 18px;
-  color: #d4ae5d;
+  gap: 12px;
+  color: var(--fac-teal-dark);
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
+  line-height: 1.6;
 }
 
-.facilities-header-content h1 {
-  margin: 0 0 20px;
-  color: #ffffff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(48px, 6vw, 76px);
-  font-weight: 700;
-  line-height: 1.05;
-}
-
-.facilities-header-content span {
-  display: block;
-  max-width: 650px;
-  color: #eeeeee;
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.8;
-}
-
-/* =====================================================
-   MAIN CONTENT
-===================================================== */
-
-.facilities-content {
-  max-width: 1250px;
-  margin: auto;
-  padding: 105px 30px 120px;
-}
-
-/* =====================================================
-   INTRO
-===================================================== */
-
-.facilities-intro {
-  max-width: 720px;
-  margin: 0 auto 65px;
-  text-align: center;
-}
-
-.section-label {
-  margin-bottom: 16px;
-  color: #8f671d;
-  font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-
-.facilities-intro h2 {
-  margin: 0;
-  color: #102a43;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 48px;
-  font-weight: 800;
-  line-height: 1.15;
-}
-
-.facilities-intro h2 span {
-  color: #8f671d;
-  font-weight: 800;
-}
-
-.facilities-intro .gold-line {
-  width: 65px;
+.facilities-eyebrow-line {
+  display: inline-block;
+  width: 34px;
   height: 3px;
-  margin: 25px auto;
-  background: #c59b42;
+  flex-shrink: 0;
+  background: var(--fac-gold);
+  border-radius: 10px;
 }
 
-.facilities-intro > p:last-child {
-  color: #222222;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 1.9;
-}
-
-/* =====================================================
-   FACILITIES GRID
-===================================================== */
-
-.facilities-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
-
-/* =====================================================
-   FACILITY CARD
-===================================================== */
-
-.facility-card {
-  min-height: 330px;
-  position: relative;
-  padding: 32px;
-  background: #ffffff;
-  border: 1px solid #e2ddd2;
-  overflow: hidden;
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease;
-}
-
-/* Gold vertical hover line */
-
-.facility-card::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 3px;
-  height: 0;
-  background: #c59b42;
-  transition: height 0.4s ease;
-}
-
-.facility-card:hover::before {
-  height: 100%;
-}
-
-.facility-card:hover {
-  transform: translateY(-8px);
-  border-color: #c8ad70;
-  box-shadow: 0 20px 45px rgba(19, 57, 72, 0.13);
-}
-
-/* =====================================================
-   FEATURED CARD
-===================================================== */
-
-.featured-card {
-  background:
-    linear-gradient(
-      145deg,
-      #153d4d,
-      #214f60
-    );
-
-  border-color: #153d4d;
-}
-
-.featured-card h3 {
-  color: #ffffff;
+.facilities-heading {
+  margin: 18px 0 24px;
+  color: var(--fac-navy);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(34px, 4vw, 52px);
   font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -1px;
 }
 
-.featured-card p {
-  color: #eeeeee;
+.facilities-heading span {
+  display: inline;
+  color: var(--fac-teal);
+}
+
+.facilities-page p {
+  color: var(--fac-muted);
   font-weight: 500;
 }
 
-.featured-card .facility-footer {
-  border-color: rgba(255, 255, 255, 0.18);
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.facilities-hero {
+  position: relative;
+  isolation: isolate;
+  padding: 90px 0 110px;
+  background:
+    radial-gradient(
+      circle at 85% 12%,
+      rgba(197, 161, 93, 0.13),
+      transparent 28%
+    ),
+    linear-gradient(135deg, #fbfaf6 0%, #f0f7f6 100%);
 }
 
-/* =====================================================
-   CARD NUMBER
-===================================================== */
+.facilities-hero::before {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: -100px;
+  width: 420px;
+  height: 420px;
+  border: 1px solid rgba(8, 127, 131, 0.10);
+  border-radius: 50%;
+  content: "";
+  animation: fac-orbit 24s linear infinite;
+}
+
+.facilities-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.92fr;
+  align-items: center;
+  gap: 75px;
+}
+
+.facilities-hero-copy {
+  animation: fac-slide-up 0.9s ease both;
+}
+
+.facilities-hero-copy h1 {
+  margin: 25px 0;
+  color: var(--fac-navy);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(43px, 5.2vw, 70px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+}
+
+.facilities-hero-copy h1 span {
+  display: block;
+  color: var(--fac-teal);
+}
+
+.facilities-hero-description {
+  max-width: 570px;
+  margin: 0 0 30px;
+  color: #344c5b !important;
+  font-size: 17px;
+  font-weight: 600 !important;
+  line-height: 1.9;
+}
+
+.facilities-hero-actions,
+.facilities-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.facilities-button {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 14px 24px;
+  border: 2px solid var(--fac-teal);
+  border-radius: 5px;
+  background: var(--fac-teal);
+  color: var(--fac-white) !important;
+  font-size: 14px;
+  font-weight: 800;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.facilities-button:hover {
+  transform: translateY(-4px);
+  background: var(--fac-navy);
+  border-color: var(--fac-navy);
+  box-shadow: 0 12px 25px rgba(9, 43, 64, 0.18);
+}
+
+.facilities-button span,
+.facilities-cta-button span {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.facilities-button:hover span,
+.facilities-cta-button:hover span {
+  transform: translate(3px, -3px);
+}
+
+.facilities-secondary-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fac-navy) !important;
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+.facilities-secondary-link:hover {
+  color: var(--fac-teal) !important;
+}
+
+.facilities-trust-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-top: 32px;
+}
+
+.facilities-trust-list span {
+  color: var(--fac-text);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.facilities-trust-list b {
+  margin-right: 6px;
+  color: var(--fac-teal);
+  font-size: 16px;
+}
+
+/* =========================================
+   HERO IMAGE
+========================================= */
+
+.facilities-hero-visual {
+  position: relative;
+  padding: 0 18px 22px 0;
+  animation: fac-slide-right 1s ease both;
+}
+
+.facilities-hero-image-frame {
+  position: relative;
+  height: 540px;
+  overflow: hidden;
+  border: 7px solid var(--fac-white);
+  border-radius: 180px 180px 12px 12px;
+  background: #e5eeee;
+  box-shadow: 0 28px 65px rgba(6, 29, 45, 0.18);
+}
+
+.facilities-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  animation: fac-image-reveal 1.2s ease both;
+  transition: transform 0.8s ease;
+}
+
+.facilities-hero-image-frame:hover .facilities-hero-image {
+  transform: scale(1.06);
+}
+
+.facilities-hero-image-shade {
+  position: absolute;
+  inset: 35% 0 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(4, 25, 39, 0.82)
+  );
+  pointer-events: none;
+}
+
+.facilities-hero-outline {
+  position: absolute;
+  top: 25px;
+  right: 0;
+  bottom: 0;
+  left: 25px;
+  z-index: -1;
+  border: 2px solid var(--fac-gold);
+  border-radius: 180px 180px 12px 12px;
+}
+
+.facilities-hero-image-label {
+  position: absolute;
+  right: 24px;
+  bottom: 25px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--fac-white);
+}
+
+.facilities-label-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.13);
+  font-size: 22px;
+}
+
+.facilities-hero-image-label strong,
+.facilities-floating-note strong {
+  display: block;
+  color: var(--fac-white);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.facilities-hero-image-label span {
+  display: block;
+  color: #f3e7ce;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.facilities-floating-note {
+  position: absolute;
+  right: -24px;
+  bottom: 85px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  max-width: 285px;
+  padding: 18px 20px;
+  border: 1px solid rgba(197, 161, 93, 0.4);
+  border-radius: 9px;
+  background: var(--fac-navy);
+  box-shadow: var(--fac-shadow);
+  animation: fac-float 4s ease-in-out infinite;
+}
+
+.facilities-note-icon {
+  color: var(--fac-gold);
+  font-size: 30px;
+}
+
+.facilities-floating-note p {
+  margin: 3px 0 0;
+  color: #e5edf1;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.facilities-vertical-text {
+  position: absolute;
+  top: 45%;
+  right: -44px;
+  color: var(--fac-navy);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  writing-mode: vertical-rl;
+}
+
+/* =========================================
+   INTRODUCTION
+========================================= */
+
+.facilities-intro {
+  padding: 85px 0;
+  background: var(--fac-white);
+}
+
+.facilities-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  align-items: center;
+  gap: 75px;
+}
+
+.facilities-intro .facilities-heading {
+  margin-bottom: 0;
+}
+
+.facilities-intro-text {
+  margin: 0;
+  padding-left: 28px;
+  border-left: 3px solid var(--fac-gold);
+  color: #344b59 !important;
+  font-size: 16px;
+  font-weight: 600 !important;
+  line-height: 2;
+}
+
+/* =========================================
+   FACILITIES GRID
+========================================= */
+
+.facilities-list-section {
+  padding: 100px 0;
+  background: var(--fac-cream);
+}
+
+.facilities-section-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 35px;
+  margin-bottom: 45px;
+}
+
+.facilities-section-header .facilities-heading {
+  margin-bottom: 0;
+}
+
+.facilities-section-header > p {
+  max-width: 400px;
+  margin: 0 0 5px;
+  color: #344b59 !important;
+  font-weight: 600;
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.facility-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--fac-border);
+  border-radius: 9px;
+  background: var(--fac-white);
+  box-shadow: 0 8px 24px rgba(6, 29, 45, 0.045);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  animation: fac-slide-up 0.7s ease both;
+}
+
+.facility-card:hover {
+  transform: translateY(-9px);
+  border-color: rgba(8, 127, 131, 0.45);
+  box-shadow: 0 22px 45px rgba(6, 29, 45, 0.13);
+}
+
+.facility-card-image-wrap {
+  position: relative;
+  height: 245px;
+  overflow: hidden;
+  background: #e4eeee;
+}
+
+.facility-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.75s cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.facility-card:hover .facility-card-image {
+  transform: scale(1.09);
+}
+
+.facility-card-image-wrap::after {
+  position: absolute;
+  inset: 40% 0 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(6, 29, 45, 0.30)
+  );
+  content: "";
+  pointer-events: none;
+}
 
 .facility-number {
   position: absolute;
-  top: 25px;
-  right: 30px;
-
-  color: #8f671d;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
-  font-weight: 800;
-}
-
-/* Featured number */
-
-.featured-card .facility-number {
-  color: #dfc487;
-}
-
-/* =====================================================
-   FACILITY ICON
-===================================================== */
-
-.facility-icon {
-  width: 58px;
-  height: 58px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid #c59b42;
+  z-index: 1;
+  top: 16px;
+  left: 16px;
+  display: grid;
+  width: 43px;
+  height: 43px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 50%;
+  background: rgba(9, 43, 64, 0.92);
+  color: var(--fac-white);
+  font-size: 13px;
+  font-weight: 900;
+}
 
-  color: #8f671d;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 20px;
-  font-weight: 700;
-
+.facility-image-icon {
+  position: absolute;
+  z-index: 1;
+  right: 16px;
+  bottom: 15px;
+  display: grid;
+  width: 43px;
+  height: 43px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  background: var(--fac-gold);
+  color: var(--fac-navy-dark);
+  font-size: 21px;
   transition:
-    all 0.35s ease;
+    transform 0.3s ease,
+    background 0.3s ease;
 }
 
-.facility-card:hover .facility-icon {
-  background: #c59b42;
-  color: #ffffff;
-  transform: rotate(8deg);
+.facility-card:hover .facility-image-icon {
+  transform: rotate(12deg) scale(1.08);
+  background: var(--fac-white);
 }
 
-.featured-card .facility-icon {
-  color: #d4ae5d;
+.facility-card-content {
+  padding: 25px 24px 20px;
 }
 
-/* =====================================================
-   CARD TITLE
-===================================================== */
+.facility-category {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: var(--fac-teal-dark);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
 
-.facility-card h3 {
-  margin: 28px 0 15px;
-
-  color: #111111;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 25px;
+.facility-card-content h3 {
+  margin: 0 0 12px;
+  color: var(--fac-navy);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 23px;
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.35;
+  transition: color 0.3s ease;
 }
 
-/* =====================================================
-   CARD DESCRIPTION
-===================================================== */
+.facility-card:hover .facility-card-content h3 {
+  color: var(--fac-teal-dark);
+}
 
-.facility-card p {
-  max-width: 330px;
-
-  color: #222222;
+.facility-card-content p {
+  min-height: 82px;
+  margin: 0;
+  color: #405665;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.85;
 }
 
-/* =====================================================
-   CARD FOOTER
-===================================================== */
-
-.facility-footer {
-  position: absolute;
-  left: 32px;
-  right: 32px;
-  bottom: 24px;
-
-  padding-top: 14px;
-
-  border-top: 1px solid #ebe7de;
-
+.facility-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  color: #8f671d;
+  gap: 10px;
+  margin-top: 23px;
+  padding-top: 16px;
+  border-top: 1px solid var(--fac-border);
+  color: var(--fac-navy);
   font-size: 11px;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-}
-
-.facility-footer span:first-child {
-  color: #8f671d;
-  font-weight: 900;
-}
-
-.facility-footer span:last-child {
-  color: #102a43;
-  font-size: 20px;
-  font-weight: 900;
-
-  transition: transform 0.3s ease;
-}
-
-.facility-card:hover .facility-footer span:last-child {
-  transform: translateX(6px);
-}
-
-/* Featured footer */
-
-.featured-card .facility-footer {
-  color: #ffffff;
-}
-
-.featured-card .facility-footer span:first-child,
-.featured-card .facility-footer span:last-child {
-  color: #ffffff;
-}
-
-/* =====================================================
-   CTA SECTION
-===================================================== */
-
-.facilities-cta {
-  padding: 75px max(30px, calc((100% - 1250px) / 2));
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-
-  background: #153d4d;
-  border-top: 3px solid #c59b42;
-}
-
-.facilities-cta p {
-  margin: 0 0 10px;
-
-  color: #d3ac59;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-
-.facilities-cta h2 {
-  margin: 0 0 8px;
-
-  color: #ffffff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 40px;
   font-weight: 800;
 }
 
-.facilities-cta span {
-  color: #eeeeee;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.facilities-cta a {
+.facility-card-arrow {
+  display: grid;
+  width: 34px;
+  height: 34px;
   flex-shrink: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9f5f3;
+  color: var(--fac-teal-dark);
+  font-size: 18px;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
 
-  padding: 16px 28px;
+.facility-card:hover .facility-card-arrow {
+  transform: translate(3px, -3px);
+  background: var(--fac-teal);
+  color: var(--fac-white);
+}
 
-  background: #c59b42;
-  color: #102a43;
+/* =========================================
+   FEATURE SECTION
+========================================= */
 
-  text-decoration: none;
-  font-size: 13px;
+.facilities-feature {
+  padding: 110px 0;
+  background: var(--fac-white);
+}
+
+.facilities-feature-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1fr;
+  align-items: center;
+  gap: 85px;
+}
+
+.facilities-feature-image-wrap {
+  position: relative;
+  padding: 0 0 24px 24px;
+}
+
+.facilities-feature-image-wrap::before {
+  position: absolute;
+  z-index: 0;
+  top: 25px;
+  right: 25px;
+  bottom: 0;
+  left: 0;
+  border: 2px solid var(--fac-gold);
+  border-radius: 9px;
+  content: "";
+}
+
+.facilities-feature-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 480px;
+  border-radius: 9px;
+  object-fit: cover;
+  box-shadow: var(--fac-shadow);
+  transition: transform 0.6s ease;
+}
+
+.facilities-feature-image-wrap:hover .facilities-feature-image {
+  transform: translateY(-5px);
+}
+
+.facilities-feature-badge {
+  position: absolute;
+  z-index: 2;
+  right: -20px;
+  bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 22px;
+  border-radius: 7px;
+  background: var(--fac-navy);
+  box-shadow: var(--fac-shadow);
+}
+
+.facilities-feature-badge > span {
+  color: var(--fac-gold);
+  font-size: 30px;
+}
+
+.facilities-feature-badge strong {
+  display: block;
+  color: var(--fac-white);
+  font-size: 14px;
   font-weight: 900;
-
-  transition: all 0.3s ease;
 }
 
-.facilities-cta a:hover {
-  background: #aa812f;
-  color: #ffffff;
-  transform: translateY(-3px);
+.facilities-feature-badge small {
+  color: #dbe8ec;
+  font-size: 12px;
+  font-weight: 600;
+}
 
+.facilities-feature-copy > p {
+  margin: 0 0 24px;
+  color: #344b59;
+  font-weight: 600;
+  line-height: 1.95;
+}
+
+.facilities-feature-points {
+  display: grid;
+  gap: 14px;
+  margin: 25px 0 32px;
+  padding: 0;
+  list-style: none;
+}
+
+.facilities-feature-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--fac-text);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.facilities-feature-points li span {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 50%;
+  background: #e5f4ef;
+  color: var(--fac-teal-dark);
+  font-weight: 900;
+}
+
+/* =========================================
+   CALL TO ACTION
+========================================= */
+
+.facilities-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 90px 0;
+  background: linear-gradient(
+    120deg,
+    var(--fac-navy-dark),
+    var(--fac-navy),
+    #0b4a59
+  );
+  text-align: center;
+}
+
+.facilities-cta-decoration {
+  position: absolute;
+  z-index: -1;
+  top: -200px;
+  right: -100px;
+  width: 480px;
+  height: 480px;
+  border: 1px solid rgba(197, 161, 93, 0.28);
+  border-radius: 50%;
   box-shadow:
-    0 12px 25px rgba(0, 0, 0, 0.2);
+    0 0 0 35px rgba(197, 161, 93, 0.04),
+    0 0 0 70px rgba(197, 161, 93, 0.03);
+  animation: fac-orbit 28s linear infinite;
 }
 
-/* =====================================================
-   TABLET
-===================================================== */
+.facilities-cta-content {
+  max-width: 850px;
+}
 
-@media (max-width: 950px) {
+.facilities-cta-eyebrow {
+  color: #e8ce99;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2.5px;
+}
 
-  .facilities-header {
-    min-height: 390px;
+.facilities-cta h2 {
+  margin: 20px 0;
+  color: var(--fac-white);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(34px, 4.5vw, 55px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.facilities-cta h2 span {
+  display: block;
+  color: #e4c788;
+}
+
+.facilities-cta-content > p {
+  max-width: 620px;
+  margin: 0 auto 32px;
+  color: #e3edf1;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.9;
+}
+
+.facilities-cta-actions {
+  justify-content: center;
+}
+
+.facilities-cta-button,
+.facilities-cta-outline {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 13px 24px;
+  border: 2px solid var(--fac-gold);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 900;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.facilities-cta-button {
+  background: var(--fac-gold);
+  color: var(--fac-navy-dark) !important;
+}
+
+.facilities-cta-button:hover {
+  transform: translateY(-4px);
+  background: var(--fac-white);
+  border-color: var(--fac-white);
+}
+
+.facilities-cta-outline {
+  background: transparent;
+  color: var(--fac-white) !important;
+}
+
+.facilities-cta-outline:hover {
+  transform: translateY(-4px);
+  background: var(--fac-white);
+  border-color: var(--fac-white);
+  color: var(--fac-navy) !important;
+}
+
+/* =========================================
+   ACCESSIBLE KEYBOARD FOCUS
+========================================= */
+
+.facilities-page a:focus-visible {
+  outline: 3px solid var(--fac-gold);
+  outline-offset: 4px;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fac-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fac-slide-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fac-image-reveal {
+  from {
+    opacity: 0.5;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fac-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fac-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Subtle staggered card entrance */
+.facility-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.facility-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.facility-card:nth-child(4) {
+  animation-delay: 0.12s;
+}
+
+.facility-card:nth-child(5) {
+  animation-delay: 0.22s;
+}
+
+.facility-card:nth-child(6) {
+  animation-delay: 0.32s;
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 1024px) {
+  .facilities-hero-grid {
+    gap: 42px;
   }
 
-  .facilities-content {
-    padding: 85px 25px 100px;
+  .facilities-hero-image-frame {
+    height: 470px;
+  }
+
+  .facilities-floating-note {
+    right: -8px;
+  }
+
+  .facilities-vertical-text {
+    display: none;
   }
 
   .facilities-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
   }
 
-  .facilities-cta {
-    flex-direction: column;
-    align-items: flex-start;
+  .facilities-feature-grid {
+    gap: 50px;
+  }
+
+  .facilities-feature-image {
+    height: 430px;
+  }
+
+  .facilities-intro-grid {
+    gap: 45px;
   }
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
 
-@media (max-width: 600px) {
-
-  .facilities-header {
-    min-height: 400px;
+@media (max-width: 700px) {
+  .facilities-container {
+    width: min(100% - 32px, 520px);
   }
 
-  .facilities-header-content {
-    width: 84%;
-    margin-top: 65px;
+  .facilities-hero {
+    padding: 60px 0 75px;
   }
 
-  .facilities-header-content h1 {
-    font-size: 45px;
+  .facilities-hero-grid,
+  .facilities-intro-grid,
+  .facilities-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .facilities-header-content span {
-    font-size: 14px;
-    font-weight: 600;
+  .facilities-hero-copy h1 {
+    margin: 20px 0;
+    font-size: clamp(38px, 10vw, 53px);
+    letter-spacing: -1px;
   }
 
-  .facilities-content {
-    padding: 70px 20px 80px;
+  .facilities-hero-description {
+    font-size: 15px;
+  }
+
+  .facilities-hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .facilities-button {
+    width: 100%;
+  }
+
+  .facilities-secondary-link {
+    justify-content: center;
+    min-height: 40px;
+  }
+
+  .facilities-trust-list {
+    gap: 10px 16px;
+  }
+
+  .facilities-trust-list span {
+    font-size: 12px;
+  }
+
+  .facilities-hero-visual {
+    width: calc(100% - 10px);
+    margin: 0 auto;
+  }
+
+  .facilities-hero-image-frame {
+    height: 420px;
+    border-radius: 140px 140px 10px 10px;
+  }
+
+  .facilities-hero-outline {
+    border-radius: 140px 140px 10px 10px;
+  }
+
+  .facilities-floating-note {
+    right: -8px;
+    bottom: 40px;
+    max-width: 250px;
+    padding: 14px;
+  }
+
+  .facilities-floating-note strong {
+    font-size: 13px;
+  }
+
+  .facilities-floating-note p {
+    font-size: 11px;
   }
 
   .facilities-intro {
-    margin-bottom: 45px;
+    padding: 65px 0;
   }
 
-  .facilities-intro h2 {
-    font-size: 37px;
+  .facilities-heading {
+    font-size: 36px;
   }
 
-  .facilities-intro > p:last-child {
+  .facilities-intro-text {
+    padding-left: 18px;
     font-size: 14px;
-    font-weight: 600;
+  }
+
+  .facilities-list-section {
+    padding: 70px 0;
+  }
+
+  .facilities-section-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .facilities-section-header > p {
+    font-size: 14px;
   }
 
   .facilities-grid {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .facility-card {
-    min-height: 320px;
+  .facility-card-image-wrap {
+    height: 250px;
   }
 
-  .facility-card h3 {
+  .facility-card-content {
+    padding: 23px 20px 18px;
+  }
+
+  .facility-card-content h3 {
     font-size: 23px;
   }
 
-  .facility-card p {
+  .facility-card-content p {
+    min-height: auto;
+  }
+
+  .facilities-feature {
+    padding: 75px 0;
+  }
+
+  .facilities-feature-grid {
+    gap: 40px;
+  }
+
+  .facilities-feature-image-wrap {
+    margin-right: 8px;
+    padding-left: 14px;
+  }
+
+  .facilities-feature-image {
+    height: 360px;
+  }
+
+  .facilities-feature-badge {
+    right: -8px;
+    bottom: 35px;
+    padding: 13px 15px;
+  }
+
+  .facilities-feature-badge strong {
+    font-size: 12px;
+  }
+
+  .facilities-feature-badge small {
+    font-size: 11px;
+  }
+
+  .facilities-feature-copy > p {
     font-size: 14px;
-    font-weight: 600;
+  }
+
+  .facilities-feature-points li {
+    font-size: 13px;
   }
 
   .facilities-cta {
-    padding: 60px 20px;
+    padding: 70px 0;
   }
 
   .facilities-cta h2 {
-    font-size: 32px;
+    font-size: 36px;
   }
 
-  .facilities-cta a {
+  .facilities-cta-content > p {
+    font-size: 14px;
+  }
+
+  .facilities-cta-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .facilities-cta-button,
+  .facilities-cta-outline {
     width: 100%;
-    text-align: center;
   }
 }
 
-/* =====================================================
-   EXTRA SMALL DEVICES
-===================================================== */
+/* =========================================
+   SMALL MOBILE
+========================================= */
 
-@media (max-width: 400px) {
-
-  .facilities-header {
-    min-height: 380px;
+@media (max-width: 380px) {
+  .facilities-container {
+    width: calc(100% - 26px);
   }
 
-  .facilities-header-content h1 {
-    font-size: 38px;
+  .facilities-eyebrow {
+    font-size: 10px;
+    letter-spacing: 1.3px;
   }
 
-  .facilities-content {
-    padding: 60px 16px 70px;
+  .facilities-hero-copy h1 {
+    font-size: 36px;
   }
 
-  .facility-card {
-    padding: 27px;
+  .facilities-hero-image-frame {
+    height: 340px;
   }
 
-  .facility-footer {
-    left: 27px;
-    right: 27px;
+  .facilities-floating-note {
+    right: -5px;
+    max-width: 225px;
   }
 
+  .facilities-heading,
   .facilities-cta h2 {
-    font-size: 28px;
+    font-size: 31px;
+  }
+
+  .facility-card-image-wrap {
+    height: 220px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .facilities-page *,
+  .facilities-page *::before,
+  .facilities-page *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
