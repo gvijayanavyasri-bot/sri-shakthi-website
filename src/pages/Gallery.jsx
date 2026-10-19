@@ -1,363 +1,356 @@
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Gallery.css";
 
-const galleryImages = [
+const facilities = [
   {
-    id: 1,
-    title: "A welcoming care environment",
-    category: "Hospital",
-    image:
-      "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1400&q=90",
-    alt: "Bright hospital clinical environment",
-    shape: "gallery-tall",
+    number: "01",
+    symbol: "✚",
+    category: "PATIENT CONSULTATION",
+    title: "Consultation Rooms",
+    description:
+      "A dedicated consultation environment for discussing health concerns, clinical assessment, medical advice, and treatment planning.",
+    details: [
+      "Patient consultations",
+      "Clinical examination",
+      "Medical guidance",
+    ],
+    visual: "consultation",
   },
   {
-    id: 2,
-    title: "A moment of consultation",
-    category: "Patient Care",
-    image:
-      "https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1200&q=90",
-    alt: "Doctor speaking with a patient",
-    shape: "",
+    number: "02",
+    symbol: "♧",
+    category: "INPATIENT SERVICES",
+    title: "Inpatient Care",
+    description:
+      "Hospital admission and medical observation for patients who need care beyond an outpatient consultation.",
+    details: [
+      "Patient observation",
+      "Treatment support",
+      "Care coordination",
+    ],
+    visual: "inpatient",
   },
   {
-    id: 3,
-    title: "Diagnostic care",
-    category: "Medical Care",
-    image:
-      "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1200&q=90",
-    alt: "Healthcare professional working in a laboratory",
-    shape: "",
+    number: "03",
+    symbol: "⌕",
+    category: "DIAGNOSTIC SUPPORT",
+    title: "Diagnostic Laboratory",
+    description:
+      "Diagnostic laboratory services that support clinical investigations, medical evaluation, and informed treatment decisions.",
+    details: [
+      "Laboratory investigations",
+      "Diagnostic support",
+      "Reporting processes",
+    ],
+    visual: "laboratory",
   },
   {
-    id: 4,
-    title: "Spaces made for recovery",
-    category: "Hospital",
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1400&q=90",
-    alt: "Hospital patient room",
-    shape: "gallery-wide",
+    number: "04",
+    symbol: "✧",
+    category: "MEDICINE ACCESS",
+    title: "In-House Pharmacy",
+    description:
+      "A convenient hospital pharmacy supporting access to prescribed medicines and medication-related guidance.",
+    details: [
+      "Prescribed medications",
+      "Convenient access",
+      "Medication guidance",
+    ],
+    visual: "pharmacy",
   },
   {
-    id: 5,
-    title: "Healthcare professionals at work",
-    category: "Medical Care",
-    image:
-      "https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1200&q=90",
-    alt: "Medical team working together",
-    shape: "",
+    number: "05",
+    symbol: "♥",
+    category: "URGENT MEDICAL SUPPORT",
+    title: "Emergency Care",
+    description:
+      "Medical assistance for urgent health concerns, with appropriate clinical assessment and guidance on further treatment.",
+    details: [
+      "Urgent assessment",
+      "Initial medical support",
+      "Appropriate referral",
+    ],
+    visual: "emergency",
   },
   {
-    id: 6,
-    title: "Supporting every patient",
-    category: "Patient Care",
-    image:
-      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=90",
-    alt: "Medical professional providing patient care",
-    shape: "",
-  },
-  {
-    id: 7,
-    title: "Modern clinical equipment",
-    category: "Medical Care",
-    image:
-      "https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1200&q=90",
-    alt: "Medical treatment equipment",
-    shape: "",
-  },
-  {
-    id: 8,
-    title: "Care with compassion",
-    category: "Patient Care",
-    image:
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1400&q=90",
-    alt: "Doctor in a clinical environment",
-    shape: "gallery-wide",
+    number: "06",
+    symbol: "◷",
+    category: "SHORT-STAY TREATMENT",
+    title: "Day Care Facilities",
+    description:
+      "Facilities supporting selected treatments and procedures that may not require an overnight hospital admission.",
+    details: [
+      "Short-duration care",
+      "Clinical supervision",
+      "Patient support",
+    ],
+    visual: "daycare",
   },
 ];
 
-const categories = ["All Moments", "Hospital", "Patient Care", "Medical Care"];
+const carePrinciples = [
+  {
+    symbol: "01",
+    title: "Patient Safety",
+    description:
+      "Responsible medical practices and appropriate clinical assessment.",
+  },
+  {
+    symbol: "02",
+    title: "Personal Attention",
+    description:
+      "Care that recognizes each patient's concerns and individual needs.",
+  },
+  {
+    symbol: "03",
+    title: "Clear Communication",
+    description:
+      "Helping patients understand their health concerns and care plans.",
+  },
+  {
+    symbol: "04",
+    title: "Continuity of Care",
+    description:
+      "Supporting follow-up and ongoing medical management when needed.",
+  },
+];
 
-function Gallery() {
-  const [activeCategory, setActiveCategory] = useState("All Moments");
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const filteredImages =
-    activeCategory === "All Moments"
-      ? galleryImages
-      : galleryImages.filter((item) => item.category === activeCategory);
-
-  const closeLightbox = () => setSelectedImage(null);
-
-  useEffect(() => {
-    if (!selectedImage) return;
-
-    const handleKeyDown = (event) => {
-      if (event.key === "Escape") closeLightbox();
-
-      if (event.key === "ArrowRight") {
-        const index = filteredImages.findIndex(
-          (item) => item.id === selectedImage.id
-        );
-        setSelectedImage(filteredImages[(index + 1) % filteredImages.length]);
-      }
-
-      if (event.key === "ArrowLeft") {
-        const index = filteredImages.findIndex(
-          (item) => item.id === selectedImage.id
-        );
-        setSelectedImage(
-          filteredImages[
-            (index - 1 + filteredImages.length) % filteredImages.length
-          ]
-        );
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
-    };
-  }, [selectedImage, filteredImages]);
-
-  const showNextImage = (direction) => {
-    const index = filteredImages.findIndex(
-      (item) => item.id === selectedImage.id
-    );
-    const nextIndex =
-      (index + direction + filteredImages.length) % filteredImages.length;
-    setSelectedImage(filteredImages[nextIndex]);
-  };
-
+export default function Facilities() {
   return (
-    <main className="hospital-gallery">
-      <section className="gallery-hero">
-        <div className="gallery-container gallery-hero-layout">
-          <div className="gallery-hero-copy gallery-reveal">
-            <span className="gallery-eyebrow">
-              <span />
-              A CLOSER LOOK AT OUR WORLD
+    <main className="hp-page hp-facilities">
+      {/* HERO */}
+      <section className="hp-hero hp-facilities-hero">
+        <div className="hp-container hp-hero-grid">
+          <div className="hp-hero-content">
+            <span className="hp-eyebrow">
+              <span className="hp-eyebrow-line"></span>
+              OUR HOSPITAL ENVIRONMENT
             </span>
+
             <h1>
-              Care has a
+              Designed Around
               <br />
-              <em>human side.</em>
+              <span>Your Wellbeing.</span>
             </h1>
+
             <p>
-              Explore moments that reflect the spaces, people and medical
-              care behind a more thoughtful healthcare experience.
+              A supportive healthcare environment where medical services,
+              patient comfort, and compassionate attention come together.
             </p>
-            <a href="#gallery-collection" className="gallery-hero-link">
-              Explore the gallery <span>↓</span>
-            </a>
+
+            <div className="hp-button-group">
+              <a href="#hospital-facilities" className="hp-btn hp-btn-primary">
+                Explore Our Facilities <span>↓</span>
+              </a>
+
+              <Link to="/contact" className="hp-btn hp-btn-outline">
+                Get in Touch
+              </Link>
+            </div>
           </div>
 
-          <div className="gallery-hero-art gallery-reveal gallery-delay">
-            <div className="gallery-hero-outline" />
-            <img
-              src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?auto=format&fit=crop&w=1400&q=90"
-              alt="Doctor and patient during a consultation"
-            />
-            <div className="gallery-hero-caption">
-              <span className="gallery-caption-symbol">✳</span>
-              <div>
-                <small>OUR GUIDING THOUGHT</small>
-                <strong>Listening. Caring. Healing.</strong>
-              </div>
+          <div className="hp-facility-hero-art">
+            <div className="hp-facility-orbit hp-orbit-one"></div>
+            <div className="hp-facility-orbit hp-orbit-two"></div>
+
+            <div className="hp-facility-emblem">
+              <div className="hp-emblem-cross">✚</div>
+              <strong>SRI SAKTHI</strong>
+              <span>HOSPITAL</span>
+              <div className="hp-emblem-divider"></div>
+              <small>COMPASSION · EXCELLENCE · TRUST</small>
             </div>
-            <span className="gallery-hero-index">S / S HOSPITAL</span>
+
+            <div className="hp-facility-stamp">
+              <span>CARE</span>
+              <strong>WITH</strong>
+              <span>COMMITMENT</span>
+            </div>
           </div>
-        </div>
-        <div className="gallery-hero-footer">
-          <span>PEOPLE</span>
-          <span>·</span>
-          <span>PLACES</span>
-          <span>·</span>
-          <span>CARE</span>
         </div>
       </section>
 
-      <section className="gallery-collection" id="gallery-collection">
-        <div className="gallery-container">
-          <div className="gallery-section-heading gallery-reveal">
-            <div>
-              <span className="gallery-eyebrow">
-                <span />
-                THE VISUAL COLLECTION
-              </span>
-              <h2>
-                Moments of <em>care.</em>
-              </h2>
-            </div>
+      {/* INTRODUCTION */}
+      <section className="hp-section">
+        <div className="hp-container hp-facility-intro">
+          <div className="hp-facility-intro-label">
+            <span className="hp-eyebrow">OUR FACILITIES</span>
+            <span className="hp-large-number">01—06</span>
+          </div>
+
+          <div>
+            <h2 className="hp-section-title">
+              The Right Support
+              <br />
+              <span>Throughout Your Care.</span>
+            </h2>
+
+            <p className="hp-intro-description">
+              From initial consultations to diagnostic support and
+              hospital-based treatment, our facilities are intended to
+              support a more organized and reassuring patient experience.
+              Each service plays a role in helping patients receive
+              appropriate medical attention.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FACILITIES */}
+      <section
+        className="hp-section hp-facility-section"
+        id="hospital-facilities"
+      >
+        <div className="hp-container">
+          <div className="hp-section-heading hp-centered-heading">
+            <span className="hp-eyebrow">CARE BEYOND CONSULTATION</span>
+
+            <h2 className="hp-section-title">
+              Our Hospital <span>Facilities</span>
+            </h2>
+
             <p>
-              A selection of healthcare environments and care-related imagery.
-              Choose a category to explore.
+              Essential healthcare facilities supporting assessment,
+              treatment, and patient care.
             </p>
           </div>
 
-          <div className="gallery-toolbar">
-            <div className="gallery-filters" aria-label="Filter gallery images">
-              {categories.map((category) => (
-                <button
-                  type="button"
-                  key={category}
-                  className={`gallery-filter ${
-                    activeCategory === category ? "active" : ""
-                  }`}
-                  onClick={() => setActiveCategory(category)}
-                  aria-pressed={activeCategory === category}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-            <span className="gallery-total">
-              {String(filteredImages.length).padStart(2, "0")} IMAGES
-            </span>
-          </div>
-
-          <div className="gallery-photo-grid">
-            {filteredImages.map((item, index) => (
-              <button
-                type="button"
-                className={`gallery-photo ${item.shape}`}
-                key={item.id}
-                onClick={() => setSelectedImage(item)}
-                style={{ "--photo-index": index }}
-                aria-label={`Open image: ${item.title}`}
+          <div className="hp-facility-grid">
+            {facilities.map((facility, index) => (
+              <article
+                className={`hp-facility-card hp-facility-${facility.visual}`}
+                key={facility.number}
+                style={{ "--card-index": index }}
               >
-                <img src={item.image} alt={item.alt} loading="lazy" />
-                <span className="gallery-photo-shade" />
-                <span className="gallery-photo-top">
-                  <span>{item.category}</span>
-                  <span className="gallery-photo-number">
-                    {String(item.id).padStart(2, "0")}
+                <div className="hp-facility-visual">
+                  <div className="hp-facility-visual-ring"></div>
+
+                  <span className="hp-facility-visual-number">
+                    {facility.number}
                   </span>
-                </span>
-                <span className="gallery-photo-bottom">
-                  <span className="gallery-photo-title">{item.title}</span>
-                  <span className="gallery-photo-open" aria-hidden="true">
-                    ↗
+
+                  <div className="hp-facility-visual-symbol">
+                    {facility.symbol}
+                  </div>
+
+                  <span className="hp-facility-visual-caption">
+                    SRI SAKTHI HOSPITAL
                   </span>
-                </span>
-              </button>
+                </div>
+
+                <div className="hp-facility-content">
+                  <span className="hp-card-category">
+                    {facility.category}
+                  </span>
+
+                  <h3>{facility.title}</h3>
+
+                  <p>{facility.description}</p>
+
+                  <ul className="hp-feature-list">
+                    {facility.details.map((detail) => (
+                      <li key={detail}>
+                        <span>✓</span>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link to="/contact" className="hp-card-link">
+                    Enquire About Facilities <span>↗</span>
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
-
-          <p className="gallery-note">
-            Image note: These are illustrative healthcare images, not verified
-            photographs of Sri Sakthi Hospital. Replace them with your own
-            hospital photographs for an authentic hospital gallery.
-          </p>
         </div>
       </section>
 
-      <section className="gallery-quote-section">
-        <div className="gallery-container gallery-quote-layout">
-          <div className="gallery-quote-symbol" aria-hidden="true">“</div>
-          <div className="gallery-quote-copy">
-            <span className="gallery-eyebrow gallery-eyebrow-light">
-              THE HEART OF OUR WORK
-            </span>
-            <h2>
-              Every patient deserves to be heard, understood and cared for.
-            </h2>
-            <p>Compassionate care. Trusted medicine. Advanced healing.</p>
-          </div>
-          <div className="gallery-quote-mark">
-            <span>✳</span>
-            <small>LISTENING</small>
-            <small>CARING</small>
-            <small>HEALING</small>
-          </div>
-        </div>
-      </section>
+      {/* OUR APPROACH */}
+      <section className="hp-section hp-principles-section">
+        <div className="hp-container">
+          <div className="hp-principles-layout">
+            <div className="hp-principles-heading">
+              <span className="hp-eyebrow">OUR APPROACH TO CARE</span>
 
-      <section className="gallery-contact">
-        <div className="gallery-container gallery-contact-layout">
-          <div>
-            <span className="gallery-eyebrow">
-              <span />
-              WE ARE HERE TO HELP
-            </span>
-            <h2>Let’s talk about your healthcare needs.</h2>
-          </div>
-          <Link to="/appointment" className="gallery-contact-btn">
-            Book an Appointment <span>↗</span>
-          </Link>
-        </div>
-      </section>
+              <h2 className="hp-section-title">
+                Healthcare
+                <br />
+                With a <span>Human Touch.</span>
+              </h2>
 
-      {selectedImage && (
-        <div
-          className="gallery-lightbox"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Image viewer"
-          onClick={closeLightbox}
-        >
-          <button
-            className="gallery-lightbox-close"
-            type="button"
-            onClick={closeLightbox}
-            aria-label="Close image viewer"
-          >
-            ×
-          </button>
+              <p>
+                Good healthcare is about more than facilities. It is also
+                about understanding people, communicating clearly, and
+                providing appropriate support throughout their care.
+              </p>
 
-          <button
-            className="gallery-lightbox-arrow gallery-lightbox-prev"
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              showNextImage(-1);
-            }}
-            aria-label="Previous image"
-          >
-            ‹
-          </button>
+              <Link to="/about" className="hp-text-link">
+                Discover Our Hospital <span>↗</span>
+              </Link>
+            </div>
 
-          <div
-            className="gallery-lightbox-content"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <img src={selectedImage.image} alt={selectedImage.alt} />
-            <div className="gallery-lightbox-caption">
-              <div>
-                <span>{selectedImage.category}</span>
-                <h3>{selectedImage.title}</h3>
-              </div>
-              <span>
-                {String(
-                  filteredImages.findIndex(
-                    (item) => item.id === selectedImage.id
-                  ) + 1
-                ).padStart(2, "0")}{" "}
-                / {String(filteredImages.length).padStart(2, "0")}
-              </span>
+            <div className="hp-principles-list">
+              {carePrinciples.map((principle) => (
+                <article className="hp-principle" key={principle.symbol}>
+                  <span className="hp-principle-number">
+                    {principle.symbol}
+                  </span>
+
+                  <div>
+                    <h3>{principle.title}</h3>
+                    <p>{principle.description}</p>
+                  </div>
+
+                  <span className="hp-principle-arrow">↗</span>
+                </article>
+              ))}
             </div>
           </div>
-
-          <button
-            className="gallery-lightbox-arrow gallery-lightbox-next"
-            type="button"
-            onClick={(event) => {
-              event.stopPropagation();
-              showNextImage(1);
-            }}
-            aria-label="Next image"
-          >
-            ›
-          </button>
         </div>
-      )}
+      </section>
+
+      {/* CONTACT CTA */}
+      <section className="hp-section hp-cta-section">
+        <div className="hp-container">
+          <div className="hp-cta-box">
+            <div className="hp-cta-content">
+              <span className="hp-eyebrow hp-eyebrow-light">
+                WE ARE HERE TO HELP
+              </span>
+
+              <h2>
+                Your Care
+                <br />
+                Starts Here.
+              </h2>
+
+              <p>
+                Contact Sri Sakthi Hospital for information about our
+                facilities, consultation timings, and available services.
+              </p>
+
+              <div className="hp-button-group">
+                <Link to="/appointment" className="hp-btn hp-btn-gold">
+                  Request an Appointment <span>↗</span>
+                </Link>
+
+                <a href="tel:9494456007" className="hp-btn hp-btn-light">
+                  Call Our Hospital
+                </a>
+              </div>
+            </div>
+
+            <div className="hp-cta-symbol" aria-hidden="true">
+              <span>✚</span>
+              <small>CARE</small>
+              <small>COMFORT</small>
+              <small>CONFIDENCE</small>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
-
-export default Gallery;

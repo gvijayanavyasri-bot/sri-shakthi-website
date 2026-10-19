@@ -1,131 +1,103 @@
-import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+
 import "./Navbar.css";
 
-function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+const links = [
+  ["Home", "/"],
+  ["About", "/about"],
+  ["Services", "/services"],
+  ["Doctor", "/doctor"],
+  ["Facilities", "/facilities"],
+  ["Gallery", "/gallery"],
+  ["Contact", "/contact"]
+];
 
-  const closeMenu = () => setMenuOpen(false);
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
 
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Doctors", path: "/doctor" },
-    { name: "Facilities", path: "/facilities" },
-    { name: "Gallery", path: "/gallery" },
-    { name: "Contact", path: "/contact" },
-  ];
+  const closeMenu = () => {
+    setOpen(false);
+  };
 
   return (
-    <header className="hospital-header">
-      {/* TOP CONTACT BAR */}
-      <div className="hospital-topbar">
-        <div className="hospital-container hospital-topbar-inner">
-          <div className="topbar-item topbar-address">
-            <span className="topbar-icon">✦</span>
-            <span>Tilak Road, Rajahmundry, Andhra Pradesh</span>
-          </div>
+    <>
+      <div className="top-strip">
+        <div className="container top-strip-inner">
+          <span>
+            <span className="status-dot"></span>
+            Patient-first care in Rajahmundry
+          </span>
 
-          <div className="topbar-item topbar-phones">
-            <a href="tel:9494456007">
-              ☎ 94944 56007
-            </a>
-
-            <span className="topbar-divider">|</span>
-
-            <a href="tel:08832422189">
-              0883-2422189
-            </a>
-          </div>
-
-          <div className="topbar-item topbar-hours">
-            <span>◷</span>
+          <div className="top-strip-right">
             <span>
-              Mon–Sat: 9:00 AM–12:30 PM · 5:30 PM–9:00 PM
+              OPD: 9:00 AM–12:30 PM · 5:30 PM–9:00 PM
             </span>
+
+            <a href="tel:9494456007">
+              Call: 94944 56007
+            </a>
           </div>
         </div>
       </div>
 
-      {/* MAIN NAVIGATION */}
-      <div className="hospital-navbar">
-        <div className="hospital-container hospital-navbar-inner">
-
-          {/* LOGO */}
+      <header className="navbar">
+        <div className="container nav-inner">
           <Link
             to="/"
-            className="hospital-brand"
+            className="brand"
             onClick={closeMenu}
-            aria-label="Sri Shakthi Hospital home"
+            aria-label="Sri Sakthi Hospital home"
           >
-            <div className="hospital-logo-symbol">
-              <span>✚</span>
-            </div>
+            <span className="brand-mark">
+              S<span>+</span>
+            </span>
 
-            <div className="hospital-brand-text">
-              <span className="brand-name">SRI SHAKTHI</span>
-              <span className="brand-hospital">HOSPITAL</span>
-              <span className="brand-tagline">
-                Care Today · Healthier Tomorrow
-              </span>
-            </div>
+            <span className="brand-copy">
+              <strong>SRI SAKTHI</strong>
+              <small>HOSPITAL & HEALTHCARE</small>
+            </span>
           </Link>
 
-          {/* MOBILE MENU BUTTON */}
           <button
-            className={`hospital-menu-toggle ${
-              menuOpen ? "menu-active" : ""
-            }`}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-            aria-expanded={menuOpen}
-            aria-controls="hospital-navigation"
-            type="button"
+            className={`menu-toggle ${open ? "is-open" : ""}`}
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle navigation"
+            aria-expanded={open}
           >
             <span></span>
             <span></span>
             <span></span>
           </button>
 
-          {/* NAVIGATION LINKS */}
           <nav
-            id="hospital-navigation"
-            className={`hospital-navigation ${
-              menuOpen ? "navigation-open" : ""
-            }`}
+            className={`nav-links ${open ? "nav-open" : ""}`}
+            aria-label="Main navigation"
           >
-            <div className="hospital-nav-links">
-              {navItems.map((item) => (
-                <NavLink
-                  key={item.path}
-                  to={item.path}
-                  end={item.path === "/"}
-                  onClick={closeMenu}
-                  className={({ isActive }) =>
-                    `hospital-nav-link ${isActive ? "active" : ""}`
-                  }
-                >
-                  {item.name}
-                </NavLink>
-              ))}
-            </div>
+            {links.map(([label, path]) => (
+              <NavLink
+                key={path}
+                to={path}
+                end={path === "/"}
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  isActive ? "nav-link active" : "nav-link"
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
 
-            {/* APPOINTMENT BUTTON */}
             <Link
+              className="nav-appointment"
               to="/appointment"
-              className="hospital-appointment-button"
               onClick={closeMenu}
             >
-              <span className="appointment-icon">▣</span>
-              <span>Book Appointment</span>
-              <span className="appointment-arrow">↗</span>
+              Book a Visit <span>↗</span>
             </Link>
           </nav>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }
-
-export default Navbar;

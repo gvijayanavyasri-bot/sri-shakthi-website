@@ -1,352 +1,637 @@
-/* =========================================
-   SRI SHAKTHI HOSPITAL - FOOTER
-========================================= */
+
+/* ========================================
+   SRI SAKTHI HOSPITAL FOOTER
+======================================== */
 
 .hospital-footer {
-  width: 100%;
-  color: #ffffff;
-  background: #041d33;
-  font-family: "DM Sans", sans-serif;
+  color: #dce5ec;
+  font-family: "DM Sans", Arial, sans-serif;
 }
 
-.hospital-footer-container {
-  width: min(1400px, 92%);
+.footer-container {
+  width: min(1240px, 92%);
   margin: 0 auto;
 }
 
-/* =========================================
-   MAIN FOOTER
-========================================= */
+/* ========================================
+   APPOINTMENT CTA
+======================================== */
 
-.hospital-footer-main {
-  padding: 65px 0 55px;
-  background: linear-gradient(
-    135deg,
-    #0b2d49 0%,
-    #08243d 55%,
-    #041d33 100%
-  );
-}
-
-.hospital-footer-main .hospital-footer-container {
-  display: grid;
-  grid-template-columns: 1.25fr 0.8fr 0.9fr 1.3fr;
-  gap: 42px;
-}
-
-/* =========================================
-   FOOTER COLUMNS
-========================================= */
-
-.footer-column {
-  min-width: 0;
-}
-
-.footer-column h3 {
+.footer-cta-wrapper {
   position: relative;
-  color: #f4c66b;
-  font-size: 19px;
-  font-weight: 900;
-  margin: 0 0 28px;
-  padding-bottom: 13px;
+  z-index: 2;
+  padding-top: 60px;
+  background: #f4f8fa;
 }
 
-.footer-column h3::after {
+.footer-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 34px 40px;
+  overflow: hidden;
+  border: 1px solid rgba(22, 140, 145, 0.15);
+  border-radius: 17px;
+  background:
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(22, 140, 145, 0.12),
+      transparent 35%
+    ),
+    #ffffff;
+  box-shadow: 0 12px 40px rgba(16, 43, 70, 0.08);
+  transform: translateY(30px);
+  animation: footerCtaReveal 0.8s ease forwards;
+}
+
+.footer-cta::after {
+  content: "+";
+  position: absolute;
+  top: -35px;
+  right: 20%;
+  color: rgba(22, 140, 145, 0.06);
+  font-size: 150px;
+  font-weight: 900;
+  pointer-events: none;
+}
+
+.footer-cta-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex: 0 0 65px;
+  width: 65px;
+  height: 65px;
+  place-items: center;
+  border-radius: 17px;
+  background: #102b46;
+  color: #ffffff;
+  font-size: 31px;
+  box-shadow: 0 8px 20px rgba(16, 43, 70, 0.16);
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.footer-cta:hover .footer-cta-icon {
+  transform: rotate(-5deg) scale(1.04);
+  background: #168c91;
+}
+
+.footer-cta-text {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+}
+
+.footer-cta-text > span {
+  display: block;
+  margin-bottom: 7px;
+  color: #168c91;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.footer-cta-text h2 {
+  margin: 0 0 7px;
+  color: #102b46;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(23px, 3vw, 32px);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.footer-cta-text p {
+  margin: 0;
+  color: #718092;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.footer-cta-button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  min-height: 49px;
+  padding: 0 21px;
+  border-radius: 7px;
+  background: #168c91;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 7px 18px rgba(22, 140, 145, 0.2);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.footer-cta-button span {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.footer-cta-button:hover {
+  transform: translateY(-3px);
+  background: #102b46;
+  box-shadow: 0 11px 25px rgba(16, 43, 70, 0.2);
+}
+
+.footer-cta-button:hover span {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   MAIN FOOTER
+======================================== */
+
+.footer-main {
+  position: relative;
+  padding: 100px 0 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 5% 5%,
+      rgba(22, 140, 145, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(140deg, #091d32 0%, #102b46 58%, #103c50 100%);
+}
+
+.footer-main::before {
   content: "";
   position: absolute;
-  bottom: 0;
+  top: 0;
+  right: 0;
   left: 0;
-  width: 45px;
   height: 3px;
-  border-radius: 5px;
-  background: #f4c66b;
+  background: linear-gradient(
+    90deg,
+    #168c91,
+    #d8b66b,
+    #168c91
+  );
+  background-size: 200% 100%;
+  animation: footerGradientFlow 7s linear infinite;
 }
 
-.footer-column p {
-  color: #dce6ef;
-  font-size: 14px;
-  line-height: 1.9;
-  font-weight: 500;
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.8fr 1fr 1.2fr;
+  gap: 42px;
+  padding-bottom: 65px;
 }
 
-/* =========================================
+/* ========================================
    FOOTER BRAND
-========================================= */
+======================================== */
 
 .footer-brand {
   display: inline-flex;
   align-items: center;
-  gap: 13px;
+  gap: 12px;
+  margin-bottom: 23px;
   text-decoration: none;
-  margin-bottom: 18px;
 }
 
-.footer-logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  color: #f4c66b;
-  font-size: 46px;
+.footer-brand-icon {
+  display: grid;
+  width: 49px;
+  height: 49px;
+  place-items: center;
+  border: 1px solid rgba(216, 182, 107, 0.65);
+  border-radius: 14px 14px 14px 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #d8b66b;
+  font-size: 27px;
   font-weight: 900;
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+.footer-brand:hover .footer-brand-icon {
+  transform: rotate(-5deg);
+  background: rgba(22, 140, 145, 0.2);
 }
 
 .footer-brand-text {
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 5px;
 }
 
 .footer-brand-text strong {
-  color: #f4c66b;
-  font-size: 20px;
-  font-weight: 900;
-  letter-spacing: 0.5px;
-}
-
-.footer-brand-text > span {
   color: #ffffff;
-  font-size: 15px;
-  font-weight: 900;
-  letter-spacing: 3px;
-}
-
-.footer-about > p {
-  margin: 0 0 18px;
-}
-
-.footer-tagline {
-  display: inline-block;
-  color: #f4c66b;
-  font-size: 13px;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 20px;
   font-weight: 800;
-  letter-spacing: 0.4px;
+  letter-spacing: 1px;
 }
 
-/* =========================================
-   FOOTER LINKS
-========================================= */
+.footer-brand-text small {
+  color: #d8b66b;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.footer-about-description {
+  max-width: 310px;
+  margin: 0 0 22px;
+  color: #aab9c6;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 2;
+}
+
+.footer-trust-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  border: 1px solid rgba(216, 182, 107, 0.23);
+  border-radius: 6px;
+  background: rgba(216, 182, 107, 0.055);
+  color: #e5d1a3;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+}
+
+.footer-trust-label span {
+  color: #d8b66b;
+  font-size: 14px;
+}
+
+/* ========================================
+   FOOTER COLUMNS
+======================================== */
+
+.footer-column h3 {
+  margin: 5px 0 13px;
+  color: #ffffff;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.footer-heading-line {
+  display: block;
+  width: 43px;
+  height: 3px;
+  margin-bottom: 23px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #168c91, #d8b66b);
+}
 
 .footer-column ul {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.footer-column ul li {
-  margin-bottom: 13px;
-}
-
-.footer-column ul a {
-  display: inline-block;
-  color: #e0e9f2;
-  font-size: 14px;
-  font-weight: 700;
+.footer-column li a {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 9px;
+  color: #b3c1cd;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.7;
   text-decoration: none;
   transition:
     color 0.25s ease,
     transform 0.25s ease;
 }
 
-.footer-column ul a:hover {
-  color: #f4c66b;
-  transform: translateX(5px);
+.footer-column li a > span {
+  color: #d8b66b;
+  font-size: 18px;
+  line-height: 1.1;
 }
 
-/* =========================================
-   CONTACT INFORMATION
-========================================= */
+.footer-column li a:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+/* ========================================
+   CONTACT DETAILS
+======================================== */
+
+.footer-contact-column {
+  min-width: 0;
+}
 
 .footer-contact-item {
   display: flex;
   align-items: flex-start;
   gap: 13px;
-  margin-bottom: 17px;
+  margin-bottom: 22px;
 }
 
 .footer-contact-icon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  color: #041d33;
-  background: #f4c66b;
-  border-radius: 8px;
-  font-size: 17px;
+  display: grid;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  place-items: center;
+  border: 1px solid rgba(22, 140, 145, 0.3);
+  border-radius: 9px;
+  background: rgba(22, 140, 145, 0.11);
+  color: #6bd1cf;
+  font-size: 18px;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-contact-item:hover .footer-contact-icon {
+  transform: translateY(-2px);
+  background: rgba(22, 140, 145, 0.23);
+}
+
+.footer-contact-item > div {
+  min-width: 0;
+}
+
+.footer-contact-item strong {
+  display: block;
+  margin: 2px 0 7px;
+  color: #ffffff;
+  font-size: 12px;
   font-weight: 900;
 }
 
-.footer-contact-item p {
-  margin: 0;
+.footer-contact-item p,
+.footer-contact-item a {
+  display: block;
+  margin: 0 0 4px;
+  color: #afbdc9;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.8;
+  text-decoration: none;
   overflow-wrap: anywhere;
 }
 
-.footer-contact-item a {
-  color: #e5edf5;
-  text-decoration: none;
-  font-weight: 700;
-  transition: color 0.25s ease;
-}
-
 .footer-contact-item a:hover {
-  color: #f4c66b;
+  color: #d8b66b;
 }
 
-/* =========================================
-   CONSULTATION HOURS BAR
-========================================= */
+/* ========================================
+   FOOTER BOTTOM
+======================================== */
 
-.footer-hours {
-  background: #123c5b;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.footer-hours-inner {
-  min-height: 85px;
+.footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  min-height: 76px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
 }
 
-.footer-hours-inner > div {
+.footer-bottom > p {
+  margin: 0;
+  color: #aebdca;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.footer-bottom > p strong {
+  color: #ffffff;
+  font-weight: 900;
+}
+
+.footer-bottom-links {
   display: flex;
   align-items: center;
   gap: 11px;
+  color: #d8b66b;
+  font-size: 11px;
 }
 
-.footer-hours-inner strong {
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: 900;
+.footer-bottom-links a {
+  color: #b7c5d0;
+  text-decoration: none;
+  transition: color 0.25s ease;
 }
 
-.footer-hours-icon {
-  color: #f4c66b;
-  font-size: 25px;
+.footer-bottom-links a:hover {
+  color: #d8b66b;
 }
 
-.footer-hours-inner > p {
-  color: #e2ebf4;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.footer-appointment {
+.footer-back-top {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 13px 19px;
-  color: #041d33;
-  background: #f4c66b;
-  border: 2px solid #f4c66b;
-  border-radius: 7px;
-  font-size: 13px;
-  font-weight: 900;
+  gap: 10px;
+  color: #dce5ec;
+  font-size: 11px;
+  font-weight: 800;
   text-decoration: none;
-  white-space: nowrap;
-  transition: all 0.3s ease;
+  transition: color 0.25s ease;
 }
 
-.footer-appointment:hover {
-  background: #ffffff;
-  border-color: #ffffff;
+.footer-back-top span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 1px solid rgba(216, 182, 107, 0.45);
+  border-radius: 6px;
+  color: #d8b66b;
+  font-size: 17px;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.footer-back-top:hover {
+  color: #d8b66b;
+}
+
+.footer-back-top:hover span {
   transform: translateY(-3px);
+  background: rgba(216, 182, 107, 0.1);
 }
 
-/* =========================================
-   COPYRIGHT BAR
-========================================= */
+/* ========================================
+   ANIMATIONS
+======================================== */
 
-.footer-bottom {
-  background: #031526;
+@keyframes footerCtaReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.footer-bottom-inner {
-  min-height: 65px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
+@keyframes footerGradientFlow {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 200% 50%;
+  }
 }
 
-.footer-bottom-inner p {
-  color: #cbd8e5;
-  font-size: 12px;
-  font-weight: 600;
-  margin: 0;
-}
+/* ========================================
+   TABLETS
+======================================== */
 
-.footer-bottom-message {
-  color: #f4c66b !important;
-  font-weight: 800 !important;
-}
-
-/* =========================================
-   TABLET RESPONSIVE
-========================================= */
-
-@media (max-width: 1100px) {
-  .hospital-footer-main .hospital-footer-container {
+@media (max-width: 1050px) {
+  .footer-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px;
+    gap: 45px 50px;
   }
 
-  .footer-hours-inner {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px 0;
+  .footer-about-description {
+    max-width: 400px;
+  }
+
+  .footer-cta {
+    gap: 20px;
+    padding: 29px;
   }
 }
 
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
+/* ========================================
+   MOBILE
+======================================== */
 
-@media (max-width: 600px) {
-  .hospital-footer-main {
-    padding: 45px 0 35px;
+@media (max-width: 650px) {
+  .footer-cta-wrapper {
+    padding-top: 40px;
   }
 
-  .hospital-footer-main .hospital-footer-container {
+  .footer-cta {
+    flex-wrap: wrap;
+    gap: 17px;
+    padding: 25px 20px;
+    border-radius: 13px;
+  }
+
+  .footer-cta-icon {
+    flex-basis: 49px;
+    width: 49px;
+    height: 49px;
+    border-radius: 12px;
+    font-size: 25px;
+  }
+
+  .footer-cta-text {
+    flex-basis: calc(100% - 70px);
+  }
+
+  .footer-cta-text h2 {
+    font-size: 24px;
+  }
+
+  .footer-cta-text p {
+    font-size: 12px;
+  }
+
+  .footer-cta-button {
+    width: 100%;
+    min-height: 47px;
+  }
+
+  .footer-main {
+    padding-top: 75px;
+  }
+
+  .footer-grid {
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 37px;
+    padding-bottom: 40px;
+  }
+
+  .footer-about-description {
+    max-width: 100%;
   }
 
   .footer-column h3 {
-    margin-bottom: 20px;
+    font-size: 20px;
   }
 
-  .footer-hours-inner {
+  .footer-column ul {
+    gap: 12px;
+  }
+
+  .footer-column li a {
+    font-size: 13px;
+  }
+
+  .footer-contact-item p,
+  .footer-contact-item a {
+    font-size: 12px;
+  }
+
+  .footer-bottom {
     flex-direction: column;
-    text-align: center;
-    gap: 10px;
-    padding: 24px 0;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 23px 0;
   }
 
-  .footer-hours-inner > p {
-    line-height: 1.8;
+  .footer-bottom-links {
+    order: 1;
   }
 
-  .footer-bottom-inner {
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    gap: 8px;
-    padding: 17px 0;
+  .footer-back-top {
+    order: 2;
   }
 }
 
-/* =========================================
-   ACCESSIBILITY
-========================================= */
+/* Small mobile screens */
 
-.hospital-footer a:focus-visible {
-  outline: 3px solid #ffffff;
-  outline-offset: 4px;
+@media (max-width: 360px) {
+  .footer-container {
+    width: 90%;
+  }
+
+  .footer-cta {
+    padding: 21px 15px;
+  }
+
+  .footer-cta-text h2 {
+    font-size: 21px;
+  }
+
+  .footer-brand-text strong {
+    font-size: 18px;
+  }
 }
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .hospital-footer *,
+  .hospital-footer *::before,
+  .hospital-footer *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+

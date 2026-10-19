@@ -2,627 +2,265 @@
 import { Link } from "react-router-dom";
 import "./About.css";
 
-const doctorImage =
-  "https://www.srisakthihospital.com/assets/doctor-photo-EMUL-gY8.jpg";
-
-const hospitalImages = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=85",
-    title: "Comfortable Patient Care",
-    description: "A welcoming environment for patients and families.",
-    alt: "Hospital patient room",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=85",
-    title: "Medical Consultation",
-    description: "Professional consultation and medical guidance.",
-    alt: "Doctor working in a clinical setting",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=1000&q=85",
-    title: "Diagnostic Support",
-    description: "Diagnostic testing to support clinical decisions.",
-    alt: "Medical laboratory equipment",
-  },
-];
-
-const values = [
-  {
-    number: "01",
-    icon: "♡",
-    title: "Compassion",
-    description:
-      "Listening carefully, treating people with dignity, and understanding each patient's concerns.",
-  },
-  {
-    number: "02",
-    icon: "✚",
-    title: "Clinical Excellence",
-    description:
-      "Supporting medical decisions with careful assessment and appropriate evidence-based care.",
-  },
-  {
-    number: "03",
-    icon: "✦",
-    title: "Trust & Transparency",
-    description:
-      "Clear communication that helps patients understand their care and make informed decisions.",
-  },
-];
-
-const services = [
-  {
-    icon: "✚",
-    title: "Outpatient Consultation",
-    description:
-      "Personalised consultation for general health concerns and medical conditions.",
-  },
-  {
-    icon: "▣",
-    title: "Inpatient Care",
-    description:
-      "Hospital admission and monitoring for patients requiring continued care.",
-  },
-  {
-    icon: "◷",
-    title: "Day Care Services",
-    description:
-      "Appropriate short-term medical care that may not require an overnight stay.",
-  },
-  {
-    icon: "⌕",
-    title: "Diagnostic Laboratory",
-    description:
-      "Diagnostic testing support for medical assessment and treatment decisions.",
-  },
-  {
-    icon: "＋",
-    title: "Pharmacy",
-    description:
-      "Convenient access to medicines within the hospital premises.",
-  },
-  {
-    icon: "♡",
-    title: "IV Therapy & Nebulization",
-    description:
-      "Supportive treatments when clinically appropriate and prescribed.",
-  },
-  {
-    icon: "✧",
-    title: "Emergency Care",
-    description:
-      "Emergency medical services listed by the hospital. Contact the hospital to confirm current arrangements.",
-  },
-  {
-    icon: "◎",
-    title: "Chronic Care",
-    description:
-      "Medical review and continuing care for long-term health conditions.",
-  },
-];
-
-const expertise = [
-  "Family Medicine",
-  "Internal Medicine",
-  "Clinical Diabetology",
-  "Infectious Diseases",
-];
-
-export default function About() {
+function About() {
   return (
-    <main className="about-page">
+    <main className="ss-about">
       {/* HERO */}
-      <section className="about-hero">
-        <div className="about-hero-pattern" aria-hidden="true" />
+      <section className="ss-about-hero">
+        <div className="ss-hero-background" />
 
-        <div className="about-container about-hero-grid">
-          <div className="about-hero-copy">
-            <span className="about-eyebrow about-eyebrow-light">
-              LISTENING · CARING · HEALING
+        <div className="ss-hero-overlay" />
+
+        <div className="ss-hero-pulse" aria-hidden="true">
+          <svg viewBox="0 0 700 100" preserveAspectRatio="none">
+            <path
+              className="ss-ecg-line"
+              d="M0 50 H180 L205 50 L225 35 L245 72 L270 8 L300 88 L325 50 H390 L410 50 L430 40 L450 58 L470 50 H700"
+            />
+          </svg>
+        </div>
+
+        <div className="ss-hero-content">
+          <div className="ss-overline">
+            <span className="ss-pulse-dot" />
+            WELCOME TO SRI SHAKTHI HOSPITAL
+          </div>
+
+          <h1>
+            Caring Beyond
+            <span>Treatment.</span>
+          </h1>
+
+          <p className="ss-hero-subtitle">
+            Compassionate Care. Trusted Medicine.
+            <br />
+            Advanced Healing.
+          </p>
+
+          <p className="ss-hero-description">
+            We believe every patient deserves thoughtful
+            attention, clear medical guidance, and healthcare
+            delivered with dignity, compassion, and trust.
+          </p>
+
+          <div className="ss-hero-actions">
+            <Link to="/services" className="ss-primary-button">
+              Explore Our Services <span>↗</span>
+            </Link>
+
+            <Link to="/contact" className="ss-outline-button">
+              Contact Us
+            </Link>
+          </div>
+
+          <div className="ss-hero-note">
+            <span className="ss-note-line" />
+            LISTENING · CARING · HEALING
+          </div>
+        </div>
+
+        <div className="ss-hero-seal" aria-hidden="true">
+          <div className="ss-seal-ring">
+            <span className="ss-seal-cross">✚</span>
+            <span className="ss-seal-name">SRI SHAKTHI</span>
+            <span className="ss-seal-small">HOSPITAL</span>
+          </div>
+        </div>
+
+        <div className="ss-hero-bottom">
+          <span>YOUR HEALTH MATTERS</span>
+          <span className="ss-bottom-number">01 / ABOUT US</span>
+        </div>
+      </section>
+
+      {/* ABOUT INTRODUCTION */}
+      <section className="ss-intro ss-section">
+        <div className="ss-container ss-intro-grid">
+          <div className="ss-intro-heading ss-reveal">
+            <span className="ss-section-label">
+              WHO WE ARE
             </span>
 
-            <h1>
-              Compassionate Care.
-              <br />
-              <span>Trusted Medicine.</span>
-            </h1>
-
-            <p className="about-hero-lead">
-              At Sri Sakthi Hospital, we believe healthcare begins
-              with listening, understanding, and treating every
-              patient with compassion, precision, and respect.
-            </p>
-
-            <div className="about-hero-actions">
-              <Link to="/doctor" className="about-btn about-btn-gold">
-                Meet Our Doctor <span>→</span>
-              </Link>
-
-              <Link to="/services" className="about-btn about-btn-outline">
-                Explore Services <span>↗</span>
-              </Link>
-            </div>
-
-            <div className="about-hero-trust">
-              <span className="about-trust-icon">✚</span>
-              <div>
-                <strong>Patient-focused healthcare</strong>
-                <span>Care with compassion and trust</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="about-hero-visual">
-            <div className="about-hero-frame">
-              <img
-                src={doctorImage}
-                alt="Dr. Sakthi Narasimha Garikapati"
-                fetchPriority="high"
-              />
-              <div className="about-hero-image-shade" />
-
-              <div className="about-hero-image-caption">
-                <span className="about-caption-mark">✚</span>
-                <div>
-                  <strong>Care With Compassion</strong>
-                  <span>Your health matters to us</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="about-experience-badge">
-              <span className="about-badge-star">✦</span>
-              <strong>15+</strong>
-              <span>Years of Clinical<br />Experience</span>
-            </div>
-
-            <div className="about-hero-floating-card">
-              <span>♡</span>
-              <div>
-                <strong>Listening. Caring. Healing.</strong>
-                <small>A patient-first approach</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* QUICK FACTS */}
-      <section className="about-facts">
-        <div className="about-container about-facts-grid">
-          <div className="about-fact">
-            <span className="about-fact-icon">✚</span>
-            <div>
-              <strong>OPD & IPD</strong>
-              <span>Consultation and inpatient care</span>
-            </div>
-          </div>
-
-          <div className="about-fact">
-            <span className="about-fact-icon">◎</span>
-            <div>
-              <strong>Day Care</strong>
-              <span>Short-term care services</span>
-            </div>
-          </div>
-
-          <div className="about-fact">
-            <span className="about-fact-icon">♡</span>
-            <div>
-              <strong>Patient First</strong>
-              <span>Care with dignity and respect</span>
-            </div>
-          </div>
-
-          <div className="about-fact">
-            <span className="about-fact-icon">✦</span>
-            <div>
-              <strong>Since 2009</strong>
-              <span>Serving the community</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT THE HOSPITAL */}
-      <section className="about-intro">
-        <div className="about-container about-intro-grid">
-          <div className="about-intro-visual">
-            <div className="about-intro-image">
-              <img
-                src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1100&q=85"
-                alt="Modern hospital interior"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="about-intro-stamp">
-              <span>CARE</span>
-              <strong>WITH</strong>
-              <span>COMPASSION</span>
-              <i>✦</i>
-            </div>
-          </div>
-
-          <div className="about-intro-content">
-            <span className="about-eyebrow">ABOUT OUR HOSPITAL</span>
-
-            <h2 className="about-title">
-              Healthcare With
-              <span> A Human Touch.</span>
+            <h2>
+              Healthcare with
+              <span> a Human Touch.</span>
             </h2>
 
-            <p>
-              Sri Sakthi Hospital is a healthcare centre in Rajahmundry,
-              Andhra Pradesh, committed to compassionate medical care,
-              ethical practice, and patient-focused service.
+            <div className="ss-gold-rule" />
+          </div>
+
+          <div className="ss-intro-copy ss-reveal">
+            <p className="ss-lead">
+              At Sri Shakthi Hospital, we put people at the
+              heart of healthcare.
             </p>
 
             <p>
-              From outpatient consultations and inpatient care to
-              diagnostic support and ongoing medical guidance, our
-              aim is to help patients understand their health needs
-              and navigate their care with confidence.
+              Our approach combines clinical knowledge,
+              careful evaluation, and personal attention.
+              We strive to make every patient feel heard,
+              respected, and confident about their care.
             </p>
 
-            <div className="about-check-list">
-              <div>
-                <span>✓</span>
-                <strong>Personalised medical attention</strong>
-              </div>
-              <div>
-                <span>✓</span>
-                <strong>Clear communication and guidance</strong>
-              </div>
-              <div>
-                <span>✓</span>
-                <strong>Support for ongoing health needs</strong>
-              </div>
-              <div>
-                <span>✓</span>
-                <strong>Respectful care for individuals and families</strong>
-              </div>
-            </div>
+            <p>
+              From everyday health concerns to the ongoing
+              management of medical conditions, our goal is
+              to provide dependable guidance and support
+              throughout every stage of life.
+            </p>
 
-            <Link to="/hospital" className="about-text-link">
-              Discover Our Hospital <span>→</span>
+            <Link to="/doctor" className="ss-text-link">
+              Learn About Our Doctor <span>→</span>
             </Link>
           </div>
         </div>
       </section>
 
       {/* VALUES */}
-      <section className="about-values">
-        <div className="about-container">
-          <div className="about-section-heading">
-            <span className="about-eyebrow">WHAT GUIDES US</span>
-            <h2 className="about-title">
-              Our Values.
-              <span> Our Commitment.</span>
-            </h2>
-            <p>
-              The principles that guide how we communicate with
-              patients and approach their healthcare needs.
-            </p>
-          </div>
+      <section className="ss-values ss-section">
+        <div className="ss-container">
+          <div className="ss-section-heading ss-reveal">
+            <span className="ss-section-label">
+              THE FOUNDATION OF OUR CARE
+            </span>
 
-          <div className="about-values-grid">
-            {values.map((value) => (
-              <article className="about-value-card" key={value.number}>
-                <div className="about-value-top">
-                  <span>{value.number}</span>
-                  <i>{value.icon}</i>
-                </div>
-
-                <h3>{value.title}</h3>
-                <p>{value.description}</p>
-                <div className="about-value-line" />
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DOCTOR PROFILE */}
-      <section className="about-doctor">
-        <div className="about-container about-doctor-grid">
-          <div className="about-doctor-photo-column">
-            <div className="about-doctor-photo-frame">
-              <img
-                src={doctorImage}
-                alt="Dr. Sakthi Narasimha Garikapati, Sri Sakthi Hospital"
-                loading="lazy"
-              />
-            </div>
-
-            <div className="about-doctor-photo-caption">
-              <span className="about-doctor-caption-icon">✚</span>
-              <div>
-                <strong>Dr. Sakthi Narasimha Garikapati</strong>
-                <span>MBBS · DNB Family Medicine</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="about-doctor-content">
-            <span className="about-eyebrow">MEET YOUR DOCTOR</span>
-
-            <h2 className="about-title">
-              Medical Knowledge.
-              <span> Compassionate Care.</span>
+            <h2>
+              Our Values. <span>Our Promise.</span>
             </h2>
 
-            <h3 className="about-doctor-name">
-              Dr. Sakthi Narasimha Garikapati
-            </h3>
-
             <p>
-              Dr. Sakthi Narasimha Garikapati is the physician featured
-              on the hospital's official website. His listed areas of
-              expertise include family medicine, internal medicine,
-              clinical diabetology, and infectious diseases.
-            </p>
-
-            <p>
-              His professional approach emphasises careful assessment,
-              evidence-based treatment, clear explanations, and
-              long-term patient wellness.
-            </p>
-
-            <div className="about-qualification-heading">
-              Professional Qualifications
-            </div>
-
-            <div className="about-qualifications">
-              <div>
-                <span>01</span>
-                <strong>MBBS</strong>
-                <small>Medicine and Surgery</small>
-              </div>
-              <div>
-                <span>02</span>
-                <strong>DNB Family Medicine</strong>
-                <small>Family Medicine</small>
-              </div>
-              <div>
-                <span>03</span>
-                <strong>FCD</strong>
-                <small>Clinical Diabetology</small>
-              </div>
-              <div>
-                <span>04</span>
-                <strong>FIIM</strong>
-                <small>Internal Medicine</small>
-              </div>
-              <div>
-                <span>05</span>
-                <strong>PGPID</strong>
-                <small>Infectious Diseases</small>
-              </div>
-            </div>
-
-            <div className="about-expertise">
-              <strong>Areas of Expertise</strong>
-              <div className="about-expertise-tags">
-                {expertise.map((item) => (
-                  <span key={item}>{item}</span>
-                ))}
-              </div>
-            </div>
-
-            <Link to="/doctor" className="about-btn about-btn-navy">
-              View Full Doctor Profile <span>↗</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section className="about-services">
-        <div className="about-container">
-          <div className="about-section-heading">
-            <span className="about-eyebrow">OUR HEALTHCARE SERVICES</span>
-            <h2 className="about-title">
-              Support for Your
-              <span> Health Journey.</span>
-            </h2>
-            <p>
-              Explore the services listed by Sri Sakthi Hospital.
-              Please contact the hospital to confirm availability
-              and suitability for your needs.
+              The principles that guide every patient
+              interaction and healthcare decision.
             </p>
           </div>
 
-          <div className="about-services-grid">
-            {services.map((service, index) => (
-              <article className="about-service-card" key={service.title}>
-                <div className="about-service-card-top">
-                  <span className="about-service-icon">{service.icon}</span>
-                  <span className="about-service-number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                </div>
+          <div className="ss-values-grid">
+            <article className="ss-value-card ss-reveal">
+              <div className="ss-value-top">
+                <span className="ss-value-number">01</span>
+                <span className="ss-value-icon">♡</span>
+              </div>
 
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
+              <h3>Compassion</h3>
 
-                <Link to="/services" className="about-service-link">
-                  Learn More <span>→</span>
-                </Link>
-              </article>
-            ))}
-          </div>
+              <p>
+                We treat every patient with empathy,
+                kindness, and genuine consideration
+                for their individual needs.
+              </p>
 
-          <div className="about-services-footer">
-            <Link to="/services" className="about-btn about-btn-navy">
-              Explore All Services <span>→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+              <div className="ss-card-line" />
+            </article>
 
-      {/* FACILITIES GALLERY */}
-      <section className="about-gallery">
-        <div className="about-container">
-          <div className="about-section-heading">
-            <span className="about-eyebrow">OUR CARE ENVIRONMENT</span>
-            <h2 className="about-title">
-              A Closer Look at
-              <span> Healthcare.</span>
-            </h2>
-            <p>
-              Explore illustrative healthcare imagery. For actual
-              hospital facilities, use verified photographs of
-              Sri Sakthi Hospital.
-            </p>
-          </div>
+            <article className="ss-value-card ss-reveal">
+              <div className="ss-value-top">
+                <span className="ss-value-number">02</span>
+                <span className="ss-value-icon">✚</span>
+              </div>
 
-          <div className="about-gallery-grid">
-            {hospitalImages.map((item, index) => (
-              <article className="about-gallery-card" key={item.title}>
-                <div className="about-gallery-image">
-                  <img src={item.image} alt={item.alt} loading="lazy" />
-                  <span className="about-gallery-index">
-                    0{index + 1}
-                  </span>
-                </div>
+              <h3>Clinical Excellence</h3>
 
-                <div className="about-gallery-copy">
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </article>
-            ))}
-          </div>
+              <p>
+                We value careful assessment, informed
+                medical decisions, and a commitment
+                to responsible healthcare.
+              </p>
 
-          <div className="about-gallery-footer">
-            <Link to="/hospital" className="about-text-link">
-              Explore Hospital Details <span>→</span>
-            </Link>
+              <div className="ss-card-line" />
+            </article>
+
+            <article className="ss-value-card ss-reveal">
+              <div className="ss-value-top">
+                <span className="ss-value-number">03</span>
+                <span className="ss-value-icon">◇</span>
+              </div>
+
+              <h3>Trust & Transparency</h3>
+
+              <p>
+                We believe in clear communication,
+                respectful relationships, and helping
+                patients understand their care.
+              </p>
+
+              <div className="ss-card-line" />
+            </article>
           </div>
         </div>
       </section>
 
       {/* MISSION AND VISION */}
-      <section className="about-mission">
-        <div className="about-container about-mission-grid">
-          <article className="about-mission-card">
-            <span className="about-mission-icon">◎</span>
-            <span className="about-eyebrow about-eyebrow-light">
+      <section className="ss-mission ss-section">
+        <div className="ss-container ss-mission-grid">
+          <article className="ss-mission-card ss-reveal">
+            <div className="ss-mission-symbol">◎</div>
+
+            <span className="ss-section-label">
               OUR MISSION
             </span>
-            <h2>Care With Purpose.</h2>
+
+            <h2>Care that puts people first.</h2>
+
             <p>
-              To provide compassionate, quality healthcare through
-              ethical practice, appropriate medical care, and respect
-              for every patient's dignity.
+              To deliver compassionate, quality healthcare
+              through ethical practice, personalised
+              attention, and a commitment to patient
+              dignity and wellbeing.
             </p>
           </article>
 
-          <article className="about-mission-card about-mission-card-featured">
-            <span className="about-mission-icon">✦</span>
-            <span className="about-eyebrow about-eyebrow-light">
+          <article className="ss-vision-card ss-reveal">
+            <div className="ss-vision-decoration" />
+
+            <div className="ss-mission-symbol">✧</div>
+
+            <span className="ss-section-label">
               OUR VISION
             </span>
-            <h2>A Healthier Community.</h2>
+
+            <h2>A healthier community, together.</h2>
+
             <p>
-              To build lasting relationships with patients and support
-              a healthier community through patient-centred service
-              and continuous improvement.
+              To build lasting trust through patient-centred
+              healthcare, responsible medical practice,
+              and a continuous focus on better wellbeing
+              for individuals and families.
             </p>
+
+            <div className="ss-vision-footer">
+              COMPASSION <span>•</span> EXCELLENCE
+              <span>•</span> TRUST
+            </div>
           </article>
         </div>
       </section>
 
-      {/* CONTACT */}
-      <section className="about-contact">
-        <div className="about-container about-contact-grid">
-          <div className="about-contact-content">
-            <span className="about-eyebrow">GET IN TOUCH</span>
-            <h2 className="about-title">
-              Your Health Matters.
-              <span> We're Here to Help.</span>
+      {/* CALL TO ACTION */}
+      <section className="ss-about-cta">
+        <div className="ss-container ss-cta-inner">
+          <div>
+            <span className="ss-cta-label">
+              WE ARE HERE TO HELP
+            </span>
+
+            <h2>
+              Your Health Deserves
+              <span> Thoughtful Care.</span>
             </h2>
 
             <p>
-              Contact Sri Sakthi Hospital for consultation enquiries,
-              appointment information, and details about available
-              medical services.
+              Connect with Sri Shakthi Hospital for
+              appointments and healthcare guidance.
             </p>
-
-            <div className="about-contact-list">
-              <div className="about-contact-item">
-                <span className="about-contact-icon">☎</span>
-                <div>
-                  <strong>Phone</strong>
-                  <a href="tel:9494456007">9494456007</a>
-                  <a href="tel:08832422189">0883-2422189</a>
-                </div>
-              </div>
-
-              <div className="about-contact-item">
-                <span className="about-contact-icon">✉</span>
-                <div>
-                  <strong>Email</strong>
-                  <a href="mailto:srisakthihospitalrjy@gmail.com">
-                    srisakthihospitalrjy@gmail.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="about-contact-item">
-                <span className="about-contact-icon">⌖</span>
-                <div>
-                  <strong>Hospital Address</strong>
-                  <span>
-                    79-16-6, Tilak Road, opposite lane to Sai Baba Temple,
-                    Rajahmundry, Andhra Pradesh 533101
-                  </span>
-                </div>
-              </div>
-
-              <div className="about-contact-item">
-                <span className="about-contact-icon">◷</span>
-                <div>
-                  <strong>Consultation Hours</strong>
-                  <span>9:00 AM – 12:30 PM</span>
-                  <span>5:30 PM – 9:00 PM</span>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <aside className="about-contact-card">
-            <div className="about-contact-card-symbol">✚</div>
-            <span className="about-eyebrow about-eyebrow-light">
-              SRI SAKTHI HOSPITAL
-            </span>
-
-            <h3>Take the Next Step.</h3>
-
-            <p>
-              Reach out to enquire about consultation times and
-              appointment availability.
-            </p>
-
-            <Link to="/appointment" className="about-btn about-btn-gold">
-              Request an Appointment <span>→</span>
-            </Link>
-
-            <a
-              className="about-official-link"
-              href="https://www.srisakthihospital.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Visit Official Website ↗
-            </a>
-          </aside>
+          <Link to="/contact" className="ss-cta-button">
+            Get in Touch <span>↗</span>
+          </Link>
         </div>
       </section>
     </main>
   );
 }
+
+export default About;

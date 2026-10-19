@@ -1,318 +1,501 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
-const hospitalImages = {
-  hero: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=90",
-
-  // A more relevant healthcare consultation image
-  welcome:
-    "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1100&q=90",
-
-  doctor:
-    "https://www.srisakthihospital.com/assets/doctor-photo-EMUL-gY8.jpg",
-};
+const doctorImage =
+  "https://www.srisakthihospital.com/assets/doctor-photo-EMUL-gY8.jpg";
 
 const services = [
   {
     number: "01",
     icon: "✚",
-    title: "General Consultation",
+    title: "General Medicine",
     description:
-      "Medical assessment, health advice, and personalised guidance for everyday health concerns.",
+      "Personalized medical consultations focused on understanding your symptoms and supporting your overall health.",
+    link: "/services",
   },
   {
     number: "02",
     icon: "♡",
-    title: "Internal Medicine",
+    title: "Family Healthcare",
     description:
-      "Evaluation and ongoing management of common adult medical conditions.",
+      "Thoughtful healthcare for individuals and families, with attention to every patient's unique needs.",
+    link: "/services",
   },
   {
     number: "03",
-    icon: "✳",
-    title: "Preventive Healthcare",
+    icon: "✚",
+    title: "Emergency Care",
     description:
-      "Routine health assessments and guidance to support healthier lifestyle choices.",
+      "Prompt medical attention and guidance when unexpected health concerns require immediate assessment.",
+    link: "/services",
   },
   {
     number: "04",
-    icon: "⌂",
-    title: "Family Healthcare",
+    icon: "⌕",
+    title: "Diagnostic Services",
     description:
-      "Considerate medical attention focused on individual needs and family wellbeing.",
+      "Medical evaluation and appropriate diagnostic support to help guide informed healthcare decisions.",
+    link: "/services",
   },
 ];
 
-const benefits = [
-  "Personalised attention",
-  "Clear medical guidance",
-  "Patient-first approach",
-  "Focus on wellbeing",
+const highlights = [
+  {
+    number: "01",
+    title: "Patient First",
+    description:
+      "Every patient deserves respect, understanding, and individual attention.",
+  },
+  {
+    number: "02",
+    title: "Trusted Guidance",
+    description:
+      "Clear communication and thoughtful medical guidance at every step.",
+  },
+  {
+    number: "03",
+    title: "Compassionate Care",
+    description:
+      "A caring approach that recognizes the person behind every health concern.",
+  },
 ];
 
-export default function Home() {
+function Home() {
   return (
-    <main className="hospital-home">
-      {/* HERO SECTION */}
-      <section className="home-hero">
-        <img
-          className="hero-background"
-          src={hospitalImages.hero}
-          alt="Modern healthcare facility"
-          fetchPriority="high"
-        />
+    <main className="ss-home">
+      {/* ================= HERO SECTION ================= */}
 
-        <div className="hero-overlay" />
+      <section className="ss-hero">
+        <div className="ss-hero-pattern"></div>
 
-        <div className="home-container hero-content">
-          <div className="home-eyebrow light-eyebrow">
-            <span className="eyebrow-line" />
-            WELCOME TO SRI SHAKTHI HOSPITAL
+        <div className="ss-hero-container">
+          <div className="ss-hero-content">
+            <div className="ss-eyebrow ss-hero-eyebrow">
+              <span className="ss-eyebrow-line"></span>
+              WELCOME TO SRI SAKTHI HOSPITAL
+            </div>
+
+            <h1 className="ss-hero-title">
+              Your Health.
+              <br />
+              Our <span>Commitment.</span>
+            </h1>
+
+            <p className="ss-hero-description">
+              Quality healthcare begins with trust, understanding, and
+              personal attention. At Sri Sakthi Hospital, we believe
+              every patient deserves compassionate care, thoughtful
+              medical guidance, and respect.
+            </p>
+
+            <div className="ss-hero-buttons">
+              <Link to="/appointment" className="ss-button ss-button-gold">
+                <span>Request an Appointment</span>
+                <span className="ss-button-arrow">↗</span>
+              </Link>
+
+              <Link to="/services" className="ss-button ss-button-outline">
+                <span>Explore Our Services</span>
+                <span className="ss-button-arrow">→</span>
+              </Link>
+            </div>
+
+            <div className="ss-hero-trust">
+              <div className="ss-trust-icon">✚</div>
+
+              <div>
+                <h3>Healthcare with a Human Touch</h3>
+                <p>Listening carefully. Caring thoughtfully.</p>
+              </div>
+            </div>
           </div>
 
-          <h1>
-            Compassionate Care.
-            <span>Trusted Medicine.</span>
-          </h1>
+          {/* Doctor portrait */}
 
-          <p className="hero-description">
-            Your health deserves attention, understanding, and care.
-            We are committed to a patient-focused approach that values
-            compassion, clear communication, and professional medical guidance.
-          </p>
+          <div className="ss-hero-visual">
+            <div className="ss-visual-decoration ss-decoration-one"></div>
+            <div className="ss-visual-decoration ss-decoration-two"></div>
 
-          <div className="hero-actions">
-            <Link to="/appointment" className="home-btn gold-btn">
-              Book an Appointment <span>↗</span>
-            </Link>
+            <div className="ss-doctor-frame">
+              <div className="ss-doctor-top-label">
+                <span className="ss-label-dot"></span>
+                YOUR HEALTHCARE PARTNER
+              </div>
 
-            <Link to="/services" className="home-btn outline-btn">
-              Explore Our Services <span>→</span>
-            </Link>
-          </div>
+              <div className="ss-doctor-image-wrap">
+                <img
+                  src={doctorImage}
+                  alt="Doctor at Sri Sakthi Hospital"
+                  className="ss-doctor-image"
+                  onError={(event) => {
+                    event.currentTarget.style.display = "none";
+                  }}
+                />
 
-          <div className="hero-trust">
-            <span>✓ Patient-focused care</span>
-            <span>✓ Personalised attention</span>
-            <span>✓ Professional guidance</span>
-          </div>
-        </div>
+                <div className="ss-doctor-image-overlay"></div>
 
-        <div className="hero-bottom-label">
-          YOUR HEALTH. OUR COMMITMENT.
-        </div>
-      </section>
-
-      {/* WELCOME / ABOUT SECTION */}
-      <section className="welcome-section">
-        <div className="home-container welcome-grid">
-          <div className="welcome-visual">
-            <div className="welcome-image-frame">
-              <img
-                className="welcome-image"
-                src={hospitalImages.welcome}
-                alt="Healthcare professional providing attentive patient care"
-                loading="lazy"
-              />
-
-              <div className="welcome-image-overlay" />
-
-              <div className="welcome-image-caption">
-                <span className="caption-icon">✚</span>
-
-                <div>
-                  <strong>Care With Compassion</strong>
-                  <span>Every patient matters</span>
+                <div className="ss-doctor-monogram" aria-hidden="true">
+                  S<span>+</span>
                 </div>
+              </div>
+
+              <div className="ss-doctor-caption">
+                <div className="ss-caption-number">S+</div>
+
+                <div className="ss-caption-content">
+                  <span>CARE YOU CAN TRUST</span>
+                  <h3>Compassion in Every Consultation</h3>
+                  <p>Professional care. Personal attention.</p>
+                </div>
+
+                <div className="ss-caption-symbol">↗</div>
               </div>
             </div>
 
-            <div className="welcome-image-border" />
+            <div className="ss-floating-card">
+              <span className="ss-floating-icon">✚</span>
 
-            <div className="welcome-badge">
-              <span className="badge-star">✦</span>
-              <strong>YOUR HEALTH</strong>
-              <span>Our Priority</span>
+              <div>
+                <strong>Patient-Centred Care</strong>
+                <p>Your well-being matters.</p>
+              </div>
+            </div>
+
+            <div className="ss-visual-side-label">
+              QUALITY · TRUST · CARE
             </div>
           </div>
+        </div>
 
-          <div className="welcome-content">
-            <div className="home-eyebrow">
-              <span className="eyebrow-line" />
-              A COMMITMENT TO YOUR HEALTH
+        <div className="ss-hero-bottom">
+          <span>COMPASSIONATE CARE</span>
+          <div className="ss-bottom-line"></div>
+          <span>YOUR HEALTH MATTERS</span>
+        </div>
+      </section>
+
+      {/* ================= INTRODUCTION ================= */}
+
+      <section className="ss-intro section-padding">
+        <div className="ss-container ss-intro-grid">
+          <div className="ss-intro-heading">
+            <div className="ss-eyebrow">
+              <span className="ss-eyebrow-line"></span>
+              OUR APPROACH TO HEALTHCARE
             </div>
 
-            <h2 className="home-heading">
-              Healthcare With
-              <span>Heart &amp; Expertise</span>
+            <h2 className="ss-section-title">
+              Care That Begins
+              <br />
+              With <span>Understanding.</span>
             </h2>
+          </div>
 
+          <div className="ss-intro-content">
             <p>
-              At Sri Shakthi Hospital, we believe meaningful healthcare
-              starts with listening. Understanding your concerns helps
-              us provide appropriate medical guidance with care,
-              respect, and attention to your individual needs.
+              Good healthcare is more than treating an illness. It is
+              about listening to patients, understanding their concerns,
+              and helping them make informed decisions about their health.
             </p>
 
             <p>
-              Whether you need a general consultation or guidance
-              about preventive healthcare, our focus is on helping
-              you feel informed, comfortable, and supported throughout
-              your healthcare journey.
+              At Sri Sakthi Hospital, our approach combines medical
+              attention with compassion, dignity, and clear communication.
+              We aim to make every patient's healthcare journey more
+              comfortable and reassuring.
             </p>
 
-            <div className="welcome-benefits">
-              {benefits.map((benefit, index) => (
-                <div
-                  className="welcome-benefit"
-                  key={benefit}
-                  style={{ "--benefit-delay": `${index * 100}ms` }}
-                >
-                  <span className="benefit-check">✓</span>
-                  <span>{benefit}</span>
-                </div>
-              ))}
-            </div>
-
-            <Link to="/about" className="welcome-link">
-              Discover Our Hospital
-              <span>→</span>
+            <Link to="/about" className="ss-text-link">
+              Discover Our Approach <span>↗</span>
             </Link>
+          </div>
+        </div>
 
-            <div className="welcome-note">
-              <span className="welcome-note-dot" />
-              Compassionate care begins with understanding you.
-            </div>
+        <div className="ss-container">
+          <div className="ss-highlight-grid">
+            {highlights.map((item) => (
+              <article className="ss-highlight-card" key={item.number}>
+                <span className="ss-highlight-number">{item.number}</span>
+
+                <div className="ss-highlight-rule"></div>
+
+                <h3>{item.title}</h3>
+
+                <p>{item.description}</p>
+
+                <span className="ss-highlight-arrow">↗</span>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* MEDICAL SERVICES */}
-      <section className="services-section">
-        <div className="home-container">
-          <div className="services-heading">
-            <div className="home-eyebrow">
-              <span className="eyebrow-line" />
-              OUR MEDICAL SERVICES
+      {/* ================= SERVICES SECTION ================= */}
+
+      <section className="ss-services section-padding">
+        <div className="ss-container">
+          <div className="ss-section-heading">
+            <div>
+              <div className="ss-eyebrow ss-eyebrow-light">
+                <span className="ss-eyebrow-line"></span>
+                OUR MEDICAL SERVICES
+              </div>
+
+              <h2 className="ss-section-title ss-title-light">
+                Healthcare for
+                <br />
+                <span>Your Well-Being.</span>
+              </h2>
             </div>
 
-            <h2 className="home-heading">
-              Care Designed <span>Around You</span>
-            </h2>
+            <div className="ss-section-heading-right">
+              <p>
+                Thoughtful medical care focused on your concerns,
+                your comfort, and your individual healthcare needs.
+              </p>
 
-            <p>
-              Medical guidance and attentive care to help you make
-              informed decisions about your health.
-            </p>
+              <Link to="/services" className="ss-light-link">
+                View All Services <span>↗</span>
+              </Link>
+            </div>
           </div>
 
-          <div className="service-grid">
-            {services.map((service, index) => (
-              <article
-                className="service-card"
-                key={service.number}
-                style={{ "--card-delay": `${index * 100}ms` }}
-              >
-                <div className="service-card-top">
-                  <span className="service-number">{service.number}</span>
-                  <span className="service-icon">{service.icon}</span>
+          <div className="ss-service-grid">
+            {services.map((service) => (
+              <article className="ss-service-card" key={service.number}>
+                <div className="ss-service-card-top">
+                  <span className="ss-service-number">
+                    {service.number}
+                  </span>
+
+                  <span className="ss-service-icon">{service.icon}</span>
                 </div>
 
+                <div className="ss-service-divider"></div>
+
                 <h3>{service.title}</h3>
+
                 <p>{service.description}</p>
 
-                <Link to="/services" className="service-link">
-                  Learn More <span>→</span>
+                <Link to={service.link} className="ss-service-link">
+                  Learn More <span>↗</span>
                 </Link>
               </article>
             ))}
           </div>
 
-          <div className="services-action">
-            <Link to="/services" className="home-btn navy-btn">
-              View All Services <span>→</span>
+          <div className="ss-services-bottom">
+            <span className="ss-services-bottom-mark">S+</span>
+
+            <p>
+              Every patient deserves attention, understanding, and
+              a healthcare experience built around their needs.
+            </p>
+
+            <Link to="/appointment" className="ss-services-appointment">
+              Plan Your Visit <span>↗</span>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* DOCTOR SECTION */}
-      <section className="doctor-section">
-        <div className="home-container doctor-grid">
-          <div className="doctor-content">
-            <div className="home-eyebrow">
-              <span className="eyebrow-line" />
-              MEET YOUR DOCTOR
-            </div>
+      {/* ================= DOCTOR SECTION ================= */}
 
-            <h2 className="home-heading">
-              Medical Care Built on
-              <span>Trust &amp; Experience</span>
-            </h2>
+      <section className="ss-doctor-section section-padding">
+        <div className="ss-container ss-doctor-grid">
+          <div className="ss-doctor-profile-visual">
+            <div className="ss-profile-frame">
+              <div className="ss-profile-top">
+                <span>MEDICAL PROFESSIONAL</span>
+                <span>01 / SRI SAKTHI</span>
+              </div>
 
-            <p>
-              Meet Dr. Sakthi Narasimha Garikapati. Learn more about
-              the doctor and the medical care available at Sri Shakthi
-              Hospital.
-            </p>
+              <div className="ss-profile-photo">
+                <img
+                  src={doctorImage}
+                  alt="Sri Sakthi Hospital doctor"
+                  loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.style.display = "none";
+                  }}
+                />
 
-            <div className="doctor-promise">
-              <span>✚</span>
-              <div>
-                <strong>A Personal Approach to Healthcare</strong>
-                <p>Listening carefully. Guiding thoughtfully.</p>
+                <div className="ss-profile-photo-fallback">
+                  <span>S+</span>
+                  <p>YOUR HEALTHCARE PARTNER</p>
+                </div>
+              </div>
+
+              <div className="ss-profile-bottom">
+                <span>MEDICAL CARE</span>
+                <span>TRUST & COMPASSION</span>
               </div>
             </div>
 
-            <Link to="/doctor" className="home-btn navy-btn">
-              Meet the Doctor <span>→</span>
+            <div className="ss-profile-stamp">
+              <span>CARE</span>
+              <strong>WITH</strong>
+              <span>TRUST</span>
+            </div>
+          </div>
+
+          <div className="ss-doctor-profile-content">
+            <div className="ss-eyebrow">
+              <span className="ss-eyebrow-line"></span>
+              MEET YOUR DOCTOR
+            </div>
+
+            <h2 className="ss-section-title">
+              Medical Care
+              <br />
+              With <span>Compassion.</span>
+            </h2>
+
+            <p className="ss-doctor-intro">
+              Meet Dr. Sakthi Narasimha Garikapati, whose medical
+              qualifications and patient-focused approach support
+              thoughtful healthcare and informed medical decisions.
+            </p>
+
+            <div className="ss-qualification-box">
+              <span className="ss-qualification-icon">✚</span>
+
+              <div>
+                <h3>Dr. Sakthi Narasimha Garikapati</h3>
+
+                <p>
+                  MBBS, DNB Family Medicine, FCD, FIIM, PGPID
+                </p>
+
+                <span>Family & Internal Medicine</span>
+              </div>
+            </div>
+
+            <div className="ss-doctor-values">
+              <div>
+                <span className="ss-value-check">✓</span>
+                Patient-focused consultations
+              </div>
+
+              <div>
+                <span className="ss-value-check">✓</span>
+                Clear medical communication
+              </div>
+
+              <div>
+                <span className="ss-value-check">✓</span>
+                Compassionate healthcare guidance
+              </div>
+            </div>
+
+            <Link to="/doctor" className="ss-button ss-button-navy">
+              <span>Meet Our Doctor</span>
+              <span className="ss-button-arrow">↗</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= PATIENT EXPERIENCE ================= */}
+
+      <section className="ss-experience">
+        <div className="ss-container ss-experience-grid">
+          <div className="ss-experience-main">
+            <div className="ss-eyebrow ss-eyebrow-light">
+              <span className="ss-eyebrow-line"></span>
+              THE SRI SAKTHI EXPERIENCE
+            </div>
+
+            <h2>
+              More Than Treatment.
+              <br />
+              <span>A Commitment to You.</span>
+            </h2>
+
+            <p>
+              Your healthcare journey should begin with confidence.
+              We are committed to listening carefully, explaining
+              thoughtfully, and treating every patient with respect.
+            </p>
+
+            <Link to="/about" className="ss-button ss-button-gold">
+              <span>Learn About Our Hospital</span>
+              <span className="ss-button-arrow">↗</span>
             </Link>
           </div>
 
-          <div className="doctor-visual">
-            <div className="doctor-photo-border" />
-
-            <div className="doctor-photo-frame">
-              <img
-                src={hospitalImages.doctor}
-                alt="Dr. Sakthi Narasimha Garikapati"
-                loading="lazy"
-              />
+          <div className="ss-experience-points">
+            <div className="ss-experience-point">
+              <span>01</span>
+              <div>
+                <h3>Listen Carefully</h3>
+                <p>We value your concerns and your questions.</p>
+              </div>
             </div>
 
-            <div className="doctor-info-card">
-              <span>YOUR HEALTHCARE PARTNER</span>
-              <strong>Dr. Sakthi Narasimha Garikapati</strong>
-              <p>Family &amp; Internal Medicine</p>
+            <div className="ss-experience-point">
+              <span>02</span>
+              <div>
+                <h3>Guide Thoughtfully</h3>
+                <p>Understand your options and next steps.</p>
+              </div>
+            </div>
+
+            <div className="ss-experience-point">
+              <span>03</span>
+              <div>
+                <h3>Care Respectfully</h3>
+                <p>Your dignity and comfort matter.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* APPOINTMENT BANNER */}
-      <section className="appointment-banner">
-        <div className="home-container appointment-content">
-          <div>
-            <div className="home-eyebrow light-eyebrow">
-              <span className="eyebrow-line" />
-              YOUR WELLBEING MATTERS
+      {/* ================= APPOINTMENT CTA ================= */}
+
+      <section className="ss-appointment-section">
+        <div className="ss-container">
+          <div className="ss-appointment-box">
+            <div className="ss-appointment-decoration"></div>
+
+            <div className="ss-appointment-content">
+              <div className="ss-eyebrow">
+                <span className="ss-eyebrow-line"></span>
+                YOUR NEXT STEP
+              </div>
+
+              <h2>
+                Take a Step Toward
+                <br />
+                <span>Better Healthcare.</span>
+              </h2>
+
+              <p>
+                Have a healthcare question or planning a consultation?
+                Contact Sri Sakthi Hospital to discuss your visit.
+              </p>
             </div>
 
-            <h2>Take the First Step Towards Better Health</h2>
+            <div className="ss-appointment-actions">
+              <Link
+                to="/appointment"
+                className="ss-button ss-button-navy"
+              >
+                <span>Request an Appointment</span>
+                <span className="ss-button-arrow">↗</span>
+              </Link>
 
-            <p>
-              Contact Sri Shakthi Hospital to enquire about consultations
-              and appointment availability.
-            </p>
+              <Link to="/contact" className="ss-contact-link">
+                Contact Our Hospital <span>→</span>
+              </Link>
+            </div>
           </div>
-
-          <Link to="/appointment" className="home-btn gold-btn">
-            Request an Appointment <span>↗</span>
-          </Link>
         </div>
       </section>
     </main>
   );
 }
+
+export default Home;

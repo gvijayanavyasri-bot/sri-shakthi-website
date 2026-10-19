@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./Appointment.css";
 export default function Appointment() {
   const [submitted, setSubmitted] = useState(false);
 

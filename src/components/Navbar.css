@@ -1,575 +1,260 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap");
-
-/* =========================================
-   SRI SHAKTHI HOSPITAL - HEADER
-========================================= */
-
-:root {
-  --hospital-navy: #0b2d49;
-  --hospital-dark: #041d33;
-  --hospital-blue: #123c5b;
-  --hospital-gold: #f4c66b;
-  --hospital-gold-dark: #e9b34e;
-  --hospital-white: #ffffff;
-  --hospital-light: #f7faff;
-  --hospital-border: rgba(255, 255, 255, 0.16);
+.top-strip {
+  background: var(--navy-deep);
+  color: #e7edf2;
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
 }
 
-/* Prevent unwanted horizontal scrolling */
-
-html {
-  scroll-behavior: smooth;
+.top-strip-inner {
+  min-height: 37px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-body {
-  margin: 0;
-  font-family: "DM Sans", sans-serif;
+.top-strip-right {
+  display: flex;
+  gap: 22px;
+  align-items: center;
 }
 
-/* =========================================
-   MAIN HEADER
-========================================= */
+.top-strip a {
+  color: var(--gold-light);
+  font-weight: 800;
+}
 
-.hospital-header {
-  width: 100%;
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #74c69d;
+  box-shadow: 0 0 0 4px #74c69d22;
+}
+
+.navbar {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  background: var(--hospital-navy);
-  box-shadow: 0 5px 22px rgba(0, 20, 38, 0.15);
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #e5eaf0;
+  backdrop-filter: blur(14px);
 }
 
-/* Common container */
-
-.hospital-container {
-  width: min(1500px, 92%);
-  margin: 0 auto;
-}
-
-/* =========================================
-   TOP CONTACT BAR
-========================================= */
-
-.hospital-topbar {
-  width: 100%;
-  background: var(--hospital-dark);
-  color: var(--hospital-white);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.hospital-topbar-inner {
-  min-height: 46px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 22px;
-}
-
-.topbar-item {
+.nav-inner {
+  min-height: 88px;
   display: flex;
-  align-items: center;
-  gap: 7px;
-  min-width: 0;
-  font-size: 13px;
-  font-weight: 800;
-  color: #ffffff;
-  white-space: nowrap;
-}
-
-.topbar-address {
-  justify-self: start;
-}
-
-.topbar-icon {
-  color: var(--hospital-gold);
-  font-size: 15px;
-}
-
-.topbar-phones {
-  justify-self: center;
-  gap: 12px;
-}
-
-.topbar-phones a {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 900;
-  transition: color 0.25s ease;
-}
-
-.topbar-phones a:hover {
-  color: var(--hospital-gold);
-}
-
-.topbar-divider {
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.topbar-hours {
-  justify-self: end;
-}
-
-.topbar-hours > span:first-child {
-  color: var(--hospital-gold);
-  font-size: 16px;
-}
-
-/* =========================================
-   MAIN NAVBAR
-========================================= */
-
-.hospital-navbar {
-  background: var(--hospital-navy);
-  border-bottom: 1px solid var(--hospital-border);
-}
-
-.hospital-navbar-inner {
-  min-height: 110px;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 30px;
+  align-items: center;
+  gap: 25px;
 }
 
-/* =========================================
-   HOSPITAL BRAND
-========================================= */
-
-.hospital-brand {
+.brand {
   display: flex;
   align-items: center;
-  gap: 17px;
+  gap: 12px;
   flex-shrink: 0;
-  text-decoration: none;
-  color: #ffffff;
 }
 
-.hospital-logo-symbol {
-  width: 60px;
-  height: 64px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--hospital-gold);
-  border-bottom: 5px solid #ffffff;
+.brand-mark {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  border-radius: 14px 14px 14px 4px;
+  color: white;
+  background: var(--navy);
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 800;
+  box-shadow: 0 7px 18px #102b4620;
 }
 
-.hospital-logo-symbol span {
-  font-size: 58px;
-  font-weight: 900;
-  line-height: 1;
-  transition: transform 0.35s ease;
+.brand-mark span {
+  color: var(--gold-light);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  position: absolute;
+  right: 5px;
+  top: 3px;
 }
 
-.hospital-brand:hover .hospital-logo-symbol span {
-  transform: rotate(90deg);
-}
-
-.hospital-brand-text {
+.brand-copy {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.15;
+  gap: 3px;
 }
 
-.brand-name {
-  color: var(--hospital-gold);
-  font-family: "Montserrat", sans-serif;
-  font-size: 27px;
+.brand-copy strong {
+  font-size: 1.03rem;
+  color: var(--navy);
+  letter-spacing: 0.11em;
   font-weight: 900;
-  letter-spacing: 1.1px;
 }
 
-.brand-hospital {
-  color: #ffffff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 19px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  margin-top: 4px;
-  padding-bottom: 3px;
-  border-bottom: 2px solid var(--hospital-gold);
-}
-
-.brand-tagline {
-  color: #e0e9f2;
-  font-size: 10px;
+.brand-copy small {
+  color: #7a8793;
+  font-size: 0.61rem;
   font-weight: 800;
-  letter-spacing: 0.15px;
-  margin-top: 5px;
+  letter-spacing: 0.13em;
 }
 
-/* =========================================
-   NAVIGATION
-========================================= */
-
-.hospital-navigation {
+.nav-links {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 30px;
-  min-width: 0;
+  gap: clamp(10px, 1.35vw, 23px);
 }
 
-.hospital-nav-links {
-  display: flex;
-  align-items: center;
-  gap: 29px;
-}
-
-.hospital-nav-link {
+.nav-link {
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 44px;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 900;
-  text-decoration: none;
-  white-space: nowrap;
+  padding: 12px 0;
+  color: #47576a;
+  font-size: 0.84rem;
+  font-weight: 800;
   transition: color 0.25s ease;
 }
 
-/* Gold underline without a large border */
-
-.hospital-nav-link::after {
+.nav-link::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: 3px;
+  height: 2px;
   width: 0;
-  height: 4px;
-  border-radius: 5px;
-  background: var(--hospital-gold);
-  transition: width 0.3s ease;
+  left: 0;
+  bottom: 5px;
+  background: var(--gold);
+  transition: width 0.25s ease;
 }
 
-.hospital-nav-link:hover,
-.hospital-nav-link.active {
-  color: var(--hospital-gold);
+.nav-link:hover,
+.nav-link.active {
+  color: var(--navy);
 }
 
-.hospital-nav-link:hover::after,
-.hospital-nav-link.active::after {
+.nav-link:hover::after,
+.nav-link.active::after {
   width: 100%;
 }
 
-/* =========================================
-   APPOINTMENT BUTTON
-========================================= */
-
-.hospital-appointment-button {
-  min-height: 54px;
-  padding: 0 19px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  background: var(--hospital-gold);
-  color: var(--hospital-dark);
-  border: 2px solid var(--hospital-gold);
-  border-radius: 10px;
-  font-size: 13px;
-  font-weight: 900;
-  text-decoration: none;
-  white-space: nowrap;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.hospital-appointment-button:hover {
-  background: #ffffff;
-  color: var(--hospital-navy);
-  border-color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 9px 22px rgba(0, 0, 0, 0.18);
-}
-
-.appointment-icon {
-  font-size: 16px;
-}
-
-.appointment-arrow {
-  font-size: 19px;
-  font-weight: 900;
-  transition: transform 0.3s ease;
-}
-
-.hospital-appointment-button:hover .appointment-arrow {
-  transform: translate(3px, -3px);
-}
-
-/* =========================================
-   MOBILE MENU BUTTON
-========================================= */
-
-.hospital-menu-toggle {
-  display: none;
-  width: 45px;
-  height: 43px;
-  padding: 9px;
-  flex-direction: column;
-  justify-content: center;
-  gap: 6px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+.nav-appointment {
+  background: var(--gold);
+  color: var(--navy-deep);
+  padding: 13px 16px;
   border-radius: 7px;
+  font-size: 0.82rem;
+  font-weight: 900;
+  white-space: nowrap;
+  transition: transform 0.25s, background 0.25s;
+}
+
+.nav-appointment span {
+  margin-left: 7px;
+}
+
+.nav-appointment:hover {
+  transform: translateY(-2px);
+  background: var(--gold-light);
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  padding: 8px;
   cursor: pointer;
 }
 
-.hospital-menu-toggle span {
+.menu-toggle span {
+  width: 25px;
+  height: 2px;
+  background: var(--navy);
   display: block;
-  width: 100%;
-  height: 3px;
-  background: #ffffff;
-  border-radius: 3px;
-  transition: transform 0.3s ease;
+  margin: 5px;
+  transition: 0.25s;
 }
 
-.hospital-menu-toggle.menu-active span:first-child {
-  transform: translateY(9px) rotate(45deg);
-}
-
-.hospital-menu-toggle.menu-active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hospital-menu-toggle.menu-active span:last-child {
-  transform: translateY(-9px) rotate(-45deg);
-}
-
-/* =========================================
-   TABLET RESPONSIVE
-========================================= */
-
-@media (max-width: 1350px) {
-  .hospital-container {
-    width: 94%;
+@media (max-width: 1050px) {
+  .nav-inner {
+    min-height: 78px;
   }
 
-  .hospital-navbar-inner {
-    gap: 22px;
+  .menu-toggle {
+    display: block;
   }
 
-  .hospital-navigation {
-    gap: 20px;
-  }
-
-  .hospital-nav-links {
-    gap: 20px;
-  }
-
-  .brand-name {
-    font-size: 24px;
-  }
-
-  .brand-hospital {
-    font-size: 17px;
-  }
-
-  .hospital-logo-symbol {
-    width: 50px;
-  }
-
-  .hospital-logo-symbol span {
-    font-size: 50px;
-  }
-
-  .hospital-appointment-button {
-    padding: 0 13px;
-    gap: 8px;
-  }
-}
-
-/* =========================================
-   SMALL LAPTOPS
-========================================= */
-
-@media (max-width: 1100px) {
-  .hospital-topbar-inner {
-    grid-template-columns: 1fr auto;
-    gap: 8px 15px;
-    padding: 10px 0;
-  }
-
-  .topbar-address {
-    justify-self: start;
-  }
-
-  .topbar-phones {
-    justify-self: end;
-  }
-
-  .topbar-hours {
-    grid-column: 1 / -1;
-    justify-self: center;
-  }
-
-  .hospital-navbar-inner {
-    min-height: 95px;
-  }
-
-  .hospital-menu-toggle {
-    display: flex;
-    flex-shrink: 0;
-  }
-
-  .hospital-navigation {
+  .nav-links {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
-    max-height: 0;
-    overflow: hidden;
-    visibility: hidden;
-    opacity: 0;
-    padding: 0 4%;
-    display: flex;
-    flex-direction: column;
+    right: 0;
+    padding: 18px 6vw 25px;
+    background: white;
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 18px 25px #102b4610;
     align-items: stretch;
-    gap: 20px;
-    box-sizing: border-box;
-    background: var(--hospital-dark);
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    transition:
-      max-height 0.4s ease,
-      opacity 0.3s ease,
-      padding 0.3s ease,
-      visibility 0.3s ease;
-  }
-
-  .hospital-navigation.navigation-open {
-    max-height: 80vh;
-    overflow-y: auto;
-    visibility: visible;
-    opacity: 1;
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-
-  .hospital-nav-links {
-    width: 100%;
-    display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 5px;
+    gap: 3px;
   }
 
-  .hospital-nav-link {
-    justify-content: flex-start;
-    min-height: 45px;
-    padding: 0 12px;
-    border-radius: 5px;
-    box-sizing: border-box;
+  .nav-links.nav-open {
+    display: flex;
+    animation: menuDrop 0.25s ease both;
   }
 
-  .hospital-nav-link:hover,
-  .hospital-nav-link.active {
-    background: rgba(244, 198, 107, 0.1);
+  .nav-link {
+    padding: 12px 0;
   }
 
-  .hospital-nav-link::after {
-    left: 12px;
-    bottom: 3px;
+  .nav-link::after {
+    bottom: 5px;
   }
 
-  .hospital-appointment-button {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
-
-@media (max-width: 600px) {
-  .hospital-container {
-    width: 92%;
-  }
-
-  .hospital-topbar-inner {
-    grid-template-columns: 1fr;
-    justify-items: center;
+  .nav-appointment {
     text-align: center;
-    gap: 8px;
-    padding: 11px 0;
+    margin-top: 9px;
+  }
+}
+
+@media (max-width: 620px) {
+  .top-strip-inner {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
   }
 
-  .topbar-item,
-  .topbar-address,
-  .topbar-phones,
-  .topbar-hours {
-    justify-self: center;
-    justify-content: center;
-    white-space: normal;
+  .top-strip-right {
+    gap: 10px;
     flex-wrap: wrap;
-    font-size: 11px;
+    font-size: 0.7rem;
   }
 
-  .hospital-navbar-inner {
-    min-height: 82px;
-    gap: 10px;
+  .brand-mark {
+    width: 42px;
+    height: 42px;
   }
 
-  .hospital-brand {
-    gap: 10px;
+  .brand-copy strong {
+    font-size: 0.9rem;
   }
 
-  .hospital-logo-symbol {
-    width: 39px;
-    height: 47px;
-    border-bottom-width: 4px;
-  }
-
-  .hospital-logo-symbol span {
-    font-size: 40px;
-  }
-
-  .brand-name {
-    font-size: 18px;
-    letter-spacing: 0.5px;
-  }
-
-  .brand-hospital {
-    font-size: 13px;
-    letter-spacing: 3px;
-  }
-
-  .brand-tagline {
-    font-size: 8px;
-  }
-
-  .hospital-menu-toggle {
-    width: 40px;
-    height: 40px;
+  .brand-copy small {
+    font-size: 0.54rem;
   }
 }
 
-/* =========================================
-   ACCESSIBILITY
-========================================= */
+@keyframes menuDrop {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 
-.hospital-nav-link:focus-visible,
-.hospital-appointment-button:focus-visible,
-.hospital-brand:focus-visible,
-.topbar-phones a:focus-visible,
-.hospital-menu-toggle:focus-visible {
-  outline: 3px solid #ffffff;
-  outline-offset: 4px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hospital-header *,
-  .hospital-header *::before,
-  .hospital-header *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

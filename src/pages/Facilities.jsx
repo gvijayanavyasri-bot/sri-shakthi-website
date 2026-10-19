@@ -1,332 +1,383 @@
-
+import React from "react";
 import { Link } from "react-router-dom";
 import "./Facilities.css";
 
 const facilities = [
   {
     number: "01",
-    category: "PATIENT WELCOME",
-    title: "Reception & Waiting Lounge",
+    icon: "✚",
+    category: "CONSULTATION",
+    title: "Consultation Rooms",
     description:
-      "A welcoming environment designed to help patients and visitors feel comfortable from arrival.",
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=85",
-    alt: "Bright and welcoming healthcare interior",
-    icon: "✦",
+      "Dedicated consultation spaces for medical evaluation, patient discussions, and personalized healthcare guidance.",
+    features: [
+      "Individual medical consultations",
+      "Clinical assessment and guidance",
+      "Patient-focused communication",
+    ],
   },
   {
     number: "02",
-    category: "PATIENT COMFORT",
-    title: "Inpatient Rooms",
-    description:
-      "Comfortable patient accommodation designed to support rest, privacy, and recovery.",
-    image:
-      "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1000&q=85",
-    alt: "Hospital patient care room",
     icon: "♡",
+    category: "INPATIENT CARE",
+    title: "Inpatient Facilities",
+    description:
+      "Supportive inpatient care for patients who require hospital admission, medical treatment, and observation.",
+    features: [
+      "Patient admission and care",
+      "Medical observation",
+      "Individual care planning",
+    ],
   },
   {
     number: "03",
-    category: "MEDICAL CONSULTATION",
-    title: "Consultation Rooms",
+    icon: "⌕",
+    category: "DIAGNOSTICS",
+    title: "Diagnostic Laboratory",
     description:
-      "Dedicated spaces for patient consultations, health discussions, and medical assessment.",
-    image:
-      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=85",
-    alt: "Professional clinical consultation environment",
-    icon: "✚",
+      "Laboratory testing supports medical assessments and helps healthcare professionals make informed decisions.",
+    features: [
+      "Diagnostic testing",
+      "Clinical evaluation support",
+      "Laboratory reporting processes",
+    ],
   },
   {
     number: "04",
-    category: "DIAGNOSTIC SUPPORT",
-    title: "Diagnostic Facilities",
+    icon: "✧",
+    category: "PHARMACY",
+    title: "In-house Pharmacy",
     description:
-      "Clinical spaces that support medical assessment and diagnostic services.",
-    image:
-      "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=85",
-    alt: "Medical diagnostic and clinical environment",
-    icon: "⌕",
+      "Convenient access to prescribed medicines within the hospital to support treatment and patient convenience.",
+    features: [
+      "Access to prescribed medicines",
+      "Medication-related guidance",
+      "Convenient hospital access",
+    ],
   },
   {
     number: "05",
-    category: "PATIENT SERVICES",
-    title: "Medical Support Areas",
+    icon: "✚",
+    category: "URGENT CARE",
+    title: "Emergency Care",
     description:
-      "Organized healthcare spaces that help support patient needs and daily hospital activities.",
-    image:
-      "https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1000&q=85",
-    alt: "Medical equipment in a healthcare setting",
-    icon: "✥",
+      "Medical assessment and assistance for urgent health concerns, with appropriate treatment and referral guidance.",
+    features: [
+      "Urgent medical assessment",
+      "Initial treatment support",
+      "Appropriate referral when needed",
+    ],
   },
   {
     number: "06",
-    category: "HEALTHCARE ENVIRONMENT",
-    title: "Hospital Interior",
+    icon: "◷",
+    category: "SHORT-STAY CARE",
+    title: "Day Care Services",
     description:
-      "A thoughtfully presented healthcare environment focused on cleanliness, comfort, and accessibility.",
-    image:
-      "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1000&q=85",
-    alt: "Hospital interior and healthcare facilities",
-    icon: "＋",
+      "Medical care and suitable procedures for patients who do not require an overnight hospital admission.",
+    features: [
+      "Short-duration treatments",
+      "Clinical supervision",
+      "Patient comfort and guidance",
+    ],
+  },
+];
+
+const carePrinciples = [
+  {
+    number: "01",
+    icon: "♡",
+    title: "Patient Comfort",
+    description:
+      "A considerate approach that respects patient comfort, dignity, and individual needs.",
+  },
+  {
+    number: "02",
+    icon: "✧",
+    title: "Clinical Precision",
+    description:
+      "Medical assessment and diagnostic support to guide appropriate healthcare decisions.",
+  },
+  {
+    number: "03",
+    icon: "✚",
+    title: "Coordinated Care",
+    description:
+      "Connecting consultations, investigations, and treatment guidance around patient needs.",
   },
 ];
 
 function Facilities() {
   return (
-    <main className="facilities-page">
-      {/* HERO */}
-      <section className="facilities-hero">
-        <div className="facilities-container facilities-hero-grid">
-          <div className="facilities-hero-copy">
-            <span className="facilities-eyebrow">
-              <span className="facilities-eyebrow-line" />
-              SRI SHAKTHI HOSPITAL & HEALTHCARE
+    <main className="hp-page hp-facilities">
+      {/* ================= HERO ================= */}
+      <section className="fac-hero">
+        <div className="hp-container fac-hero-grid">
+          <div className="fac-hero-content">
+            <span className="fac-eyebrow">
+              <span className="fac-eyebrow-line" />
+              SRI SAKTHI HOSPITAL
             </span>
 
             <h1>
-              Thoughtfully
-              <span>Designed.</span>
-              <span>Patient Focused.</span>
+              Thoughtfully Designed.
+              <br />
+              <span>Focused on Your Care.</span>
             </h1>
 
-            <p className="facilities-hero-description">
-              Discover a welcoming healthcare environment with spaces
-              designed around patient comfort, professional care, and
-              thoughtful attention at every step.
+            <p>
+              Discover a patient-focused healthcare environment designed
+              around consultation, diagnosis, treatment, and supportive
+              medical care.
             </p>
 
-            <div className="facilities-hero-actions">
-              <a href="#facility-list" className="facilities-button">
-                Explore Our Facilities <span>↗</span>
-              </a>
+            <div className="fac-hero-actions">
+              <Link to="/appointment" className="fac-btn fac-btn-primary">
+                Request an Appointment <span>↗</span>
+              </Link>
 
-              <Link to="/contact" className="facilities-secondary-link">
-                Contact Our Team <span>⟶</span>
+              <Link to="/contact" className="fac-btn fac-btn-outline">
+                Contact Our Hospital
               </Link>
             </div>
 
-            <div className="facilities-trust-list">
-              <span><b>✓</b> Patient comfort</span>
-              <span><b>✓</b> Thoughtful care</span>
-              <span><b>✓</b> Welcoming spaces</span>
+            <div className="fac-trust-note">
+              <span className="fac-trust-icon">✦</span>
+
+              <div>
+                <strong>Compassion • Excellence • Trust</strong>
+                <small>Healthcare with a personal touch</small>
+              </div>
             </div>
           </div>
 
-          <div className="facilities-hero-visual">
-            <div className="facilities-hero-outline" />
+          {/* CSS-ONLY HOSPITAL ILLUSTRATION */}
+          <div className="fac-hero-visual">
+            <div className="fac-orbit fac-orbit-one" />
+            <div className="fac-orbit fac-orbit-two" />
 
-            <div className="facilities-hero-image-frame">
-              <img
-                src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1400&q=90"
-                alt="Hospital interior and patient care environment"
-                className="facilities-hero-image"
-              />
+            <div className="fac-hospital-art">
+              <div className="fac-art-header">
+                <div className="fac-art-logo">SS</div>
 
-              <div className="facilities-hero-image-shade" />
-
-              <div className="facilities-hero-image-label">
-                <div className="facilities-label-icon">✚</div>
                 <div>
-                  <strong>Care Comes First</strong>
-                  <span>Comfort · Care · Confidence</span>
+                  <strong>SRI SAKTHI</strong>
+                  <small>HOSPITAL</small>
                 </div>
               </div>
-            </div>
 
-            <div className="facilities-floating-note">
-              <span className="facilities-note-icon">♡</span>
-              <div>
-                <strong>Every Patient Matters</strong>
-                <p>Compassion in every interaction</p>
+              <div className="fac-art-cross">✚</div>
+
+              <div className="fac-art-building">
+                <div className="fac-building-roof" />
+
+                <div className="fac-building-body">
+                  <div className="fac-building-sign">
+                    <span>✚</span>
+                    <small>MEDICAL CARE</small>
+                  </div>
+
+                  <div className="fac-building-windows">
+                    {Array.from({ length: 12 }).map((_, index) => (
+                      <span key={index} />
+                    ))}
+                  </div>
+
+                  <div className="fac-building-door" />
+                </div>
+              </div>
+
+              <div className="fac-art-footer">
+                <span>COMPASSION</span>
+                <span>CARE</span>
+                <span>TRUST</span>
               </div>
             </div>
 
-            <span className="facilities-vertical-text">
-              SRI SHAKTHI HOSPITAL
-            </span>
+            <div className="fac-floating-card fac-floating-top">
+              <span className="fac-floating-icon">♡</span>
+              <div>
+                <strong>Patient First</strong>
+                <small>Care with compassion</small>
+              </div>
+            </div>
+
+            <div className="fac-floating-card fac-floating-bottom">
+              <span className="fac-floating-icon">✚</span>
+              <div>
+                <strong>Healthcare Support</strong>
+                <small>Care at every step</small>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div className="fac-hero-bottom-line" />
       </section>
 
-      {/* INTRODUCTION */}
-      <section className="facilities-intro">
-        <div className="facilities-container facilities-intro-grid">
-          <div>
-            <span className="facilities-eyebrow">
-              <span className="facilities-eyebrow-line" />
-              OUR ENVIRONMENT
-            </span>
+      {/* ================= INTRODUCTION ================= */}
+      <section className="fac-intro-section">
+        <div className="hp-container fac-intro-grid">
+          <div className="fac-intro-heading">
+            <span className="fac-eyebrow">OUR FACILITIES</span>
 
-            <h2 className="facilities-heading">
-              A space for care.
-              <span>A place for comfort.</span>
+            <h2>
+              A Supportive
+              <br />
+              <span>Healthcare Environment.</span>
             </h2>
           </div>
 
-          <p className="facilities-intro-text">
-            The healthcare environment matters. From the first welcome
-            to the spaces where consultations take place, each area
-            should help patients feel informed, comfortable, and respected.
-            Explore the facilities and care spaces presented below.
-          </p>
+          <div className="fac-intro-copy">
+            <p>
+              At Sri Sakthi Hospital, our facilities support the different
+              stages of a patient's healthcare journey, from consultation
+              and diagnostic evaluation to treatment and follow-up.
+            </p>
+
+            <p>
+              We believe that clear communication, appropriate medical
+              guidance, and respectful patient care are essential parts
+              of a positive healthcare experience.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* FACILITY IMAGE CARDS */}
-      <section
-        className="facilities-list-section"
-        id="facility-list"
-      >
-        <div className="facilities-container">
-          <div className="facilities-section-header">
-            <div>
-              <span className="facilities-eyebrow">
-                <span className="facilities-eyebrow-line" />
-                INSIDE OUR HOSPITAL
-              </span>
+      {/* ================= FACILITY CARDS ================= */}
+      <section className="fac-services-section">
+        <div className="hp-container">
+          <div className="fac-section-heading">
+            <span className="fac-eyebrow">CARE UNDER ONE ROOF</span>
 
-              <h2 className="facilities-heading">
-                Facilities & <span>Care Spaces</span>
-              </h2>
-            </div>
+            <h2>
+              Our Hospital
+              <span> Facilities.</span>
+            </h2>
 
             <p>
-              Explore the spaces that contribute to a welcoming and
-              patient-focused healthcare experience.
+              Explore the key facilities supporting medical consultation,
+              diagnosis, treatment, and patient care.
             </p>
           </div>
 
-          <div className="facilities-grid">
-            {facilities.map((facility) => (
+          <div className="fac-grid">
+            {facilities.map((facility, index) => (
               <article
-                className="facility-card"
+                className="fac-card"
                 key={facility.number}
+                style={{ "--fac-index": index }}
               >
-                <div className="facility-card-image-wrap">
-                  <img
-                    className="facility-card-image"
-                    src={facility.image}
-                    alt={facility.alt}
-                    loading="lazy"
-                  />
+                <div className="fac-card-top">
+                  <span className="fac-number">{facility.number}</span>
 
-                  <span className="facility-number">
-                    {facility.number}
-                  </span>
-
-                  <span className="facility-image-icon">
-                    {facility.icon}
-                  </span>
+                  <span className="fac-card-icon">{facility.icon}</span>
                 </div>
 
-                <div className="facility-card-content">
-                  <span className="facility-category">
-                    {facility.category}
-                  </span>
+                <span className="fac-category">{facility.category}</span>
 
-                  <h3>{facility.title}</h3>
+                <h3>{facility.title}</h3>
 
-                  <p>{facility.description}</p>
+                <p className="fac-card-description">
+                  {facility.description}
+                </p>
 
-                  <div className="facility-card-footer">
-                    <span>Patient-focused environment</span>
-                    <span className="facility-card-arrow">↗</span>
-                  </div>
-                </div>
+                <ul className="fac-feature-list">
+                  {facility.features.map((feature) => (
+                    <li key={feature}>
+                      <span>✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  to="/appointment"
+                  className="fac-card-link"
+                  aria-label={`Enquire about ${facility.title}`}
+                >
+                  Enquire About Care <span>↗</span>
+                </Link>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* IMAGE AND TEXT FEATURE */}
-      <section className="facilities-feature">
-        <div className="facilities-container facilities-feature-grid">
-          <div className="facilities-feature-image-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=85"
-              alt="Healthcare professionals working in a clinical environment"
-              className="facilities-feature-image"
-              loading="lazy"
-            />
+      {/* ================= CARE PRINCIPLES ================= */}
+      <section className="fac-principles-section">
+        <div className="hp-container">
+          <div className="fac-section-heading">
+            <span className="fac-eyebrow">OUR APPROACH</span>
 
-            <div className="facilities-feature-badge">
-              <span>✚</span>
-              <div>
-                <strong>Thoughtful Healthcare</strong>
-                <small>Care with compassion</small>
-              </div>
-            </div>
-          </div>
-
-          <div className="facilities-feature-copy">
-            <span className="facilities-eyebrow">
-              <span className="facilities-eyebrow-line" />
-              COMFORT IN EVERY DETAIL
-            </span>
-
-            <h2 className="facilities-heading">
-              Where thoughtful
-              <span> spaces meet</span>
-              compassionate care.
+            <h2>
+              More Than Facilities.
+              <br />
+              <span>A Commitment to Care.</span>
             </h2>
 
             <p>
-              A welcoming hospital environment is about more than
-              appearance. Clear spaces, comfortable surroundings,
-              respectful communication, and attention to patient
-              needs all contribute to the overall experience.
+              The patient experience is shaped by thoughtful communication,
+              responsible medical practice, and compassionate support.
             </p>
+          </div>
 
-            <ul className="facilities-feature-points">
-              <li>
-                <span>✓</span>
-                A welcoming experience for patients and visitors
-              </li>
-              <li>
-                <span>✓</span>
-                Spaces designed around comfort and privacy
-              </li>
-              <li>
-                <span>✓</span>
-                A patient-focused approach to healthcare
-              </li>
-            </ul>
+          <div className="fac-principles-grid">
+            {carePrinciples.map((item) => (
+              <article className="fac-principle-card" key={item.number}>
+                <div className="fac-principle-top">
+                  <span className="fac-principle-icon">{item.icon}</span>
+                  <span className="fac-principle-number">{item.number}</span>
+                </div>
 
-            <Link to="/services" className="facilities-button">
-              Discover Our Services <span>↗</span>
-            </Link>
+                <h3>{item.title}</h3>
+
+                <p>{item.description}</p>
+
+                <span className="fac-principle-line" />
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CALL TO ACTION */}
-      <section className="facilities-cta">
-        <div className="facilities-cta-decoration" />
+      {/* ================= APPOINTMENT CTA ================= */}
+      <section className="fac-cta-section">
+        <div className="hp-container">
+          <div className="fac-cta-box">
+            <div className="fac-cta-content">
+              <span className="fac-eyebrow fac-eyebrow-light">
+                YOUR HEALTH MATTERS
+              </span>
 
-        <div className="facilities-container facilities-cta-content">
-          <span className="facilities-cta-eyebrow">
-            SRI SHAKTHI HOSPITAL & HEALTHCARE
-          </span>
+              <h2>
+                Your Health.
+                <br />
+                Our Commitment.
+              </h2>
 
-          <h2>
-            Your care journey
-            <span> starts with a conversation.</span>
-          </h2>
+              <p>
+                Have questions about our facilities or need to arrange
+                a consultation? Contact Sri Sakthi Hospital for assistance.
+              </p>
 
-          <p>
-            Contact our team to learn more about our facilities,
-            healthcare services, and appointment options.
-          </p>
+              <div className="fac-cta-actions">
+                <Link to="/appointment" className="fac-btn fac-btn-gold">
+                  Request an Appointment <span>↗</span>
+                </Link>
 
-          <div className="facilities-cta-actions">
-            <Link to="/contact" className="facilities-cta-button">
-              Contact Our Team <span>↗</span>
-            </Link>
+                <a href="tel:9494456007" className="fac-btn fac-btn-light">
+                  Call 9494456007
+                </a>
+              </div>
+            </div>
 
-            <Link to="/doctor" className="facilities-cta-outline">
-              Meet Our Doctor <span>⟶</span>
-            </Link>
+            <div className="fac-cta-emblem" aria-hidden="true">
+              <span>✚</span>
+              <small>LISTENING</small>
+              <small>CARING</small>
+              <small>HEALING</small>
+            </div>
           </div>
         </div>
       </section>
