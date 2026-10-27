@@ -1,142 +1,241 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import {
+  CalendarDays,
+  Clock,
+  Phone,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
+
 import "./Appointment.css";
-export default function Appointment() {
+
+function Appointment() {
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
+
     setSubmitted(true);
     event.currentTarget.reset();
   }
 
   return (
-    <div className="page">
+    <div className="appointment-page">
       <section className="page-hero">
-        <div className="container">
-          <span className="eyebrow light-eyebrow">WE ARE HERE TO HELP</span>
+        <div className="container page-hero-content">
+          <div className="breadcrumb">Sri Sakthi Hospital / Appointment</div>
+
           <h1>Request an Appointment</h1>
-          <p>Share your details to prepare an appointment request.</p>
+
+          <p>
+            Complete the form below to prepare your appointment request.
+            Please contact the hospital to confirm your booking.
+          </p>
         </div>
       </section>
 
-      <section className="section-padding">
+      <section className="section-padding appointment-section">
         <div className="container appointment-layout">
-          <div className="appointment-info">
-            <span className="eyebrow">PATIENT INFORMATION</span>
-            <h2>Your Health Deserves Attention</h2>
+          <div className="appointment-information">
+            <span className="appointment-eyebrow">YOUR HEALTH COMES FIRST</span>
+
+            <h2>We are here to help you take the next step.</h2>
 
             <p>
-              Complete the form with your contact details and preferred
-              consultation time.
+              Share your contact details and preferred consultation time.
+              Hospital staff can confirm availability and provide further
+              information.
             </p>
 
             <div className="appointment-info-card">
-              <span>🕒</span>
+              <div className="appointment-info-icon">
+                <CalendarDays size={24} />
+              </div>
+
               <div>
-                <strong>Consultation Hours</strong>
-                <p>Monday–Saturday</p>
-                <p>9:00 AM–12:30 PM</p>
-                <p>5:30 PM–9:00 PM</p>
+                <h3>Appointment Requests</h3>
+                <p>Provide your preferred date and consultation time.</p>
               </div>
             </div>
 
             <div className="appointment-info-card">
-              <span>✚</span>
+              <div className="appointment-info-icon">
+                <Clock size={24} />
+              </div>
+
               <div>
-                <strong>Before Your Visit</strong>
-                <p>Bring relevant medical records and current medication details.</p>
+                <h3>Consultation Hours</h3>
+                <p>Monday – Saturday</p>
+                <p>9:00 AM – 12:30 PM</p>
+                <p>5:30 PM – 9:00 PM</p>
               </div>
             </div>
 
-            <p className="privacy-note">
-              This demonstration form does not transmit or store patient
-              information. Connect it to a secure backend before accepting
-              real patient details.
-            </p>
+            <div className="appointment-info-card">
+              <div className="appointment-info-icon">
+                <Phone size={24} />
+              </div>
+
+              <div>
+                <h3>Need Assistance?</h3>
+                <a href="tel:9494456007">9494456007</a>
+              </div>
+            </div>
+
+            <div className="appointment-note">
+              Appointment requests submitted through this demo are not
+              transmitted to the hospital. Call the hospital to confirm your
+              appointment.
+            </div>
           </div>
 
-          <form className="appointment-form" onSubmit={handleSubmit}>
-            <h2>Appointment Details</h2>
+          <div className="appointment-form-card">
+            <div className="appointment-form-heading">
+              <span>BOOK A VISIT</span>
+              <h2>Appointment Details</h2>
+              <p>Fields marked with * are required.</p>
+            </div>
 
             {submitted && (
-              <div className="success-message" role="status">
-                Your demonstration request was submitted successfully.
-                No appointment has been booked. Please contact the hospital
-                to confirm availability.
+              <div className="appointment-success" role="status">
+                <CheckCircle2 size={23} />
+
+                <div>
+                  <strong>Request form completed</strong>
+                  <p>
+                    This is a front-end demo. Please call the hospital to
+                    confirm your appointment.
+                  </p>
+                </div>
               </div>
             )}
 
-            <div className="form-row">
-              <label>
-                Full Name *
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Enter your full name"
-                  required
-                  autoComplete="name"
-                />
-              </label>
+            <form className="appointment-form" onSubmit={handleSubmit}>
+              <div className="appointment-field-row">
+                <div className="form-field">
+                  <label htmlFor="appointment-name">Full Name *</label>
+                  <input
+                    id="appointment-name"
+                    name="name"
+                    type="text"
+                    placeholder="Your full name"
+                    required
+                  />
+                </div>
 
-              <label>
-                Phone Number *
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Enter your phone number"
-                  required
-                  pattern="[0-9+\-\s()]{7,20}"
-                  autoComplete="tel"
-                />
-              </label>
-            </div>
+                <div className="form-field">
+                  <label htmlFor="appointment-phone">Phone Number *</label>
+                  <input
+                    id="appointment-phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Your phone number"
+                    required
+                  />
+                </div>
+              </div>
 
-            <div className="form-row">
-              <label>
-                Email Address
+              <div className="form-field">
+                <label htmlFor="appointment-email">Email Address</label>
                 <input
-                  type="email"
+                  id="appointment-email"
                   name="email"
-                  placeholder="Enter your email"
-                  autoComplete="email"
+                  type="email"
+                  placeholder="Your email address"
                 />
-              </label>
+              </div>
 
-              <label>
-                Preferred Date *
-                <input
-                  type="date"
-                  name="date"
+              <div className="form-field">
+                <label htmlFor="appointment-service">Service Required *</label>
+                <select
+                  id="appointment-service"
+                  name="service"
                   required
-                  min={new Date().toLocaleDateString("en-CA")}
+                  defaultValue=""
+                >
+                  <option value="" disabled>
+                    Select a service
+                  </option>
+                  <option value="general-medicine">General Medicine</option>
+                  <option value="family-medicine">Family Medicine</option>
+                  <option value="health-checkup">Health Check-up</option>
+                  <option value="follow-up">Follow-up Consultation</option>
+                  <option value="other">Other / Not Sure</option>
+                </select>
+              </div>
+
+              <div className="appointment-field-row">
+                <div className="form-field">
+                  <label htmlFor="appointment-date">Preferred Date *</label>
+                  <input
+                    id="appointment-date"
+                    name="date"
+                    type="date"
+                    min={new Date().toLocaleDateString("en-CA")}
+                    required
+                  />
+                </div>
+
+                <div className="form-field">
+                  <label htmlFor="appointment-time">Preferred Time *</label>
+                  <select
+                    id="appointment-time"
+                    name="time"
+                    required
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Select a time
+                    </option>
+                    <option value="morning">Morning: 9 AM – 12:30 PM</option>
+                    <option value="evening">Evening: 5:30 PM – 9 PM</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-field">
+                <label htmlFor="appointment-message">
+                  Additional Information
+                </label>
+                <textarea
+                  id="appointment-message"
+                  name="message"
+                  rows="4"
+                  placeholder="Briefly describe your appointment needs"
                 />
-              </label>
-            </div>
+              </div>
 
-            <label>
-              Preferred Session *
-              <select name="session" required defaultValue="">
-                <option value="" disabled>Select a session</option>
-                <option value="morning">Morning — 9:00 AM to 12:30 PM</option>
-                <option value="evening">Evening — 5:30 PM to 9:00 PM</option>
-              </select>
-            </label>
+              <button
+                type="submit"
+                className="primary-btn appointment-submit"
+              >
+                Submit Request <ArrowRight size={18} />
+              </button>
 
-            <label>
-              Reason for Visit
-              <textarea
-                name="reason"
-                rows="4"
-                placeholder="Briefly describe your appointment requirements"
-              />
-            </label>
+              <p className="appointment-disclaimer">
+                Submitting this form does not confirm an appointment. Please
+                contact the hospital directly to verify availability.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
 
-            <button type="submit" className="btn btn-navy form-submit">
-              Submit Appointment Request →
-            </button>
-          </form>
+      <section className="appointment-bottom">
+        <div className="container appointment-bottom-inner">
+          <div>
+            <h2>Have more questions?</h2>
+            <p>Contact the hospital for further assistance.</p>
+          </div>
+
+          <Link to="/contact" className="appointment-contact-btn">
+            Contact Us <ArrowRight size={17} />
+          </Link>
         </div>
       </section>
     </div>
   );
 }
+
+export default Appointment;

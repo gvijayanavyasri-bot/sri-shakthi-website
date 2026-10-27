@@ -1,37 +1,68 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
+// Components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 
+// Pages
 import Home from "./pages/Home";
-import About from "./pages/About";
+import AboutDoctor from "./pages/AboutDoctor";
 import Services from "./pages/Services";
-import Doctor from "./pages/Doctor";
-import Facilities from "./pages/Facilities";
-import Gallery from "./pages/Gallery";
-import Appointment from "./pages/Appointment";
+import Hospital from "./pages/Hospital";
 import Contact from "./pages/Contact";
 
-export default function App() {
+function App() {
   return (
-    <BrowserRouter>
+    <>
+      {/* Automatically scroll to top when changing pages */}
       <ScrollToTop />
 
+      {/* Navigation Bar */}
       <Header />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/doctor" element={<Doctor />} />
-        <Route path="/facilities" element={<Facilities />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/appointment" element={<Appointment />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      {/* Website Pages */}
+      <main>
+        <Routes>
+          {/* Home Page */}
+          <Route path="/" element={<Home />} />
 
+          {/* About Doctor Page */}
+          <Route
+            path="/about-doctor"
+            element={<AboutDoctor />}
+          />
+
+          {/* Services Page */}
+          <Route
+            path="/services"
+            element={<Services />}
+          />
+
+          {/* Hospital Page */}
+          <Route
+            path="/hospital"
+            element={<Hospital />}
+          />
+
+          {/* Contact Page */}
+          <Route
+            path="/contact"
+            element={<Contact />}
+          />
+
+          {/* Redirect unknown URLs to Home */}
+          <Route
+            path="*"
+            element={<Navigate to="/" replace />}
+          />
+        </Routes>
+      </main>
+
+      {/* Footer — displayed on every page */}
       <Footer />
-    </BrowserRouter>
+    </>
   );
 }
+
+export default App;

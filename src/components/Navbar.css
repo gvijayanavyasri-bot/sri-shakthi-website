@@ -1,260 +1,525 @@
+/* ========================================
+SRI SAKTHI HOSPITAL - NAVBAR
+Professional Navy Blue and Gold Theme
+======================================== */
+
+/* Theme Variables */
+:root {
+--navy: #102b46;
+--navy-deep: #091d30;
+--gold: #c49a43;
+--gold-light: #e4c77e;
+--text-dark: #27384b;
+--text-muted: #657586;
+--line: #e4eaf0;
+--white: #ffffff;
+}
+
+/* General Navbar Reset */
+.navbar,
+.navbar * {
+box-sizing: border-box;
+}
+
+.top-strip,
+.top-strip * {
+box-sizing: border-box;
+}
+
+.navbar a,
+.top-strip a {
+text-decoration: none;
+}
+
+/* ========================================
+TOP INFORMATION BAR
+======================================== */
+
 .top-strip {
-  background: var(--navy-deep);
-  color: #e7edf2;
-  font-size: 0.76rem;
-  letter-spacing: 0.02em;
+position: relative;
+z-index: 102;
+background: var(--navy-deep);
+color: #edf3f8;
+font-size: 0.76rem;
+font-weight: 600;
+letter-spacing: 0.02em;
 }
 
 .top-strip-inner {
-  min-height: 37px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+width: min(100% - 40px, 1320px);
+min-height: 38px;
+margin-inline: auto;
+display: flex;
+justify-content: space-between;
+align-items: center;
+gap: 20px;
 }
 
-.top-strip-right {
-  display: flex;
-  gap: 22px;
-  align-items: center;
-}
-
-.top-strip a {
-  color: var(--gold-light);
-  font-weight: 800;
+.top-strip-message {
+display: inline-flex;
+align-items: center;
+gap: 8px;
 }
 
 .status-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 7px;
-  border-radius: 50%;
-  background: #74c69d;
-  box-shadow: 0 0 0 4px #74c69d22;
+display: inline-block;
+width: 8px;
+height: 8px;
+flex-shrink: 0;
+border-radius: 50%;
+background: #74c69d;
+box-shadow: 0 0 0 4px rgb(116 198 157 / 13%);
 }
 
+.top-strip-right {
+display: flex;
+align-items: center;
+justify-content: flex-end;
+gap: 22px;
+}
+
+.opd-hours {
+color: #edf3f8;
+}
+
+.top-strip-phone {
+color: var(--gold-light);
+font-weight: 800;
+white-space: nowrap;
+transition: color 0.25s ease;
+}
+
+.top-strip-phone:hover {
+color: var(--white);
+}
+
+/* ========================================
+MAIN NAVIGATION
+======================================== */
+
 .navbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.96);
-  border-bottom: 1px solid #e5eaf0;
-  backdrop-filter: blur(14px);
+position: sticky;
+top: 0;
+z-index: 100;
+width: 100%;
+background: rgb(255 255 255 / 97%);
+border-bottom: 1px solid var(--line);
+box-shadow: 0 5px 20px rgb(16 43 70 / 5%);
+backdrop-filter: blur(14px);
+-webkit-backdrop-filter: blur(14px);
 }
 
 .nav-inner {
-  min-height: 88px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 25px;
+width: min(100% - 40px, 1320px);
+min-height: 88px;
+margin-inline: auto;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 28px;
 }
+
+/* ========================================
+HOSPITAL BRAND AND LOGO
+======================================== */
 
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+display: inline-flex;
+align-items: center;
+gap: 12px;
+flex-shrink: 0;
+color: var(--navy);
+text-decoration: none;
 }
 
-.brand-mark {
-  width: 47px;
-  height: 47px;
-  display: grid;
-  place-items: center;
-  position: relative;
-  border-radius: 14px 14px 14px 4px;
-  color: white;
-  background: var(--navy);
-  font-family: var(--serif);
-  font-size: 1.7rem;
-  font-weight: 800;
-  box-shadow: 0 7px 18px #102b4620;
+.hospital-logo {
+display: block;
+width: 58px;
+height: 58px;
+flex-shrink: 0;
+object-fit: contain;
+object-position: center;
+transition: transform 0.3s ease;
 }
 
-.brand-mark span {
-  color: var(--gold-light);
-  font-family: var(--sans);
-  font-size: 0.9rem;
-  position: absolute;
-  right: 5px;
-  top: 3px;
+.brand:hover .hospital-logo {
+transform: scale(1.05);
 }
 
 .brand-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 4px;
 }
 
 .brand-copy strong {
-  font-size: 1.03rem;
-  color: var(--navy);
-  letter-spacing: 0.11em;
-  font-weight: 900;
+color: var(--navy);
+font-size: 1.08rem;
+line-height: 1.2;
+font-weight: 900;
+letter-spacing: 0.075em;
+white-space: nowrap;
 }
 
 .brand-copy small {
-  color: #7a8793;
-  font-size: 0.61rem;
-  font-weight: 800;
-  letter-spacing: 0.13em;
+color: var(--text-muted);
+font-size: 0.64rem;
+line-height: 1.4;
+font-weight: 800;
+letter-spacing: 0.105em;
+white-space: nowrap;
 }
 
+/* ========================================
+NAVIGATION LINKS
+======================================== */
+
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: clamp(10px, 1.35vw, 23px);
+display: flex;
+align-items: center;
+justify-content: flex-end;
+gap: clamp(10px, 1.25vw, 21px);
 }
 
 .nav-link {
-  position: relative;
-  padding: 12px 0;
-  color: #47576a;
-  font-size: 0.84rem;
-  font-weight: 800;
-  transition: color 0.25s ease;
+position: relative;
+display: inline-flex;
+align-items: center;
+padding: 13px 0;
+color: #4b5969;
+font-size: 0.84rem;
+line-height: 1.4;
+font-weight: 800;
+white-space: nowrap;
+transition:
+color 0.25s ease,
+transform 0.25s ease;
 }
 
+/* Animated Gold Underline */
 .nav-link::after {
-  content: "";
-  position: absolute;
-  height: 2px;
-  width: 0;
-  left: 0;
-  bottom: 5px;
-  background: var(--gold);
-  transition: width 0.25s ease;
+content: "";
+position: absolute;
+left: 0;
+bottom: 5px;
+width: 0;
+height: 3px;
+border-radius: 5px;
+background: var(--gold);
+transition: width 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--navy);
+color: var(--navy);
+}
+
+.nav-link:hover {
+transform: translateY(-1px);
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
-  width: 100%;
+width: 100%;
 }
 
+/* ========================================
+APPOINTMENT BUTTON
+======================================== */
+
 .nav-appointment {
-  background: var(--gold);
-  color: var(--navy-deep);
-  padding: 13px 16px;
-  border-radius: 7px;
-  font-size: 0.82rem;
-  font-weight: 900;
-  white-space: nowrap;
-  transition: transform 0.25s, background 0.25s;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+gap: 9px;
+min-height: 45px;
+padding: 12px 17px;
+border: 1px solid var(--gold);
+border-radius: 7px;
+background: var(--gold);
+color: var(--navy-deep);
+font-size: 0.82rem;
+font-weight: 900;
+white-space: nowrap;
+box-shadow: 0 5px 14px rgb(196 154 67 / 14%);
+transition:
+transform 0.25s ease,
+background 0.25s ease,
+box-shadow 0.25s ease;
 }
 
 .nav-appointment span {
-  margin-left: 7px;
+display: inline-block;
+font-size: 1rem;
+transition: transform 0.25s ease;
 }
 
 .nav-appointment:hover {
-  transform: translateY(-2px);
-  background: var(--gold-light);
+transform: translateY(-2px);
+background: var(--gold-light);
+box-shadow: 0 8px 18px rgb(196 154 67 / 24%);
 }
 
+.nav-appointment:hover span {
+transform: translate(2px, -2px);
+}
+
+/* ========================================
+MOBILE HAMBURGER BUTTON
+======================================== */
+
 .menu-toggle {
-  display: none;
-  border: 0;
-  background: transparent;
-  padding: 8px;
-  cursor: pointer;
+display: none;
+width: 44px;
+height: 44px;
+padding: 9px;
+flex-shrink: 0;
+border: 1px solid var(--line);
+border-radius: 7px;
+background: var(--white);
+cursor: pointer;
 }
 
 .menu-toggle span {
-  width: 25px;
-  height: 2px;
-  background: var(--navy);
-  display: block;
-  margin: 5px;
-  transition: 0.25s;
+display: block;
+width: 24px;
+height: 2px;
+margin: 5px auto;
+border-radius: 5px;
+background: var(--navy);
+transition:
+transform 0.3s ease,
+opacity 0.3s ease;
 }
 
-@media (max-width: 1050px) {
-  .nav-inner {
-    min-height: 78px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    padding: 18px 6vw 25px;
-    background: white;
-    border-bottom: 1px solid var(--line);
-    box-shadow: 0 18px 25px #102b4610;
-    align-items: stretch;
-    flex-direction: column;
-    gap: 3px;
-  }
-
-  .nav-links.nav-open {
-    display: flex;
-    animation: menuDrop 0.25s ease both;
-  }
-
-  .nav-link {
-    padding: 12px 0;
-  }
-
-  .nav-link::after {
-    bottom: 5px;
-  }
-
-  .nav-appointment {
-    text-align: center;
-    margin-top: 9px;
-  }
+.menu-toggle.is-open span:nth-child(1) {
+transform: translateY(7px) rotate(45deg);
 }
+
+.menu-toggle.is-open span:nth-child(2) {
+opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ========================================
+TABLET AND SMALL DESKTOP
+======================================== */
+
+@media (max-width: 1100px) {
+.nav-inner {
+min-height: 78px;
+gap: 16px;
+}
+
+.brand {
+gap: 9px;
+}
+
+.hospital-logo {
+width: 50px;
+height: 50px;
+}
+
+.brand-copy strong {
+font-size: 0.94rem;
+letter-spacing: 0.045em;
+}
+
+.brand-copy small {
+font-size: 0.56rem;
+letter-spacing: 0.065em;
+}
+
+.menu-toggle {
+display: block;
+margin-left: auto;
+}
+
+.nav-links {
+position: absolute;
+top: 100%;
+left: 0;
+right: 0;
+display: none;
+align-items: stretch;
+flex-direction: column;
+gap: 3px;
+padding: 18px 24px 24px;
+border-top: 1px solid var(--line);
+border-bottom: 1px solid var(--line);
+background: var(--white);
+box-shadow: 0 16px 28px rgb(16 43 70 / 10%);
+}
+
+.nav-links.nav-open {
+display: flex;
+animation: menuDrop 0.25s ease both;
+}
+
+.nav-link {
+display: flex;
+width: 100%;
+padding: 12px 4px;
+font-size: 0.92rem;
+}
+
+.nav-link::after {
+bottom: 5px;
+max-width: 65px;
+}
+
+.nav-appointment {
+width: 100%;
+margin-top: 10px;
+}
+}
+
+/* ========================================
+MOBILE TOP INFORMATION BAR
+======================================== */
 
 @media (max-width: 620px) {
-  .top-strip-inner {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .top-strip-right {
-    gap: 10px;
-    flex-wrap: wrap;
-    font-size: 0.7rem;
-  }
-
-  .brand-mark {
-    width: 42px;
-    height: 42px;
-  }
-
-  .brand-copy strong {
-    font-size: 0.9rem;
-  }
-
-  .brand-copy small {
-    font-size: 0.54rem;
-  }
+.top-strip {
+font-size: 0.7rem;
 }
 
-@keyframes menuDrop {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
+.top-strip-inner {
+width: calc(100% - 28px);
+min-height: auto;
+align-items: flex-start;
+flex-direction: column;
+gap: 7px;
+padding-top: 9px;
+padding-bottom: 9px;
+}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.top-strip-right {
+width: 100%;
+align-items: flex-start;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 6px 12px;
+}
+
+.opd-hours {
+line-height: 1.5;
+}
+
+.nav-inner {
+width: calc(100% - 28px);
+min-height: 72px;
+gap: 10px;
+}
+
+.brand {
+gap: 8px;
+min-width: 0;
+}
+
+.hospital-logo {
+width: 44px;
+height: 44px;
+}
+
+.brand-copy {
+min-width: 0;
+}
+
+.brand-copy strong {
+font-size: 0.83rem;
+letter-spacing: 0.035em;
+}
+
+.brand-copy small {
+font-size: 0.49rem;
+letter-spacing: 0.035em;
+}
+
+.menu-toggle {
+width: 40px;
+height: 40px;
+}
+
+.nav-links {
+padding: 15px 20px 22px;
+}
+}
+
+/* ========================================
+EXTRA SMALL MOBILE SCREENS
+======================================== */
+
+@media (max-width: 360px) {
+.top-strip-inner,
+.nav-inner {
+width: calc(100% - 20px);
+}
+
+.hospital-logo {
+width: 36px;
+height: 36px;
+}
+
+.brand {
+gap: 6px;
+}
+
+.brand-copy strong {
+font-size: 0.73rem;
+letter-spacing: 0.02em;
+}
+
+.brand-copy small {
+font-size: 0.43rem;
+letter-spacing: 0.015em;
+}
+
+.menu-toggle {
+width: 36px;
+height: 36px;
+padding: 5px;
+}
+
+.top-strip-right {
+flex-direction: column;
+}
+}
+
+/* ========================================
+MENU ANIMATION
+======================================== */
+
+@keyframes menuDrop {
+from {
+opacity: 0;
+transform: translateY(-8px);
+}
+
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+/* ========================================
+REDUCED MOTION ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+.hospital-logo,
+.nav-link,
+.nav-link::after,
+.nav-appointment,
+.nav-appointment span,
+.menu-toggle span {
+transition: none;
+}
+
+.nav-links.nav-open {
+animation: none;
+}
 }

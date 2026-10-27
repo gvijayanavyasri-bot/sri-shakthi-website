@@ -1,110 +1,100 @@
-import { useEffect, useState } from "react";
+
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.css";
 
+const navItems = [
+  { label: "Home", path: "/" },
+  { label: "About Doctor", path: "/about-doctor" },
+  { label: "Services", path: "/services" },
+  { label: "Hospital", path: "/hospital" },
+  { label: "Contact", path: "/contact" },
+];
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showHeader, setShowHeader] = useState(true);
-
-  useEffect(() => {
-    let previousScroll = window.scrollY;
-
-    function handleScroll() {
-      const currentScroll = window.scrollY;
-
-      if (currentScroll < 100) {
-        setShowHeader(true);
-      } else if (currentScroll < previousScroll) {
-        // Show header when scrolling upward
-        setShowHeader(true);
-      } else if (currentScroll > previousScroll) {
-        // Hide header when scrolling downward
-        setShowHeader(false);
-      }
-
-      previousScroll = currentScroll;
-    }
-
-    window.addEventListener("scroll", handleScroll, {
-      passive: true,
-    });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header
-      className={`hospital-header ${showHeader ? "header-visible" : "header-hidden"}`}
-    >
-      {/* Top Information Bar */}
-      <div className="hospital-topbar">
-        <span className="topbar-plus">✚</span>
-        <span>Compassionate Care. Trusted Healthcare.</span>
-      </div>
+    <header className="ss-header">
+      <div className="ss-header-inner">
+        <Link
+          to="/"
+          className="ss-header-brand"
+          aria-label="Sri Shakthi Hospital home"
+          onClick={closeMenu}
+        >
+          <img
+            src="/images/logos.png"
+            alt="Logo"
+            className="ss-header-logo"
+          />
 
-      {/* Main Header */}
-      <div className="hospital-navbar">
-        <Link to="/" className="hospital-brand" onClick={closeMenu}>
-          <div className="hospital-logo">
-            <span>✚</span>
-          </div>
-
-          <div className="hospital-brand-text">
-            <h1>SRI SAKTHI</h1>
-            <h2>H O S P I T A L</h2>
-            <p>CARE WITH COMPASSION</p>
-          </div>
+          <span className="ss-header-brand-copy">
+            <strong>Sri Shakthi Hospital</strong>
+            <span>Listening • Caring • Healing</span>
+          </span>
         </Link>
 
-        {/* Mobile Menu Button */}
         <button
-          className={`mobile-menu-button ${menuOpen ? "menu-active" : ""}`}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle navigation menu"
+          type="button"
+          className={`ss-header-menu-button ${menuOpen ? "open" : ""}`}
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
           aria-expanded={menuOpen}
+          aria-controls="ss-header-navigation"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </button>
 
-        {/* Navigation */}
-        <nav className={`hospital-navigation ${menuOpen ? "nav-open" : ""}`}>
-          <NavLink to="/" end onClick={closeMenu}>
-            Home
-          </NavLink>
+        <nav
+          id="ss-header-navigation"
+          className={`ss-header-navigation ${menuOpen ? "open" : ""}`}
+          aria-label="Main navigation"
+        >
+          <div className="ss-header-links">
+            {navItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                end={item.path === "/"}
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `ss-header-link ${isActive ? "active" : ""}`
+                }
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </div>
 
-          <NavLink to="/about" onClick={closeMenu}>
-            About
-          </NavLink>
-
-          <NavLink to="/services" onClick={closeMenu}>
-            Services
-          </NavLink>
-
-          <NavLink to="/doctor" onClick={closeMenu}>
-            Doctor
-          </NavLink>
-
-          <NavLink to="/facilities" onClick={closeMenu}>
-            Facilities
-          </NavLink>
-
-          <NavLink to="/gallery" onClick={closeMenu}>
-            Gallery
-          </NavLink>
-
-          <NavLink to="/appointment" onClick={closeMenu}>
-            Appointment
-          </NavLink>
-
-          <NavLink to="/contact" onClick={closeMenu}>
-            Contact
-          </NavLink>
+          <a className="ss-header-call" href="tel:+919494456007">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M22 16.9v3a2 2 0 0 1-2.2 2
+                19.8 19.8 0 0 1-8.6-3.1
+                19.4 19.4 0 0 1-6-6
+                19.8 19.8 0 0 1-3.1-8.7
+                A2 2 0 0 1 4.1 2h3
+                a2 2 0 0 1 2 1.7
+                c.1 1 .4 2 .7 2.9
+                a2 2 0 0 1-.5 2.1L8 9.9
+                a16 16 0 0 0 6 6l1.2-1.3
+                a2 2 0 0 1 2.1-.5
+                c.9.3 1.9.6 2.9.7
+                a2 2 0 0 1 1.8 2.1Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>Call Now</span>
+          </a>
         </nav>
       </div>
     </header>

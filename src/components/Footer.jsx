@@ -1,179 +1,145 @@
-
 import { Link } from "react-router-dom";
 import "./Footer.css";
 
-const footerLinks = [
-  { name: "Home", path: "/" },
-  { name: "About Us", path: "/about" },
-  { name: "Our Services", path: "/services" },
-  { name: "Our Doctor", path: "/doctor" },
-  { name: "Facilities", path: "/facilities" },
-  { name: "Gallery", path: "/gallery" },
-  { name: "Contact Us", path: "/contact" },
+const quickLinks = [
+  { label: "Home", path: "/" },
+  { label: "About Doctor", path: "/about-doctor" },
+  { label: "Services", path: "/services" },
+  { label: "Hospital", path: "/hospital" },
+  { label: "Contact", path: "/contact" },
 ];
 
 const services = [
-  "General Medicine",
   "Outpatient Consultation",
   "Inpatient Care",
-  "Emergency Assistance",
-  "Diagnostic Services",
-  "IV Therapy & Nebulization",
+  "Day Care Services",
+  "Diagnostic Laboratory",
+  "Emergency Care",
 ];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="hospital-footer">
-      {/* Appointment call-to-action */}
-      <div className="footer-cta-wrapper">
-        <div className="footer-container">
-          <div className="footer-cta">
-            <div className="footer-cta-icon">✚</div>
+    <footer className="ss-footer">
+      <div className="ss-footer-main">
+        <div className="ss-footer-container">
 
-            <div className="footer-cta-text">
-              <span>YOUR HEALTH MATTERS</span>
-              <h2>Need Medical Attention?</h2>
-              <p>
-                Contact Sri Sakthi Hospital for consultation and
-                appointment enquiries.
-              </p>
-            </div>
+          {/* BRAND */}
+          <div className="ss-footer-brand-column">
+            <Link
+              to="/"
+              className="ss-footer-brand"
+              aria-label="Sri Sakthi Hospital home"
+            >
+              <img
+                src="/images/logos.png"
+                alt="Sri Sakthi Hospital Logo"
+                className="ss-footer-logo"
+                loading="lazy"
+              />
 
-            <Link to="/appointment" className="footer-cta-button">
-              Request Appointment <span>→</span>
+              <span className="ss-footer-brand-name">
+                Sri Sakthi
+                <strong>Hospital</strong>
+              </span>
             </Link>
+
+            <p className="ss-footer-tagline">
+              Compassion <span>•</span> Excellence <span>•</span> Trust
+            </p>
+
+            <p className="ss-footer-description">
+              Quality healthcare with a personal touch.
+            </p>
+
+            <a
+              className="ss-footer-call"
+              href="tel:+919494456007"
+            >
+              <span aria-hidden="true">☎</span>
+              <span>9494456007</span>
+            </a>
           </div>
+
+          {/* QUICK LINKS */}
+          <div className="ss-footer-column">
+            <h2>Quick Links</h2>
+
+            <ul>
+              {quickLinks.map((item) => (
+                <li key={item.path}>
+                  <Link to={item.path}>{item.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* SERVICES */}
+          <div className="ss-footer-column">
+            <h2>Our Services</h2>
+
+            <ul>
+              {services.map((service) => (
+                <li key={service}>
+                  <Link to="/services">{service}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* CONTACT */}
+          <div className="ss-footer-column ss-footer-contact">
+            <h2>Contact Us</h2>
+
+            <a href="tel:+919494456007">
+              <span aria-hidden="true">☎</span>
+              9494456007
+            </a>
+
+            <a href="tel:+918832422189">
+              <span aria-hidden="true">☎</span>
+              0883-2422189
+            </a>
+
+            <a href="mailto:srisakthihospitalrjy@gmail.com">
+              <span aria-hidden="true">✉</span>
+              srisakthihospitalrjy@gmail.com
+            </a>
+
+            <a
+              className="ss-footer-address"
+              href="https://www.google.com/maps/search/?api=1&query=Sri+Shakthi+Hospital+Tilak+Road+Rajahmundry"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span aria-hidden="true">⌖</span>
+              <span>
+                79-16-6, Tilak Road,
+                Rajahmundry, Andhra Pradesh – 533101
+              </span>
+            </a>
+
+            <p className="ss-footer-hours">
+              <span aria-hidden="true">◷</span>
+              9 AM–12:30 PM | 5:30–9 PM
+            </p>
+          </div>
+
         </div>
       </div>
 
-      {/* Main footer */}
-      <div className="footer-main">
-        <div className="footer-container">
-          <div className="footer-grid">
-            {/* Hospital details */}
-            <div className="footer-about">
-              <Link to="/" className="footer-brand">
-                <span className="footer-brand-icon">✚</span>
+      {/* BOTTOM BAR */}
+      <div className="ss-footer-bottom">
+        <div className="ss-footer-bottom-inner">
+          <p>
+            © {new Date().getFullYear()} Sri Sakthi Hospital.
+            All rights reserved.
+          </p>
 
-                <span className="footer-brand-text">
-                  <strong>SRI SAKTHI</strong>
-                  <small>HOSPITAL</small>
-                </span>
-              </Link>
-
-              <p className="footer-about-description">
-                Your health. Our commitment. We believe in providing
-                thoughtful medical care with compassion, respect,
-                and personal attention.
-              </p>
-
-              <div className="footer-trust-label">
-                <span>✦</span>
-                CARE WITH COMPASSION
-              </div>
-            </div>
-
-            {/* Quick links */}
-            <div className="footer-column">
-              <h3>Quick Links</h3>
-
-              <span className="footer-heading-line"></span>
-
-              <ul>
-                {footerLinks.map((link) => (
-                  <li key={link.path}>
-                    <Link to={link.path}>
-                      <span>›</span>
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Services */}
-            <div className="footer-column">
-              <h3>Our Services</h3>
-
-              <span className="footer-heading-line"></span>
-
-              <ul>
-                {services.map((service) => (
-                  <li key={service}>
-                    <Link to="/services">
-                      <span>›</span>
-                      {service}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Contact details */}
-            <div className="footer-column footer-contact-column">
-              <h3>Contact Us</h3>
-
-              <span className="footer-heading-line"></span>
-
-              <div className="footer-contact-item">
-                <span className="footer-contact-icon">⌖</span>
-
-                <div>
-                  <strong>Hospital Address</strong>
-                  <p>
-                    79-16-6, Tilak Road,
-                    <br />
-                    Opposite lane to Sai Baba Temple,
-                    <br />
-                    Rajahmundry, Andhra Pradesh 533101.
-                  </p>
-                </div>
-              </div>
-
-              <div className="footer-contact-item">
-                <span className="footer-contact-icon">☎</span>
-
-                <div>
-                  <strong>Phone Number</strong>
-                  <a href="tel:9494456007">9494456007</a>
-                </div>
-              </div>
-
-              <div className="footer-contact-item">
-                <span className="footer-contact-icon">◷</span>
-
-                <div>
-                  <strong>Consultation Hours</strong>
-                  <p>Monday – Saturday</p>
-                  <p>9:00 AM – 12:30 PM</p>
-                  <p>5:30 PM – 9:00 PM</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer bottom */}
-          <div className="footer-bottom">
-            <p>
-              © {currentYear} <strong>Sri Sakthi Hospital.</strong>{" "}
-              All rights reserved.
-            </p>
-
-            <div className="footer-bottom-links">
-              <Link to="/contact">Contact</Link>
-              <span>•</span>
-              <Link to="/appointment">Appointments</Link>
-            </div>
-
-            <a className="footer-back-top" href="#top">
-              Back to top <span>↑</span>
-            </a>
-          </div>
+          <p>
+            Made with care <span>♥</span> for better health.
+          </p>
         </div>
       </div>
     </footer>
   );
 }
-

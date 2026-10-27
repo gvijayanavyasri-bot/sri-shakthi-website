@@ -1,0 +1,25 @@
+
+.not-found {
+  display: grid;
+  min-height: 65vh;
+  padding: 50px 5%;
+  place-items: center;
+  background: var(--cream);
+  text-align: center;
+}
+
+.not-found h1 {
+  margin: 10px 0;
+  color: var(--teal);
+  font-size: clamp(80px, 15vw, 150px);
+  line-height: 1;
+}
+
+.not-found h2 {
+  font-size: 28px;
+}
+
+.not-found p {
+  margin-bottom: 28px;
+  color: var(--muted);
+}
