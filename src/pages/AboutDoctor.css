@@ -6,32 +6,86 @@
   --ad-navy: #102b46;
   --ad-dark: #081d32;
   --ad-teal: #168c91;
-  --ad-teal-dark: #08777c;
+  --ad-dark-teal: #08777c;
   --ad-gold: #d8b66b;
   --ad-light: #f4f8fa;
-  --ad-text: #425466;
-  --ad-heading: #102b46;
+  --ad-white: #ffffff;
+  --ad-text: #34495e;
 
   width: 100%;
   overflow: hidden;
+  background: var(--ad-white);
   color: var(--ad-text);
-  background: #ffffff;
   font-family: "DM Sans", Arial, sans-serif;
 }
 
-.about-doctor-page *,
-.about-doctor-page *::before,
-.about-doctor-page *::after {
+.about-doctor-page * {
   box-sizing: border-box;
 }
 
-.about-doctor-page a {
-  text-decoration: none;
+.ad-container {
+  width: min(1180px, 92%);
+  margin: 0 auto;
 }
 
-.ad-container {
-  width: min(1160px, 90%);
-  margin: 0 auto;
+.ad-section {
+  padding: 95px 0;
+}
+
+.ad-section-label {
+  display: inline-block;
+  color: var(--ad-teal);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.ad-section-heading {
+  max-width: 720px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.ad-section-heading h2 {
+  color: var(--ad-navy);
+  font-size: clamp(30px, 4vw, 43px);
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0 0 17px;
+}
+
+.ad-section-heading h2 span,
+.ad-profile-content h2 span,
+.ad-philosophy-content h2 span,
+.ad-specialties-content h2 span {
+  color: var(--ad-teal);
+}
+
+.ad-section-heading p {
+  color: #657789;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* =========================================
+   SCROLL REVEAL ANIMATION
+========================================= */
+
+.ad-reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: var(--ad-delay, 0ms);
+}
+
+.ad-reveal.ad-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* =========================================
@@ -40,215 +94,180 @@
 
 .ad-hero {
   position: relative;
-  isolation: isolate;
-  padding: 85px 0 78px;
+  min-height: 510px;
+  display: flex;
+  align-items: center;
   overflow: hidden;
-  background: linear-gradient(
-    115deg,
-    #102b46 0%,
-    #244b65 55%,
-    #319b9b 100%
-  );
-}
-
-.ad-hero::before,
-.ad-hero::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.ad-hero::before {
-  width: 420px;
-  height: 420px;
-  top: -180px;
-  right: -80px;
-}
-
-.ad-hero::after {
-  width: 300px;
-  height: 300px;
-  bottom: -190px;
-  right: 10%;
-  border-color: rgba(216, 182, 107, 0.55);
+  background:
+    linear-gradient(
+      100deg,
+      rgba(5, 25, 45, 0.96),
+      rgba(9, 47, 69, 0.90),
+      rgba(8, 67, 79, 0.78)
+    );
 }
 
 .ad-hero-overlay {
   position: absolute;
   inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    90deg,
-    rgba(8, 29, 50, 0.45),
-    transparent
-  );
+  background:
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(216, 182, 107, 0.19),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 40%,
+      rgba(22, 140, 145, 0.14)
+    );
 }
 
 .ad-hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  padding-top: 75px;
+  padding-bottom: 75px;
+  animation: adHeroEnter 1s ease both;
 }
 
 .ad-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
-  margin-bottom: 20px;
+  gap: 10px;
   color: var(--ad-gold);
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 13px;
+  font-weight: 900;
   letter-spacing: 2px;
+  margin-bottom: 22px;
 }
 
 .ad-hero h1 {
-  max-width: 850px;
-  margin: 0 0 22px;
-  color: #ffffff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(42px, 5.5vw, 70px);
-  font-weight: 700;
+  max-width: 800px;
+  color: var(--ad-white);
+  font-size: clamp(38px, 5.5vw, 62px);
+  font-weight: 900;
   line-height: 1.12;
+  margin: 0 0 22px;
 }
 
 .ad-hero h1 span {
+  display: block;
   color: var(--ad-gold);
 }
 
 .ad-hero-content > p {
-  max-width: 760px;
-  margin: 0;
-  color: rgba(255, 255, 255, 0.9);
+  max-width: 650px;
+  color: rgba(255, 255, 255, 0.88);
   font-size: 17px;
+  line-height: 1.8;
   font-weight: 500;
-  line-height: 1.85;
+  margin: 0 0 30px;
 }
 
 .ad-hero-highlights {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px 25px;
-  margin-top: 28px;
+  gap: 25px;
+  margin-bottom: 35px;
 }
 
 .ad-hero-highlights div {
   display: flex;
   align-items: center;
   gap: 9px;
-  color: #ffffff;
+  color: white;
   font-size: 14px;
   font-weight: 700;
 }
 
 .ad-hero-highlights svg {
-  flex-shrink: 0;
   color: var(--ad-gold);
 }
 
 .ad-breadcrumb {
   display: flex;
   align-items: center;
-  gap: 13px;
-  margin-top: 36px;
-  color: rgba(255, 255, 255, 0.75);
+  gap: 12px;
+  color: #d9e5ec;
   font-size: 14px;
   font-weight: 700;
 }
 
 .ad-breadcrumb a {
   color: var(--ad-gold);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .ad-breadcrumb a:hover {
-  color: #ffffff;
+  color: white;
+}
+
+.ad-hero-circle {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: adCircleFloat 8s ease-in-out infinite;
+}
+
+.ad-circle-one {
+  width: 400px;
+  height: 400px;
+  right: 7%;
+  top: 8%;
+}
+
+.ad-circle-two {
+  width: 270px;
+  height: 270px;
+  right: 13%;
+  top: 20%;
+  border-color: rgba(216, 182, 107, 0.25);
+  animation-delay: 1.5s;
 }
 
 /* =========================================
-   COMMON SECTION HEADING
-========================================= */
-
-.ad-section-heading {
-  max-width: 720px;
-  margin: 0 auto 48px;
-  text-align: center;
-}
-
-.ad-small-heading {
-  display: inline-block;
-  margin-bottom: 13px;
-  color: var(--ad-teal-dark);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 2px;
-}
-
-.ad-section-heading h2,
-.ad-philosophy-content h2,
-.ad-specialties-content h2,
-.ad-timings-content h2 {
-  margin: 0 0 15px;
-  color: var(--ad-heading);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(30px, 3.5vw, 43px);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.ad-section-heading h2 span,
-.ad-philosophy-content h2 span,
-.ad-specialties-content h2 span,
-.ad-timings-content h2 span {
-  color: var(--ad-teal);
-}
-
-.ad-section-heading > p {
-  margin: 0;
-  color: #607080;
-  font-size: 16px;
-  line-height: 1.8;
-}
-
-/* =========================================
-   DOCTOR PROFILE SECTION
+   DOCTOR PROFILE
 ========================================= */
 
 .ad-profile-section {
-  padding: 95px 0;
-  background: #ffffff;
+  background: white;
 }
 
 .ad-profile-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 75px;
   align-items: center;
-  gap: 65px;
 }
 
-/* Doctor image column */
+/* Image */
 
 .ad-image-column {
-  min-width: 0;
+  position: relative;
+  max-width: 480px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .ad-image-frame {
   position: relative;
-  width: 100%;
-  height: 520px;
-  overflow: hidden;
+  padding: 13px;
+  background: #eaf2f4;
   border-radius: 22px;
-  background: #e9eef0;
-  box-shadow: 0 18px 45px rgba(16, 43, 70, 0.13);
+  box-shadow: 0 20px 55px rgba(16, 43, 70, 0.13);
+  overflow: hidden;
 }
 
 .ad-doctor-image {
   display: block;
   width: 100%;
-  height: 100%;
+  height: 480px;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: center top;
+  border-radius: 15px;
   transition: transform 0.7s ease;
 }
 
@@ -256,203 +275,195 @@
   transform: scale(1.035);
 }
 
-/* Patient-first caption */
+.ad-image-top-label {
+  position: absolute;
+  z-index: 2;
+  top: 28px;
+  left: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background: white;
+  color: var(--ad-navy);
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ad-image-top-label svg {
+  color: var(--ad-teal);
+}
 
 .ad-image-caption {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  bottom: 28px;
+  left: 28px;
+  right: 28px;
   display: flex;
   align-items: center;
-  gap: 18px;
-  min-height: 112px;
-  padding: 20px 25px;
-  background: linear-gradient(
-    0deg,
-    rgba(8, 29, 50, 0.98),
-    rgba(8, 29, 50, 0.72)
-  );
-  color: #ffffff;
+  gap: 13px;
+  padding: 16px;
+  background: rgba(8, 29, 50, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: white;
 }
 
 .ad-caption-icon {
   display: flex;
-  flex: 0 0 62px;
   align-items: center;
   justify-content: center;
-  width: 62px;
-  height: 62px;
-  border: 1px solid var(--ad-gold);
-  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
   color: var(--ad-gold);
+  background: rgba(216, 182, 107, 0.15);
+  border-radius: 10px;
 }
 
-.ad-caption-text {
-  min-width: 0;
+.ad-image-caption strong,
+.ad-image-caption small {
+  display: block;
 }
 
-.ad-image-caption h3 {
-  margin: 0 0 7px;
-  color: #ffffff;
-  font-size: 21px;
+.ad-image-caption strong {
+  font-size: 14px;
   font-weight: 900;
-  line-height: 1.3;
 }
 
-.ad-image-caption p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 1.5;
+.ad-image-caption small {
+  color: #d1dce3;
+  font-size: 12px;
+  margin-top: 5px;
 }
-
-/* Registration card - separate from image */
 
 .ad-registration-card {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 20px;
-  width: 100%;
-  min-height: 120px;
-  margin-top: 22px;
-  padding: 23px 25px;
-  border: 1px solid #e2eaee;
-  border-left: 5px solid var(--ad-teal);
-  border-radius: 15px;
-  background: #ffffff;
-  box-shadow: 0 12px 32px rgba(16, 43, 70, 0.09);
+  gap: 15px;
+  width: fit-content;
+  margin: -15px 0 0 auto;
+  padding: 17px 23px;
+  border-radius: 12px;
+  background: var(--ad-gold);
+  color: var(--ad-dark);
+  box-shadow: 0 10px 25px rgba(16, 43, 70, 0.12);
 }
 
-.ad-registration-icon {
-  display: flex;
-  flex: 0 0 65px;
-  align-items: center;
-  justify-content: center;
-  width: 65px;
-  height: 65px;
-  border-radius: 15px;
-  background: var(--ad-teal);
-  color: #ffffff;
+.ad-registration-card svg {
+  flex-shrink: 0;
 }
 
-.ad-registration-content {
-  min-width: 0;
-}
-
-.ad-registration-content span {
+.ad-registration-card small,
+.ad-registration-card strong {
   display: block;
-  margin-bottom: 5px;
-  color: #687888;
-  font-size: 14px;
+}
+
+.ad-registration-card small {
+  font-size: 11px;
   font-weight: 800;
 }
 
-.ad-registration-content h3 {
-  margin: 0;
-  color: var(--ad-navy);
-  font-size: 27px;
+.ad-registration-card strong {
+  font-size: 20px;
   font-weight: 900;
+  margin-top: 3px;
 }
 
-.ad-registration-content p {
-  margin: 5px 0 0;
-  color: #788794;
-  font-size: 12px;
-  line-height: 1.5;
-}
+/* Profile details */
 
-/* Doctor details */
-
-.ad-profile-content {
-  min-width: 0;
-}
-
-.ad-doctor-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 18px;
-  color: var(--ad-teal-dark);
+.ad-profile-label {
+  display: inline-block;
+  color: var(--ad-teal);
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 1.3px;
+  letter-spacing: 1.7px;
+  margin-bottom: 14px;
 }
 
-.ad-profile-content > h2 {
-  margin: 0 0 12px;
+.ad-profile-content h2 {
   color: var(--ad-navy);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(30px, 3.2vw, 40px);
-  font-weight: 700;
+  font-size: clamp(30px, 3.5vw, 43px);
   line-height: 1.2;
+  font-weight: 900;
+  margin: 0 0 12px;
 }
 
-.ad-doctor-specialization {
-  margin: 0 0 23px;
-  color: var(--ad-teal-dark);
-  font-size: 19px;
+.ad-doctor-role {
+  color: #6a7c8d;
+  font-size: 15px;
   font-weight: 800;
+  line-height: 1.7;
+  margin: 0 0 20px;
 }
 
 .ad-profile-description {
-  margin: 0 0 16px;
-  color: #596b7b;
+  color: #647587;
   font-size: 15px;
-  line-height: 1.85;
+  line-height: 1.9;
+  font-weight: 500;
+  margin-bottom: 28px;
 }
 
 .ad-doctor-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin: 28px 0;
+  gap: 17px;
+  margin-bottom: 30px;
 }
 
 .ad-detail-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  min-width: 0;
-  padding: 16px 13px;
-  border: 1px solid #e7eef1;
-  border-radius: 12px;
-  background: #f8fbfc;
+  padding: 15px 12px;
+  background: #f5f9fa;
+  border: 1px solid #e8eff1;
+  border-radius: 11px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.ad-detail-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(22, 140, 145, 0.4);
+  box-shadow: 0 10px 25px rgba(16, 43, 70, 0.08);
 }
 
 .ad-detail-icon {
   display: flex;
-  flex: 0 0 42px;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
-  background: rgba(22, 140, 145, 0.11);
-  color: var(--ad-teal-dark);
+  width: 39px;
+  height: 39px;
+  flex-shrink: 0;
+  background: rgba(22, 140, 145, 0.1);
+  color: var(--ad-teal);
+  border-radius: 9px;
 }
 
-.ad-detail-item > div:last-child {
-  min-width: 0;
-}
-
-.ad-detail-item span {
+.ad-detail-item small,
+.ad-detail-item strong {
   display: block;
-  margin-bottom: 6px;
-  color: #788794;
-  font-size: 12px;
+}
+
+.ad-detail-item small {
+  color: #788a98;
+  font-size: 11px;
   font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .ad-detail-item strong {
-  display: block;
   color: var(--ad-navy);
-  font-size: 13px;
-  font-weight: 800;
-  line-height: 1.55;
-  overflow-wrap: anywhere;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.5;
 }
 
 .ad-primary-button {
@@ -460,75 +471,101 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  min-height: 53px;
-  padding: 14px 24px;
-  border-radius: 7px;
+  padding: 16px 24px;
+  color: white;
   background: var(--ad-teal);
-  color: #ffffff;
+  border-radius: 7px;
+  text-decoration: none;
   font-size: 14px;
-  font-weight: 800;
-  transition: 0.3s ease;
+  font-weight: 900;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .ad-primary-button:hover {
-  transform: translateY(-3px);
   background: var(--ad-navy);
-  box-shadow: 0 10px 22px rgba(16, 43, 70, 0.16);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(16, 43, 70, 0.2);
 }
 
 /* =========================================
-   MEDICAL PHILOSOPHY
+   PHILOSOPHY SECTION
 ========================================= */
 
 .ad-philosophy-section {
-  padding: 90px 0;
   background: var(--ad-light);
 }
 
 .ad-philosophy-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
+  gap: 70px;
   align-items: center;
-  gap: 75px;
+}
+
+.ad-philosophy-content h2,
+.ad-specialties-content h2 {
+  color: var(--ad-navy);
+  font-size: clamp(30px, 3.5vw, 43px);
+  font-weight: 900;
+  line-height: 1.25;
+  margin: 0 0 20px;
 }
 
 .ad-philosophy-content > p,
-.ad-specialties-content > p,
-.ad-timings-content > p {
-  margin: 0;
-  color: #5d6e7d;
-  font-size: 16px;
-  line-height: 1.85;
+.ad-specialties-content > p {
+  color: #627688;
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 25px;
 }
 
 .ad-philosophy-points {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 17px;
-  margin-top: 28px;
+  gap: 16px;
 }
 
 .ad-philosophy-points div {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--ad-navy);
   font-size: 14px;
   font-weight: 800;
 }
 
 .ad-philosophy-points svg {
-  flex-shrink: 0;
   color: var(--ad-teal);
+  flex-shrink: 0;
 }
 
 .ad-philosophy-card {
-  padding: 45px 38px;
+  position: relative;
+  padding: 45px 40px;
+  background: var(--ad-navy);
+  color: white;
   border-radius: 20px;
-  background: linear-gradient(145deg, var(--ad-navy), #1d566b);
-  color: #ffffff;
   text-align: center;
-  box-shadow: 0 20px 45px rgba(16, 43, 70, 0.16);
+  box-shadow: 0 20px 50px rgba(16, 43, 70, 0.15);
+  overflow: hidden;
+  transition: transform 0.4s ease;
+}
+
+.ad-philosophy-card:hover {
+  transform: translateY(-8px);
+}
+
+.ad-philosophy-card::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -110px;
+  right: -90px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
 }
 
 .ad-philosophy-icon {
@@ -537,247 +574,309 @@
   justify-content: center;
   width: 85px;
   height: 85px;
-  margin: 0 auto 22px;
-  border: 1px solid rgba(216, 182, 107, 0.7);
-  border-radius: 50%;
+  margin: 0 auto 25px;
   color: var(--ad-gold);
+  background: rgba(216, 182, 107, 0.13);
+  border-radius: 50%;
 }
 
 .ad-philosophy-card h3 {
+  color: white;
+  font-size: 26px;
+  font-weight: 900;
   margin: 0 0 15px;
-  color: #ffffff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 27px;
-  line-height: 1.3;
 }
 
 .ad-philosophy-card p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 15px;
-  line-height: 1.8;
+  color: #d4e0e7;
+  font-size: 14px;
+  line-height: 1.9;
 }
 
 .ad-philosophy-line {
   width: 65px;
   height: 3px;
   margin: 25px auto;
-  border-radius: 5px;
   background: var(--ad-gold);
+  border-radius: 5px;
 }
 
-.ad-philosophy-card strong {
+.ad-philosophy-card > strong {
   color: var(--ad-gold);
-  font-size: 14px;
-  letter-spacing: 1px;
+  font-size: 12px;
+  letter-spacing: 2px;
 }
 
 /* =========================================
-   QUALIFICATIONS
+   QUALIFICATIONS SECTION
 ========================================= */
 
 .ad-qualifications-section {
-  padding: 95px 0;
-  background: #ffffff;
+  background: white;
 }
 
 .ad-qualification-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
 }
 
 .ad-qualification-card {
-  padding: 30px 23px;
-  border: 1px solid #e5edef;
-  border-radius: 15px;
-  background: #ffffff;
-  text-align: center;
-  transition: 0.3s ease;
+  position: relative;
+  min-height: 230px;
+  padding: 28px 19px;
+  background: white;
+  border: 1px solid #e6eef0;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(16, 43, 70, 0.05);
+  overflow: hidden;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .ad-qualification-card:hover {
-  transform: translateY(-7px);
+  transform: translateY(-9px);
   border-color: var(--ad-teal);
-  box-shadow: 0 15px 35px rgba(16, 43, 70, 0.09);
+  box-shadow: 0 17px 35px rgba(16, 43, 70, 0.11);
 }
 
 .ad-qualification-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 65px;
-  height: 65px;
-  margin: 0 auto 19px;
-  border-radius: 15px;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 23px;
   background: rgba(22, 140, 145, 0.1);
   color: var(--ad-teal);
+  border-radius: 13px;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.ad-qualification-card:hover .ad-qualification-icon {
+  color: white;
+  background: var(--ad-teal);
 }
 
 .ad-qualification-card h3 {
-  margin: 0 0 10px;
+  position: relative;
+  z-index: 1;
   color: var(--ad-navy);
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 900;
+  margin: 0 0 10px;
 }
 
 .ad-qualification-card p {
-  margin: 0;
-  color: #687987;
-  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  color: #718393;
+  font-size: 12px;
   line-height: 1.7;
+  font-weight: 600;
+  margin: 0;
+}
+
+.ad-qualification-number {
+  position: absolute;
+  right: 10px;
+  bottom: -15px;
+  color: rgba(22, 140, 145, 0.07);
+  font-size: 65px;
+  font-weight: 900;
 }
 
 /* =========================================
-   SPECIALTIES
+   SPECIALTIES SECTION
 ========================================= */
 
 .ad-specialties-section {
-  padding: 90px 0;
   background: var(--ad-light);
 }
 
 .ad-specialties-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
   align-items: center;
-  gap: 65px;
 }
 
 .ad-specialty-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 28px;
+  gap: 14px;
+  margin-top: 30px;
 }
 
 .ad-specialty-item {
   display: flex;
   align-items: center;
   gap: 10px;
-  min-width: 0;
-  padding: 13px 14px;
-  border: 1px solid #e3ecee;
+  padding: 14px 12px;
+  background: white;
+  border: 1px solid #e8eff1;
   border-radius: 9px;
-  background: #ffffff;
   color: var(--ad-navy);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ad-specialty-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 20px rgba(16, 43, 70, 0.08);
 }
 
 .ad-specialty-item svg {
-  flex-shrink: 0;
   color: var(--ad-teal);
+  flex-shrink: 0;
 }
 
 .ad-specialties-visual {
-  padding: 45px 35px;
-  border-radius: 20px;
-  background: linear-gradient(145deg, #102b46, #168c91);
-  color: #ffffff;
-  text-align: center;
-}
-
-.ad-specialties-visual-icon {
+  position: relative;
+  min-height: 390px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 105px;
-  height: 105px;
-  margin: 0 auto 24px;
-  border: 1px solid rgba(216, 182, 107, 0.6);
+}
+
+.ad-specialties-circle {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(22, 140, 145, 0.1);
+  border: 2px dashed rgba(22, 140, 145, 0.3);
   border-radius: 50%;
-  color: var(--ad-gold);
+  animation: adCircleRotate 25s linear infinite;
 }
 
-.ad-specialties-visual h3 {
-  margin: 0 0 15px;
-  color: #ffffff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 27px;
-  line-height: 1.3;
-}
-
-.ad-specialties-visual p {
-  margin: 0 0 25px;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-.ad-specialties-visual > a {
-  display: inline-flex;
+.ad-specialties-main-icon {
+  position: relative;
+  z-index: 2;
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 13px 20px;
-  border-radius: 7px;
-  background: var(--ad-gold);
-  color: var(--ad-dark);
-  font-size: 14px;
-  font-weight: 900;
-  transition: 0.3s ease;
+  width: 180px;
+  height: 180px;
+  background: var(--ad-navy);
+  color: var(--ad-gold);
+  border-radius: 50%;
+  box-shadow: 0 20px 50px rgba(16, 43, 70, 0.2);
+  animation: adSoftPulse 4s ease-in-out infinite;
 }
 
-.ad-specialties-visual > a:hover {
-  background: #ffffff;
-  transform: translateY(-3px);
+.ad-specialty-floating {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  background: white;
+  color: var(--ad-navy);
+  font-size: 13px;
+  font-weight: 900;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(16, 43, 70, 0.12);
+}
+
+.ad-specialty-floating svg {
+  color: var(--ad-teal);
+}
+
+.ad-floating-top {
+  top: 35px;
+  right: 0;
+}
+
+.ad-floating-bottom {
+  bottom: 35px;
+  left: 0;
 }
 
 /* =========================================
-   CARE VALUES
+   VALUES SECTION
 ========================================= */
 
 .ad-values-section {
-  padding: 95px 0;
-  background: #ffffff;
+  background: white;
 }
 
 .ad-values-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
 .ad-value-card {
-  padding: 30px 22px;
-  border: 1px solid #e5edef;
-  border-radius: 14px;
-  background: #ffffff;
-  transition: 0.3s ease;
+  position: relative;
+  min-height: 260px;
+  padding: 30px 23px;
+  background: #f8fafb;
+  border: 1px solid #e9eff1;
+  border-radius: 13px;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
 }
 
 .ad-value-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--ad-teal);
-  box-shadow: 0 13px 30px rgba(16, 43, 70, 0.08);
+  background: white;
+  transform: translateY(-9px);
+  box-shadow: 0 18px 35px rgba(16, 43, 70, 0.1);
 }
 
 .ad-value-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 62px;
-  height: 62px;
-  margin-bottom: 20px;
-  border-radius: 14px;
-  background: rgba(22, 140, 145, 0.1);
+  width: 60px;
+  height: 60px;
+  margin-bottom: 22px;
   color: var(--ad-teal);
+  background: rgba(22, 140, 145, 0.1);
+  border-radius: 13px;
+  transition: all 0.3s ease;
+}
+
+.ad-value-card:hover .ad-value-icon {
+  background: var(--ad-teal);
+  color: white;
+  transform: rotate(-5deg);
 }
 
 .ad-value-card h3 {
-  margin: 0 0 12px;
   color: var(--ad-navy);
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 900;
-  line-height: 1.4;
+  margin: 0 0 12px;
 }
 
 .ad-value-card p {
+  color: #6c7d8c;
+  font-size: 13px;
+  line-height: 1.8;
   margin: 0;
-  color: #687987;
-  font-size: 14px;
-  line-height: 1.75;
+}
+
+.ad-value-arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  color: var(--ad-teal);
+  transition: transform 0.3s ease;
+}
+
+.ad-value-card:hover .ad-value-arrow {
+  transform: translateX(5px);
 }
 
 /* =========================================
@@ -785,215 +884,285 @@
 ========================================= */
 
 .ad-timings-section {
-  padding: 90px 0;
   background: var(--ad-light);
 }
 
 .ad-timings-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 65px;
+  grid-template-columns: 1fr 1fr 1.1fr;
+  gap: 20px;
+  align-items: stretch;
 }
 
 .ad-timing-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 18px;
-  margin-top: 28px;
-  padding: 24px;
-  border: 1px solid #e2eaed;
-  border-radius: 13px;
-  background: #ffffff;
+  padding: 32px 25px;
+  background: white;
+  border: 1px solid #e6eef0;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(16, 43, 70, 0.04);
+  text-align: center;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.ad-timing-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 17px 35px rgba(16, 43, 70, 0.1);
 }
 
 .ad-timing-icon {
   display: flex;
-  flex: 0 0 55px;
   align-items: center;
   justify-content: center;
-  width: 55px;
-  height: 55px;
-  border-radius: 12px;
-  background: var(--ad-teal);
-  color: #ffffff;
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 18px;
+  color: var(--ad-teal);
+  background: rgba(22, 140, 145, 0.1);
+  border-radius: 50%;
 }
 
-.ad-timing-card span {
-  display: block;
-  margin-bottom: 12px;
-  color: var(--ad-teal-dark);
-  font-size: 14px;
+.ad-timing-label {
+  color: var(--ad-teal);
+  font-size: 11px;
   font-weight: 900;
+  letter-spacing: 1.4px;
 }
 
 .ad-timing-card h3 {
-  margin: 7px 0;
   color: var(--ad-navy);
-  font-size: 15px;
-  font-weight: 800;
-  line-height: 1.5;
+  font-size: 22px;
+  font-weight: 900;
+  margin: 12px 0;
 }
 
-.ad-timing-note {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 20px;
-  color: #627382;
+.ad-timing-card p {
+  color: #718393;
   font-size: 13px;
-  font-weight: 600;
-  line-height: 1.6;
+  font-weight: 700;
 }
 
-.ad-timing-note svg {
-  flex-shrink: 0;
-  color: var(--ad-teal);
+.ad-timing-card > strong {
+  display: block;
+  padding: 12px 8px;
+  color: var(--ad-navy);
+  background: #f0f7f7;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 900;
+  margin-top: 20px;
 }
 
 .ad-visit-card {
-  padding: 40px 35px;
-  border-radius: 18px;
-  background: linear-gradient(145deg, var(--ad-navy), #1d566b);
-  color: #ffffff;
+  padding: 32px 25px;
+  background: var(--ad-navy);
+  color: white;
+  border-radius: 14px;
   text-align: center;
-  box-shadow: 0 18px 40px rgba(16, 43, 70, 0.14);
+  transition: transform 0.35s ease;
+}
+
+.ad-visit-card:hover {
+  transform: translateY(-8px);
 }
 
 .ad-visit-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 72px;
-  height: 72px;
-  margin: 0 auto 20px;
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 18px;
+  color: var(--ad-gold);
+  background: rgba(216, 182, 107, 0.13);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  color: var(--ad-gold);
-}
-
-.ad-visit-card > span {
-  color: var(--ad-gold);
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 1.5px;
 }
 
 .ad-visit-card h3 {
-  margin: 15px 0;
-  color: #ffffff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 27px;
+  color: white;
+  font-size: 21px;
+  font-weight: 900;
+  margin: 0 0 12px;
 }
 
 .ad-visit-card p {
-  margin: 0 0 25px;
-  color: rgba(255, 255, 255, 0.83);
-  font-size: 14px;
+  color: #d4e0e7;
+  font-size: 13px;
   line-height: 1.8;
+  margin-bottom: 20px;
 }
 
 .ad-call-button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 50px;
-  padding: 13px 20px;
-  border-radius: 7px;
+  gap: 9px;
+  padding: 13px 22px;
   background: var(--ad-gold);
   color: var(--ad-dark);
-  font-size: 15px;
+  text-decoration: none;
+  border-radius: 7px;
+  font-size: 14px;
   font-weight: 900;
-  transition: 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
 }
 
 .ad-call-button:hover {
-  background: #ffffff;
+  background: white;
   transform: translateY(-3px);
 }
 
-.ad-contact-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 22px;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: 800;
-}
-
-.ad-contact-link:hover {
-  color: var(--ad-gold);
-}
-
-/* =========================================
-   FINAL CTA
-========================================= */
-
-.ad-final-cta {
-  padding: 60px 0;
-  background: linear-gradient(110deg, #102b46, #168c91);
-}
-
-.ad-cta-content {
-  display: grid;
-  grid-template-columns: 75px 1fr auto;
-  align-items: center;
-  gap: 25px;
-}
-
-.ad-cta-icon {
+.ad-timing-note {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
-  border: 1px solid rgba(216, 182, 107, 0.65);
-  border-radius: 50%;
-  color: var(--ad-gold);
+  gap: 9px;
+  color: #718393;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  margin: 28px 0 0;
 }
 
-.ad-cta-text > span {
+/* =========================================
+   FINAL CALL TO ACTION
+========================================= */
+
+.ad-final-cta {
+  position: relative;
+  padding: 70px 0;
+  background:
+    linear-gradient(
+      110deg,
+      rgba(8, 29, 50, 0.98),
+      rgba(16, 73, 85, 0.96)
+    );
+  overflow: hidden;
+}
+
+.ad-final-cta::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: -160px;
+  right: 5%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+}
+
+.ad-cta-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.ad-cta-label {
+  display: inline-block;
   color: var(--ad-gold);
   font-size: 12px;
   font-weight: 900;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
+  margin-bottom: 13px;
 }
 
-.ad-cta-text h2 {
-  margin: 8px 0;
-  color: #ffffff;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 27px;
-  line-height: 1.3;
+.ad-cta-content h2 {
+  color: white;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0 0 14px;
 }
 
-.ad-cta-text p {
+.ad-cta-content h2 span {
+  color: var(--ad-gold);
+}
+
+.ad-cta-content p {
+  max-width: 650px;
+  color: #d3e0e7;
+  font-size: 15px;
+  line-height: 1.8;
   margin: 0;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 14px;
 }
 
 .ad-cta-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 52px;
-  padding: 14px 22px;
-  border-radius: 7px;
+  gap: 12px;
+  flex-shrink: 0;
+  padding: 17px 24px;
   background: var(--ad-gold);
   color: var(--ad-dark);
+  border-radius: 7px;
+  text-decoration: none;
   font-size: 14px;
   font-weight: 900;
-  white-space: nowrap;
-  transition: 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .ad-cta-button:hover {
-  transform: translateY(-3px);
-  background: #ffffff;
+  background: white;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   KEYFRAME ANIMATIONS
+========================================= */
+
+@keyframes adHeroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes adCircleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes adCircleRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes adSoftPulse {
+  0%,
+  100% {
+    box-shadow: 0 20px 50px rgba(16, 43, 70, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 20px 65px rgba(22, 140, 145, 0.28);
+  }
 }
 
 /* =========================================
@@ -1001,33 +1170,34 @@
 ========================================= */
 
 @media (max-width: 1024px) {
-
   .ad-profile-grid {
-    gap: 35px;
-  }
-
-  .ad-image-frame {
-    height: 460px;
+    gap: 40px;
   }
 
   .ad-philosophy-grid,
-  .ad-specialties-grid,
-  .ad-timings-grid {
-    gap: 35px;
+  .ad-specialties-grid {
+    gap: 40px;
+  }
+
+  .ad-qualification-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .ad-values-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .ad-profile-content > h2 {
-    font-size: 32px;
+  .ad-timings-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .ad-detail-item {
-    padding: 13px 10px;
+  .ad-visit-card {
+    grid-column: 1 / -1;
   }
 
+  .ad-doctor-image {
+    height: 430px;
+  }
 }
 
 /* =========================================
@@ -1035,128 +1205,85 @@
 ========================================= */
 
 @media (max-width: 768px) {
-
-  .ad-container {
-    width: 90%;
+  .ad-section {
+    padding: 70px 0;
   }
 
   .ad-hero {
-    padding: 65px 0 55px;
+    min-height: 460px;
+  }
+
+  .ad-hero-content {
+    padding-top: 65px;
+    padding-bottom: 65px;
   }
 
   .ad-hero h1 {
-    font-size: clamp(38px, 8vw, 52px);
+    font-size: 39px;
   }
 
   .ad-hero-content > p {
     font-size: 15px;
-    line-height: 1.8;
   }
 
   .ad-hero-highlights {
-    display: grid;
-    grid-template-columns: 1fr;
     gap: 14px;
-  }
-
-  .ad-profile-section,
-  .ad-qualifications-section,
-  .ad-values-section {
-    padding: 70px 0;
-  }
-
-  .ad-philosophy-section,
-  .ad-specialties-section,
-  .ad-timings-section {
-    padding: 70px 0;
-  }
-
-  .ad-section-heading {
-    margin-bottom: 35px;
+    flex-direction: column;
   }
 
   .ad-profile-grid,
   .ad-philosophy-grid,
-  .ad-specialties-grid,
-  .ad-timings-grid {
+  .ad-specialties-grid {
     grid-template-columns: 1fr;
-    gap: 38px;
+    gap: 40px;
   }
 
   .ad-image-column {
-    max-width: 540px;
-    margin: 0 auto;
-  }
-
-  .ad-image-frame {
-    height: auto;
-    aspect-ratio: 4 / 4.5;
+    max-width: 440px;
   }
 
   .ad-doctor-image {
-    object-position: center 25%;
-  }
-
-  /*
-    IMPORTANT:
-    Registration card stays below the image.
-    It does not cover the Patient-First Care caption.
-  */
-
-  .ad-registration-card {
-    position: relative;
-    inset: auto;
-    width: 100%;
-    margin: 18px 0 0;
+    height: 430px;
   }
 
   .ad-profile-content {
     width: 100%;
   }
 
-  .ad-profile-content > h2 {
-    font-size: 34px;
-  }
-
-  .ad-doctor-details {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .ad-philosophy-card,
-  .ad-specialties-visual,
-  .ad-visit-card {
-    max-width: 540px;
-    width: 100%;
-    margin: 0 auto;
+  .ad-section-heading {
+    margin-bottom: 38px;
   }
 
   .ad-qualification-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .ad-specialty-list {
-    grid-template-columns: 1fr 1fr;
+  .ad-specialties-visual {
+    min-height: 340px;
+  }
+
+  .ad-specialties-circle {
+    width: 260px;
+    height: 260px;
+  }
+
+  .ad-specialties-main-icon {
+    width: 150px;
+    height: 150px;
   }
 
   .ad-cta-content {
-    grid-template-columns: 65px 1fr;
-    gap: 18px;
+    align-items: flex-start;
+    flex-direction: column;
   }
 
-  .ad-cta-icon {
-    width: 62px;
-    height: 62px;
+  .ad-circle-one {
+    right: -150px;
   }
 
-  .ad-cta-text h2 {
-    font-size: 23px;
+  .ad-circle-two {
+    right: -100px;
   }
-
-  .ad-cta-button {
-    grid-column: 1 / -1;
-    width: 100%;
-  }
-
 }
 
 /* =========================================
@@ -1164,23 +1291,24 @@
 ========================================= */
 
 @media (max-width: 560px) {
-
   .ad-container {
-    width: 91%;
+    width: 90%;
+  }
+
+  .ad-section {
+    padding: 58px 0;
   }
 
   .ad-hero {
-    padding: 52px 0 45px;
+    min-height: 430px;
+  }
+
+  .ad-hero h1 {
+    font-size: 32px;
   }
 
   .ad-eyebrow {
     font-size: 11px;
-    letter-spacing: 1.5px;
-  }
-
-  .ad-hero h1 {
-    margin-bottom: 16px;
-    font-size: 39px;
   }
 
   .ad-hero-content > p {
@@ -1191,105 +1319,34 @@
     font-size: 13px;
   }
 
-  .ad-breadcrumb {
-    margin-top: 25px;
-    font-size: 12px;
-  }
-
-  .ad-profile-section,
-  .ad-qualifications-section,
-  .ad-values-section,
-  .ad-philosophy-section,
-  .ad-specialties-section,
-  .ad-timings-section {
-    padding: 58px 0;
-  }
-
-  .ad-section-heading {
-    margin-bottom: 30px;
-  }
-
   .ad-section-heading h2,
   .ad-philosophy-content h2,
-  .ad-specialties-content h2,
-  .ad-timings-content h2 {
-    font-size: 30px;
-  }
-
-  .ad-section-heading > p {
-    font-size: 14px;
-  }
-
-  .ad-image-frame {
-    aspect-ratio: 4 / 4.7;
-    border-radius: 16px;
-  }
-
-  .ad-image-caption {
-    min-height: 95px;
-    gap: 12px;
-    padding: 13px;
-  }
-
-  .ad-caption-icon {
-    flex-basis: 48px;
-    width: 48px;
-    height: 48px;
-  }
-
-  .ad-caption-icon svg {
-    width: 23px;
-    height: 23px;
-  }
-
-  .ad-image-caption h3 {
-    font-size: 17px;
-  }
-
-  .ad-image-caption p {
-    font-size: 12px;
-  }
-
-  .ad-registration-card {
-    min-height: 100px;
-    gap: 14px;
-    margin-top: 16px;
-    padding: 17px;
-  }
-
-  .ad-registration-icon {
-    flex-basis: 53px;
-    width: 53px;
-    height: 53px;
-  }
-
-  .ad-registration-icon svg {
-    width: 27px;
-    height: 27px;
-  }
-
-  .ad-registration-content span {
-    font-size: 12px;
-  }
-
-  .ad-registration-content h3 {
-    font-size: 23px;
-  }
-
-  .ad-registration-content p {
-    font-size: 11px;
-  }
-
-  .ad-profile-content > h2 {
+  .ad-specialties-content h2 {
     font-size: 29px;
   }
 
-  .ad-doctor-specialization {
-    font-size: 17px;
+  .ad-section-heading p {
+    font-size: 14px;
   }
 
-  .ad-profile-description {
-    font-size: 14px;
+  .ad-profile-content h2 {
+    font-size: 31px;
+  }
+
+  .ad-doctor-image {
+    height: 380px;
+  }
+
+  .ad-image-caption {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    padding: 12px;
+  }
+
+  .ad-registration-card {
+    margin-top: -10px;
+    padding: 13px 17px;
   }
 
   .ad-doctor-details {
@@ -1297,130 +1354,122 @@
     gap: 12px;
   }
 
-  .ad-detail-item {
-    padding: 14px;
+  .ad-qualification-grid,
+  .ad-values-grid,
+  .ad-timings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ad-qualification-card {
+    min-height: 190px;
+  }
+
+  .ad-value-card {
+    min-height: 220px;
+  }
+
+  .ad-specialty-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ad-specialties-visual {
+    min-height: 300px;
+  }
+
+  .ad-specialties-circle {
+    width: 230px;
+    height: 230px;
+  }
+
+  .ad-specialties-main-icon {
+    width: 125px;
+    height: 125px;
+  }
+
+  .ad-specialties-main-icon svg {
+    width: 50px;
+  }
+
+  .ad-specialty-floating {
+    padding: 12px;
+    font-size: 11px;
+  }
+
+  .ad-floating-top {
+    right: 0;
+    top: 15px;
+  }
+
+  .ad-floating-bottom {
+    left: 0;
+    bottom: 15px;
+  }
+
+  .ad-philosophy-card {
+    padding: 35px 23px;
+  }
+
+  .ad-timing-note {
+    align-items: flex-start;
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .ad-final-cta {
+    padding: 55px 0;
+  }
+
+  .ad-cta-content h2 {
+    font-size: 30px;
+  }
+
+  .ad-cta-content p {
+    font-size: 14px;
+  }
+
+  .ad-cta-button {
+    width: 100%;
+    padding: 15px;
+    font-size: 13px;
   }
 
   .ad-primary-button {
     width: 100%;
   }
-
-  .ad-philosophy-points {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .ad-philosophy-card,
-  .ad-specialties-visual,
-  .ad-visit-card {
-    padding: 32px 22px;
-  }
-
-  .ad-philosophy-card h3,
-  .ad-specialties-visual h3,
-  .ad-visit-card h3 {
-    font-size: 24px;
-  }
-
-  .ad-qualification-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .ad-qualification-card {
-    padding: 25px 20px;
-  }
-
-  .ad-specialty-list {
-    grid-template-columns: 1fr;
-    gap: 11px;
-  }
-
-  .ad-values-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .ad-value-card {
-    padding: 24px 20px;
-  }
-
-  .ad-timing-card {
-    gap: 12px;
-    padding: 17px 13px;
-  }
-
-  .ad-timing-icon {
-    flex-basis: 45px;
-    width: 45px;
-    height: 45px;
-  }
-
-  .ad-timing-card h3 {
-    font-size: 13px;
-  }
-
-  .ad-cta-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .ad-cta-icon {
-    margin: 0 auto;
-  }
-
-  .ad-cta-text h2 {
-    font-size: 24px;
-  }
-
-  .ad-cta-button {
-    grid-column: auto;
-  }
-
-  .ad-final-cta {
-    padding: 45px 0;
-  }
-
 }
 
 /* =========================================
-   VERY SMALL MOBILE
+   EXTRA SMALL MOBILE
 ========================================= */
 
 @media (max-width: 360px) {
-
   .ad-hero h1 {
-    font-size: 34px;
+    font-size: 28px;
   }
 
-  .ad-section-heading h2,
-  .ad-philosophy-content h2,
-  .ad-specialties-content h2,
-  .ad-timings-content h2 {
+  .ad-profile-content h2 {
     font-size: 27px;
   }
 
-  .ad-registration-card {
-    gap: 10px;
-    padding: 13px;
-  }
-
-  .ad-registration-content h3 {
-    font-size: 21px;
-  }
-
-  .ad-image-caption h3 {
-    font-size: 15px;
-  }
-
-  .ad-image-caption p {
-    font-size: 11px;
-  }
-
-  .ad-profile-content > h2 {
+  .ad-section-heading h2 {
     font-size: 26px;
   }
 
+  .ad-doctor-image {
+    height: 330px;
+  }
+
+  .ad-image-top-label {
+    left: 20px;
+    top: 22px;
+    padding: 9px;
+    font-size: 10px;
+  }
+
+  .ad-image-caption {
+    left: 15px;
+    right: 15px;
+  }
 }
 
 /* =========================================
@@ -1428,14 +1477,17 @@
 ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
-
   .about-doctor-page *,
   .about-doctor-page *::before,
   .about-doctor-page *::after {
-    scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
 
+  .ad-reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
