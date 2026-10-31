@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import {
   ArrowRight,
   ArrowUpRight,
@@ -10,7 +11,6 @@ import {
   Activity,
   Microscope,
   BedDouble,
-  Pill,
   Ambulance,
   PhoneCall,
   CalendarCheck,
@@ -21,6 +21,7 @@ import {
   Languages,
   Award,
   ChevronRight,
+  Menu,
 } from "lucide-react";
 
 import "./Home.css";
@@ -76,10 +77,66 @@ const facilities = [
   "Emergency Assistance",
 ];
 
+const highlights = [
+  {
+    icon: <HeartHandshake />,
+    title: "Patient-Focused",
+    text: "Care with compassion",
+  },
+  {
+    icon: <Stethoscope />,
+    title: "Medical Consultation",
+    text: "Professional attention",
+  },
+  {
+    icon: <Clock3 />,
+    title: "OPD Services",
+    text: "Monday to Saturday",
+  },
+  {
+    icon: <ShieldCheck />,
+    title: "Trusted Care",
+    text: "Your health matters",
+  },
+];
+
 export default function Home() {
+  useEffect(() => {
+    const elements = document.querySelectorAll(
+      ".sri-home .sri-reveal, .sri-home .sri-reveal-left, .sri-home .sri-reveal-right"
+    );
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) =>
+        element.classList.add("is-visible")
+      );
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="sri-home">
-      {/* ================= HERO SECTION ================= */}
+
+      {/* HERO SECTION */}
 
       <section className="sri-hero">
         <div className="sri-hero-background"></div>
@@ -89,9 +146,10 @@ export default function Home() {
         <div className="sri-hero-decoration sri-hero-decoration-two"></div>
 
         <div className="sri-container sri-hero-content">
+
           <div className="sri-hero-text">
             <span className="sri-eyebrow sri-hero-eyebrow">
-              <HeartPulse size={17} />
+              <HeartPulse size={18} />
               COMPASSIONATE CARE
             </span>
 
@@ -103,9 +161,9 @@ export default function Home() {
             <h2>Your Health. Our Commitment.</h2>
 
             <p>
-              Your health deserves attention, understanding, and care. At Sri
-              Sakthi Hospital, we are committed to providing patient-focused
-              medical care with compassion and respect.
+              Your health deserves attention, understanding, and care.
+              At Sri Sakthi Hospital, we are committed to providing
+              patient-focused medical care with compassion and respect.
             </p>
 
             <div className="sri-hero-buttons">
@@ -123,7 +181,7 @@ export default function Home() {
 
             <div className="sri-hero-trust">
               <div className="sri-trust-icon">
-                <ShieldCheck size={25} />
+                <ShieldCheck size={27} />
               </div>
 
               <div>
@@ -136,13 +194,14 @@ export default function Home() {
           <div className="sri-hero-visual">
             <div className="sri-hero-circle">
               <div className="sri-hero-medical-icon">
-                <HeartPulse size={105} strokeWidth={1.3} />
+                <HeartPulse size={110} strokeWidth={1.3} />
               </div>
 
               <div className="sri-hero-floating-card sri-floating-card-top">
                 <span className="sri-floating-icon">
-                  <ShieldCheck size={22} />
+                  <ShieldCheck size={23} />
                 </span>
+
                 <div>
                   <strong>Patient First</strong>
                   <small>Care you can trust</small>
@@ -151,8 +210,9 @@ export default function Home() {
 
               <div className="sri-hero-floating-card sri-floating-card-bottom">
                 <span className="sri-floating-icon">
-                  <Stethoscope size={22} />
+                  <Stethoscope size={23} />
                 </span>
+
                 <div>
                   <strong>Medical Care</strong>
                   <small>Personal attention</small>
@@ -160,6 +220,7 @@ export default function Home() {
               </div>
             </div>
           </div>
+
         </div>
 
         <div className="sri-hero-bottom">
@@ -169,58 +230,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= QUICK HIGHLIGHTS ================= */}
+      {/* QUICK HIGHLIGHTS */}
 
       <section className="sri-highlights">
         <div className="sri-container sri-highlights-grid">
-          <div className="sri-highlight-item">
-            <div className="sri-highlight-icon">
-              <HeartHandshake />
-            </div>
-            <div>
-              <h3>Patient-Focused</h3>
-              <p>Care with compassion</p>
-            </div>
-          </div>
+          {highlights.map((item, index) => (
+            <div
+              className="sri-highlight-item"
+              key={item.title}
+              style={{ "--card-index": index }}
+            >
+              <div className="sri-highlight-icon">
+                {item.icon}
+              </div>
 
-          <div className="sri-highlight-item">
-            <div className="sri-highlight-icon">
-              <Stethoscope />
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
             </div>
-            <div>
-              <h3>Medical Consultation</h3>
-              <p>Professional attention</p>
-            </div>
-          </div>
-
-          <div className="sri-highlight-item">
-            <div className="sri-highlight-icon">
-              <Clock3 />
-            </div>
-            <div>
-              <h3>OPD Services</h3>
-              <p>Monday to Saturday</p>
-            </div>
-          </div>
-
-          <div className="sri-highlight-item">
-            <div className="sri-highlight-icon">
-              <ShieldCheck />
-            </div>
-            <div>
-              <h3>Trusted Care</h3>
-              <p>Your health matters</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ================= ABOUT SECTION ================= */}
+      {/* ABOUT SECTION */}
 
       <section className="sri-section sri-about-section">
         <div className="sri-container sri-about-grid">
-          <div className="sri-about-visual">
+
+          <div className="sri-about-visual sri-reveal-left">
             <div className="sri-about-image-frame">
+
               <div className="sri-about-image-background">
                 <HeartPulse size={82} strokeWidth={1.2} />
                 <span>Compassionate Healthcare</span>
@@ -237,7 +277,8 @@ export default function Home() {
               />
 
               <div className="sri-about-image-label">
-                <HeartHandshake size={22} />
+                <HeartHandshake size={23} />
+
                 <div>
                   <strong>Care with Compassion</strong>
                   <span>Your health comes first</span>
@@ -248,7 +289,7 @@ export default function Home() {
             <div className="sri-about-decoration"></div>
           </div>
 
-          <div className="sri-about-content">
+          <div className="sri-about-content sri-reveal-right">
             <span className="sri-eyebrow">
               <span className="sri-eyebrow-line"></span>
               ABOUT OUR HOSPITAL
@@ -260,10 +301,10 @@ export default function Home() {
             </h2>
 
             <p className="sri-section-description">
-              At Sri Sakthi Hospital, we believe that quality healthcare begins
-              with listening to patients and understanding their needs. Our
-              approach focuses on medical attention, clear communication, and
-              compassionate service.
+              At Sri Sakthi Hospital, we believe that quality healthcare
+              begins with listening to patients and understanding their
+              needs. Our approach focuses on medical attention, clear
+              communication, and compassionate service.
             </p>
 
             <p className="sri-section-description">
@@ -293,14 +334,16 @@ export default function Home() {
               <ArrowRight size={19} />
             </Link>
           </div>
+
         </div>
       </section>
 
-      {/* ================= SERVICES SECTION ================= */}
+      {/* SERVICES SECTION */}
 
       <section className="sri-section sri-services-section">
         <div className="sri-container">
-          <div className="sri-section-heading">
+
+          <div className="sri-section-heading sri-reveal">
             <span className="sri-eyebrow">
               <span className="sri-eyebrow-line"></span>
               OUR MEDICAL SERVICES
@@ -320,11 +363,13 @@ export default function Home() {
           <div className="sri-services-grid">
             {services.map((service, index) => (
               <article
-                className="sri-service-card"
+                className="sri-service-card sri-reveal"
                 key={service.title}
                 style={{ "--card-index": index }}
               >
-                <div className="sri-service-icon">{service.icon}</div>
+                <div className="sri-service-icon">
+                  {service.icon}
+                </div>
 
                 <span className="sri-service-number">
                   {String(index + 1).padStart(2, "0")}
@@ -346,25 +391,29 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="sri-services-footer">
-            <p>Looking for more information about our medical services?</p>
+          <div className="sri-services-footer sri-reveal">
+            <p>
+              Looking for more information about our medical services?
+            </p>
 
             <Link to="/services" className="sri-btn sri-btn-dark">
               View All Services
               <ArrowRight size={18} />
             </Link>
           </div>
+
         </div>
       </section>
 
-      {/* ================= DOCTOR SECTION ================= */}
+      {/* DOCTOR SECTION */}
 
       <section className="sri-section sri-doctor-section">
         <div className="sri-doctor-decoration sri-doctor-decoration-one"></div>
         <div className="sri-doctor-decoration sri-doctor-decoration-two"></div>
 
         <div className="sri-container sri-doctor-grid">
-          <div className="sri-doctor-visual">
+
+          <div className="sri-doctor-visual sri-reveal-left">
             <div className="sri-doctor-photo-frame">
               <div className="sri-doctor-photo-decoration"></div>
 
@@ -382,6 +431,7 @@ export default function Home() {
 
               <div className="sri-doctor-photo-badge">
                 <span className="sri-doctor-status-dot"></span>
+
                 <div>
                   <strong>Patient-Focused Care</strong>
                   <span>Professional medical guidance</span>
@@ -395,7 +445,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="sri-doctor-content">
+          <div className="sri-doctor-content sri-reveal-right">
             <span className="sri-eyebrow">
               <span className="sri-eyebrow-line"></span>
               MEET YOUR DOCTOR
@@ -412,13 +462,13 @@ export default function Home() {
 
             <p className="sri-section-description">
               Dedicated to providing thoughtful medical consultation,
-              understanding patient concerns, and supporting individual health
-              needs through professional medical care.
+              understanding patient concerns, and supporting individual
+              health needs through professional medical care.
             </p>
 
             <div className="sri-doctor-qualifications">
               <div className="sri-qualification-icon">
-                <Award size={24} />
+                <Award size={25} />
               </div>
 
               <div>
@@ -429,7 +479,8 @@ export default function Home() {
 
             <div className="sri-doctor-details">
               <div>
-                <Languages size={20} />
+                <Languages size={21} />
+
                 <p>
                   <strong>Languages</strong>
                   <span>Telugu, English, Hindi</span>
@@ -437,7 +488,8 @@ export default function Home() {
               </div>
 
               <div>
-                <ClipboardPlus size={20} />
+                <ClipboardPlus size={21} />
+
                 <p>
                   <strong>Registration Number</strong>
                   <span>66982</span>
@@ -457,14 +509,16 @@ export default function Home() {
               </a>
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* ================= FACILITIES SECTION ================= */}
+      {/* FACILITIES SECTION */}
 
       <section className="sri-section sri-facilities-section">
         <div className="sri-container sri-facilities-grid">
-          <div className="sri-facilities-content">
+
+          <div className="sri-facilities-content sri-reveal-left">
             <span className="sri-eyebrow">
               <span className="sri-eyebrow-line"></span>
               OUR FACILITIES
@@ -481,7 +535,7 @@ export default function Home() {
             </p>
 
             <div className="sri-facility-list">
-              {facilities.map((facility, index) => (
+              {facilities.map((facility) => (
                 <div className="sri-facility-item" key={facility}>
                   <span className="sri-facility-check">
                     <CheckCircle2 size={19} />
@@ -489,7 +543,10 @@ export default function Home() {
 
                   <span>{facility}</span>
 
-                  <ChevronRight className="sri-facility-arrow" size={18} />
+                  <ChevronRight
+                    className="sri-facility-arrow"
+                    size={18}
+                  />
                 </div>
               ))}
             </div>
@@ -500,7 +557,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="sri-facilities-visual">
+          <div className="sri-facilities-visual sri-reveal-right">
             <div className="sri-facilities-main-card">
               <div className="sri-facilities-symbol">
                 <HeartPulse size={84} strokeWidth={1.4} />
@@ -513,24 +570,26 @@ export default function Home() {
               <h3>Healthcare with a Human Touch</h3>
 
               <p>
-                Professional attention, compassionate service, and a commitment
-                to your well-being.
+                Professional attention, compassionate service, and a
+                commitment to your well-being.
               </p>
 
               <div className="sri-facilities-bottom-line"></div>
             </div>
 
             <div className="sri-facilities-floating-icon">
-              <ShieldCheck size={30} />
+              <ShieldCheck size={31} />
             </div>
           </div>
+
         </div>
       </section>
 
-      {/* ================= OPD SECTION ================= */}
+      {/* OPD TIMINGS */}
 
       <section className="sri-opd-section">
         <div className="sri-container sri-opd-grid">
+
           <div className="sri-opd-heading">
             <div className="sri-opd-icon">
               <Clock3 size={31} />
@@ -556,15 +615,16 @@ export default function Home() {
             Book Appointment
             <ArrowRight size={18} />
           </Link>
+
         </div>
       </section>
 
-      {/* ================= APPOINTMENT CTA ================= */}
+      {/* APPOINTMENT CTA */}
 
       <section className="sri-appointment-section">
         <div className="sri-appointment-decoration"></div>
 
-        <div className="sri-container sri-appointment-content">
+        <div className="sri-container sri-appointment-content sri-reveal">
           <div className="sri-appointment-icon">
             <CalendarCheck size={36} />
           </div>
@@ -578,15 +638,12 @@ export default function Home() {
           </h2>
 
           <p>
-            Have a health concern or need a medical consultation? Contact Sri
-            Sakthi Hospital to plan your visit.
+            Have a health concern or need a medical consultation?
+            Contact Sri Sakthi Hospital to plan your visit.
           </p>
 
           <div className="sri-appointment-buttons">
-            <Link
-              to="/appointment"
-              className="sri-btn sri-btn-gold"
-            >
+            <Link to="/appointment" className="sri-btn sri-btn-gold">
               <CalendarCheck size={19} />
               Book an Appointment
               <ArrowRight size={18} />
@@ -600,11 +657,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= CONTACT SECTION ================= */}
+      {/* CONTACT SECTION */}
 
       <section className="sri-section sri-contact-section">
         <div className="sri-container">
-          <div className="sri-contact-card">
+
+          <div className="sri-contact-card sri-reveal">
+
             <div className="sri-contact-content">
               <span className="sri-eyebrow">
                 <span className="sri-eyebrow-line"></span>
@@ -617,8 +676,8 @@ export default function Home() {
               </h2>
 
               <p className="sri-section-description">
-                For appointment enquiries and hospital information, please
-                contact Sri Sakthi Hospital.
+                For appointment enquiries and hospital information,
+                please contact Sri Sakthi Hospital.
               </p>
 
               <div className="sri-contact-detail">
@@ -677,14 +736,16 @@ export default function Home() {
                 <ArrowUpRight size={18} />
               </Link>
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* ================= FINAL BANNER ================= */}
+      {/* FINAL BANNER */}
 
       <section className="sri-final-banner">
         <div className="sri-container sri-final-banner-content">
+
           <div>
             <HeartPulse size={31} />
             <p>Your Health. Our Commitment.</p>
@@ -694,8 +755,10 @@ export default function Home() {
             Plan Your Visit
             <ArrowRight size={18} />
           </Link>
+
         </div>
       </section>
+
     </main>
   );
 }
