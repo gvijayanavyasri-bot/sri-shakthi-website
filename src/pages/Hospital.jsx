@@ -1,682 +1,551 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
 import {
-ArrowRight,
-HeartPulse,
-ShieldCheck,
-Stethoscope,
-Activity,
-Building2,
-Microscope,
-Pill,
-BedDouble,
-Clock,
-Users,
-HeartHandshake,
-ClipboardCheck,
-Siren,
-CheckCircle2,
-Target,
-Eye,
-PhoneCall,
-Sparkles,
-HandHeart,
-CalendarCheck,
-MapPin,
-ChevronRight,
+  ArrowRight,
+  HeartPulse,
+  ShieldCheck,
+  Stethoscope,
+  Activity,
+  Users,
+  Building2,
+  Clock,
+  Target,
+  Eye,
+  CheckCircle2,
+  CalendarCheck,
+  Phone,
+  Sparkles,
 } from "lucide-react";
+
 import "./Hospital.css";
 
 const galleryImages = [
-{
-image:
-"https://www.srisakthihospital.com/assets/patient-checkup-CrqMkL7N.png",
-title: "Patient Care & Consultation",
-description:
-"Personal attention, careful assessment and respectful communication throughout the patient journey.",
-category: "PATIENT CARE",
-},
-{
-image:
-"https://www.srisakthihospital.com/assets/health-camp-1-mlldPQ3e.png",
-title: "Community Health Camp",
-description:
-"Promoting health awareness and encouraging people to take an active role in their wellbeing.",
-category: "COMMUNITY HEALTH",
-},
-{
-image:
-"https://www.srisakthihospital.com/assets/medical-equipment-DRN-Mx4T.png",
-title: "Medical Equipment",
-description:
-"Medical equipment and diagnostic support for appropriate clinical assessment.",
-category: "MEDICAL SUPPORT",
-},
-{
-image:
-"https://www.srisakthihospital.com/assets/health-camp-2-BgEvkZ-y.png",
-title: "Health Awareness",
-description:
-"Community initiatives that encourage preventive healthcare and healthier everyday habits.",
-category: "HEALTH AWARENESS",
-},
-{
-image:
-"https://www.srisakthihospital.com/assets/team-photo-By9lxQN_.png",
-title: "Our Hospital Team",
-description:
-"A shared commitment to respectful communication and responsible healthcare.",
-category: "OUR TEAM",
-},
+  {
+    image:
+      "https://www.srisakthihospital.com/assets/patient-checkup-CrqMkL7N.png",
+    title: "Patient Consultation",
+    category: "Patient Care",
+  },
+  {
+    image:
+      "https://www.srisakthihospital.com/assets/health-camp-1-mlldPQ3e.png",
+    title: "Health Camp",
+    category: "Community Care",
+  },
+  {
+    image:
+      "https://www.srisakthihospital.com/assets/medical-equipment-DRN-Mx4T.png",
+    title: "Medical Equipment",
+    category: "Hospital Facilities",
+  },
+  {
+    image:
+      "https://www.srisakthihospital.com/assets/health-camp-2-BgEvkZ-y.png",
+    title: "Health Awareness",
+    category: "Health Services",
+  },
+  {
+    image:
+      "https://www.srisakthihospital.com/assets/team-photo-By9lxQN_.png",
+    title: "Our Hospital Team",
+    category: "Our Team",
+  },
 ];
 
 const facilities = [
-{
-icon: Stethoscope,
-number: "01",
-title: "Consultation Rooms",
-description:
-"Dedicated spaces for medical consultation, symptom assessment and treatment planning.",
-},
-{
-icon: BedDouble,
-number: "02",
-title: "Inpatient Care",
-description:
-"Hospital accommodation and medical observation for patients who require admission.",
-},
-{
-icon: Microscope,
-number: "03",
-title: "Diagnostic Laboratory",
-description:
-"Diagnostic testing that supports clinical evaluation and informed healthcare decisions.",
-},
-{
-icon: Pill,
-number: "04",
-title: "In-house Pharmacy",
-description:
-"Convenient access to prescribed medicines within the hospital premises.",
-},
-{
-icon: Siren,
-number: "05",
-title: "Emergency Care",
-description:
-"Assessment of urgent medical concerns and appropriate care based on clinical needs.",
-},
-{
-icon: HeartPulse,
-number: "06",
-title: "Day Care Services",
-description:
-"Suitable treatments and medical procedures that may not require overnight admission.",
-},
+  {
+    icon: Stethoscope,
+    title: "Consultation Rooms",
+    description:
+      "Comfortable consultation spaces designed for personal attention and medical guidance.",
+  },
+  {
+    icon: Building2,
+    title: "Inpatient Care",
+    description:
+      "Patient-focused inpatient services with attention to comfort and care.",
+  },
+  {
+    icon: Activity,
+    title: "Diagnostic Laboratory",
+    description:
+      "Diagnostic support to help doctors understand and manage patient health.",
+  },
+  {
+    icon: HeartPulse,
+    title: "Emergency Care",
+    description:
+      "Medical assistance for patients who require urgent attention.",
+  },
 ];
 
 const clinicalStrengths = [
-{
-icon: Activity,
-title: "Emergency & Acute Care",
-description:
-"Assessment of urgent medical problems with attention to timely evaluation and appropriate treatment.",
-},
-{
-icon: HeartPulse,
-title: "Cardiac & Respiratory Concerns",
-description:
-"Clinical assessment of heart-related symptoms and breathing difficulties, with appropriate care or referral.",
-},
-{
-icon: ClipboardCheck,
-title: "Chronic Disease Management",
-description:
-"Continuing care for conditions such as diabetes and hypertension, including monitoring and follow-up.",
-},
-{
-icon: ShieldCheck,
-title: "Preventive Healthcare",
-description:
-"Health guidance and appropriate screening to support early identification of health concerns.",
-},
-{
-icon: Users,
-title: "Community Health Programs",
-description:
-"Health awareness activities that encourage preventive care and community wellbeing.",
-},
-{
-icon: HandHeart,
-title: "Patient-centred Medicine",
-description:
-"Respectful communication and treatment guidance focused on individual patient needs.",
-},
+  "Family Medicine",
+  "Internal Medicine",
+  "Clinical Diabetology",
+  "Infectious Diseases",
 ];
 
 function Hospital() {
-return ( <main className="hospital-page">
-{/* ================= HERO ================= */} <section className="hospital-hero"> <div className="hospital-hero-bg" /> <div className="hospital-hero-shade" />
+  useEffect(() => {
+    const elements = document.querySelectorAll(".hospital-reveal");
 
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) =>
+        element.classList.add("hospital-visible")
+      );
+      return;
+    }
 
-    <div className="hospital-hero-pattern" />
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("hospital-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px",
+      }
+    );
 
-    <div className="hospital-container hospital-hero-layout">
-      <div className="hospital-hero-content">
-        <span className="hospital-eyebrow">
-          <HeartPulse size={18} />
-          COMPASSIONATE CARE. RESPONSIBLE MEDICINE.
-        </span>
+    elements.forEach((element) => observer.observe(element));
 
-        <h1>
-          Your Health.
-          <br />
-          <span>Our Commitment.</span>
-        </h1>
+    return () => observer.disconnect();
+  }, []);
 
-        <div className="hospital-hero-rule">
-          <span />
-          <span />
-          <span />
-        </div>
+  return (
+    <main className="hospital-page">
 
-        <h2>Welcome to Sri Sakthi Hospital</h2>
+      {/* ================= HERO SECTION ================= */}
 
-        <p>
-          Caring beyond treatment through respectful communication,
-          thoughtful medical assessment and patient-focused healthcare.
-          We are committed to treating every individual with dignity
-          and compassion.
-        </p>
+      <section className="hospital-hero">
+        <div className="hospital-hero-background"></div>
+        <div className="hospital-hero-overlay"></div>
 
-        <div className="hospital-hero-actions">
-          <Link
-            to="/appointment"
-            className="hospital-btn hospital-btn-gold"
-          >
-            <CalendarCheck size={19} />
-            Book an Appointment
-            <ArrowRight size={18} />
-          </Link>
+        <div className="hospital-container hospital-hero-content">
+          <div className="hospital-hero-text">
+            <span className="hospital-eyebrow">
+              <HeartPulse size={17} />
+              WELCOME TO SRI SAKTHI HOSPITAL
+            </span>
 
-          <Link
-            to="/contact"
-            className="hospital-btn hospital-btn-glass"
-          >
-            Contact Our Hospital
-          </Link>
-        </div>
+            <h1>
+              Quality Healthcare.
+              <span> Compassionate Care.</span>
+            </h1>
 
-        <div className="hospital-hero-points">
-          <span>
-            <CheckCircle2 size={17} />
-            Patient-focused care
-          </span>
+            <p className="hospital-hero-description">
+              Your health is our priority. We are committed to providing
+              patient-focused healthcare with compassion, dedication,
+              and professional medical attention.
+            </p>
 
-          <span>
-            <CheckCircle2 size={17} />
-            Clear communication
-          </span>
-        </div>
-      </div>
+            <div className="hospital-hero-buttons">
+              <Link to="/appointment" className="hospital-btn hospital-btn-primary">
+                <CalendarCheck size={18} />
+                Book Appointment
+                <ArrowRight size={17} />
+              </Link>
 
-      <div className="hospital-hero-side">
-        <div className="hospital-hero-image-card">
-          <img
-            src="https://www.srisakthihospital.com/assets/patient-checkup-CrqMkL7N.png"
-            alt="Patient consultation at Sri Sakthi Hospital"
-          />
-
-          <div className="hospital-image-card-caption">
-            <div className="hospital-caption-icon">
-              <HeartHandshake size={25} />
+              <Link to="/services" className="hospital-btn hospital-btn-outline">
+                Explore Services
+                <ArrowRight size={17} />
+              </Link>
             </div>
 
-            <div>
-              <strong>Care with Compassion</strong>
-              <span>Your wellbeing matters to us.</span>
+            <div className="hospital-hero-trust">
+              <div>
+                <ShieldCheck size={20} />
+                <span>Patient First</span>
+              </div>
+
+              <div>
+                <HeartPulse size={20} />
+                <span>Compassionate Care</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="hospital-hero-image">
+            <img
+              src="https://www.srisakthihospital.com/assets/patient-checkup-CrqMkL7N.png"
+              alt="Patient receiving medical consultation"
+            />
+
+            <div className="hospital-image-badge">
+              <span className="hospital-badge-icon">
+                <HeartPulse size={25} />
+              </span>
+
+              <div>
+                <strong>Care With Commitment</strong>
+                <small>Your health matters to us</small>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="hospital-hero-floating-icon">
-          <ShieldCheck size={30} />
-        </div>
-      </div>
-    </div>
+        <div className="hospital-hero-bottom"></div>
+      </section>
 
-    <div className="hospital-hero-bottom">
-      <div className="hospital-container hospital-hero-bottom-inner">
-        <span>COMPASSION</span>
-        <i />
-        <span>CLINICAL CARE</span>
-        <i />
-        <span>COMMUNITY WELLNESS</span>
-      </div>
-    </div>
-  </section>
+      {/* ================= INTRODUCTION ================= */}
 
-  {/* ================= INTRODUCTION ================= */}
-  <section className="hospital-intro hospital-section-space">
-    <div className="hospital-container hospital-intro-grid">
-      <div className="hospital-intro-visual">
-        <div className="hospital-intro-image-main">
-          <img
-            src="https://www.srisakthihospital.com/assets/health-camp-1-mlldPQ3e.png"
-            alt="Community health awareness activity"
-            loading="lazy"
-          />
-        </div>
+      <section className="hospital-intro hospital-section">
+        <div className="hospital-container hospital-intro-grid">
 
-        <div className="hospital-intro-image-small">
-          <img
-            src="https://www.srisakthihospital.com/assets/medical-equipment-DRN-Mx4T.png"
-            alt="Medical equipment"
-            loading="lazy"
-          />
-        </div>
-
-        <div className="hospital-intro-stamp">
-          <HeartPulse size={24} />
-          <span>CARE FIRST</span>
-        </div>
-      </div>
-
-      <div className="hospital-intro-copy">
-        <span className="hospital-section-label">
-          <Sparkles size={16} />
-          GET TO KNOW US
-        </span>
-
-        <h2>
-          Healthcare with a <span>Human Touch</span>
-        </h2>
-
-        <div className="hospital-title-line" />
-
-        <p>
-          At Sri Sakthi Hospital, we believe that good healthcare begins
-          with listening, understanding and treating every patient with
-          dignity. Our approach combines careful medical assessment,
-          appropriate treatment and clear communication.
-        </p>
-
-        <p>
-          From outpatient consultations and diagnostic support to
-          inpatient care and preventive health guidance, we aim to make
-          each step of the healthcare journey clear and supportive.
-        </p>
-
-        <div className="hospital-intro-benefits">
-          <div>
-            <CheckCircle2 size={19} />
-            <span>Respectful patient communication</span>
-          </div>
-
-          <div>
-            <CheckCircle2 size={19} />
-            <span>Thoughtful medical assessment</span>
-          </div>
-
-          <div>
-            <CheckCircle2 size={19} />
-            <span>Care focused on individual needs</span>
-          </div>
-        </div>
-
-        <Link to="/about-doctor" className="hospital-text-link">
-          Meet Our Doctor
-          <ArrowRight size={18} />
-        </Link>
-      </div>
-    </div>
-  </section>
-
-  {/* ================= VISION AND MISSION ================= */}
-  <section className="hospital-purpose">
-    <div className="hospital-container">
-      <div className="hospital-section-heading">
-        <span className="hospital-section-label">
-          <HeartHandshake size={16} />
-          WHAT GUIDES US
-        </span>
-
-        <h2>
-          Our Purpose & <span>Commitment</span>
-        </h2>
-
-        <p>
-          The principles that guide our approach to patient care and
-          community wellbeing.
-        </p>
-      </div>
-
-      <div className="hospital-purpose-grid">
-        <article className="hospital-purpose-card">
-          <div className="hospital-purpose-icon">
-            <Eye size={29} />
-          </div>
-
-          <span className="hospital-purpose-label">OUR VISION</span>
-
-          <h3>Better Health, Stronger Communities</h3>
-
-          <p>
-            To be a trusted healthcare provider recognised for
-            compassionate service, responsible medical practice and
-            patient-centred care.
-          </p>
-
-          <div className="hospital-purpose-watermark">
-            <Eye size={95} />
-          </div>
-        </article>
-
-        <article className="hospital-purpose-card hospital-purpose-featured">
-          <div className="hospital-purpose-icon">
-            <Target size={29} />
-          </div>
-
-          <span className="hospital-purpose-label">OUR MISSION</span>
-
-          <h3>Care Built on Trust</h3>
-
-          <p>
-            To serve our community with respectful healthcare, thoughtful
-            clinical assessment, appropriate treatment and a commitment
-            to patient safety.
-          </p>
-
-          <div className="hospital-purpose-watermark">
-            <Target size={95} />
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  {/* ================= GALLERY ================= */}
-  <section className="hospital-gallery hospital-section-space" id="hospital-gallery">
-    <div className="hospital-container">
-      <div className="hospital-section-heading hospital-gallery-heading">
-        <span className="hospital-section-label">
-          <Sparkles size={16} />
-          A CLOSER LOOK
-        </span>
-
-        <h2>
-          Moments of <span>Care & Connection</span>
-        </h2>
-
-        <p>
-          Explore images from patient care, medical support and community
-          health activities.
-        </p>
-      </div>
-
-      <div className="hospital-gallery-grid">
-        {galleryImages.map((item, index) => (
-          <article
-            className={`hospital-gallery-card hospital-gallery-card-${index + 1}`}
-            key={item.title}
-            style={{ "--gallery-index": index }}
-          >
-            <div className="hospital-gallery-image">
+          <div className="hospital-intro-visual hospital-reveal">
+            <div className="hospital-intro-image">
               <img
-                src={item.image}
-                alt={item.title}
-                loading="lazy"
+                src="https://www.srisakthihospital.com/assets/medical-equipment-DRN-Mx4T.png"
+                alt="Hospital medical equipment"
               />
-
-              <span className="hospital-gallery-category">
-                {item.category}
-              </span>
-
-              <div className="hospital-gallery-image-shade" />
-
-              <span className="hospital-gallery-count">
-                0{index + 1}
-              </span>
             </div>
 
-            <div className="hospital-gallery-content">
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+            <div className="hospital-experience-card">
+              <HeartPulse size={27} />
+              <div>
+                <strong>Patient Focused</strong>
+                <span>Care with compassion</span>
+              </div>
+            </div>
+          </div>
 
-              <div className="hospital-gallery-footer">
-                <span>
-                  <HeartPulse size={15} />
-                  Sri Sakthi Hospital
+          <div className="hospital-intro-copy hospital-reveal">
+            <span className="hospital-section-label">
+              ABOUT OUR HOSPITAL
+            </span>
+
+            <h2>
+              Healthcare With a
+              <span> Human Touch</span>
+            </h2>
+
+            <p>
+              Sri Sakthi Hospital is committed to delivering quality
+              healthcare with a focus on patient comfort, medical care,
+              and individual attention.
+            </p>
+
+            <p>
+              We believe that good healthcare is built on trust,
+              understanding, and a compassionate approach towards
+              every patient.
+            </p>
+
+            <div className="hospital-intro-points">
+              <div>
+                <CheckCircle2 size={19} />
+                Patient-centred approach
+              </div>
+
+              <div>
+                <CheckCircle2 size={19} />
+                Professional medical guidance
+              </div>
+
+              <div>
+                <CheckCircle2 size={19} />
+                Comfortable healthcare environment
+              </div>
+            </div>
+
+            <Link to="/about" className="hospital-text-link">
+              Discover More About Us
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================= VISION AND MISSION ================= */}
+
+      <section className="hospital-purpose hospital-section">
+        <div className="hospital-container">
+
+          <div className="hospital-section-heading hospital-reveal">
+            <span className="hospital-section-label">
+              OUR PURPOSE
+            </span>
+
+            <h2>
+              Guided By Care,
+              <span> Driven By Commitment</span>
+            </h2>
+
+            <p>
+              Our approach is centred on providing meaningful,
+              responsible, and compassionate healthcare.
+            </p>
+          </div>
+
+          <div className="hospital-purpose-grid">
+
+            <article className="hospital-purpose-card hospital-reveal">
+              <div className="hospital-purpose-icon">
+                <Eye size={30} />
+              </div>
+
+              <h3>Our Vision</h3>
+
+              <p>
+                To be a trusted healthcare provider focused on
+                patient well-being, quality medical attention,
+                and compassionate service.
+              </p>
+            </article>
+
+            <article className="hospital-purpose-card hospital-purpose-highlight hospital-reveal">
+              <div className="hospital-purpose-icon">
+                <Target size={30} />
+              </div>
+
+              <h3>Our Mission</h3>
+
+              <p>
+                To deliver accessible and patient-focused healthcare
+                through professional medical guidance, dedication,
+                and a commitment to every patient's needs.
+              </p>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ================= GALLERY ================= */}
+
+      <section className="hospital-gallery hospital-section">
+        <div className="hospital-container">
+
+          <div className="hospital-section-heading hospital-reveal">
+            <span className="hospital-section-label">
+              OUR GALLERY
+            </span>
+
+            <h2>
+              A Look Inside
+              <span> Sri Sakthi Hospital</span>
+            </h2>
+
+            <p>
+              Explore moments of patient care, hospital activities,
+              and our healthcare environment.
+            </p>
+          </div>
+
+          <div className="hospital-gallery-grid">
+            {galleryImages.map((item, index) => (
+              <article
+                className={`hospital-gallery-card hospital-gallery-card-${index + 1} hospital-reveal`}
+                key={item.title}
+                style={{ "--card-delay": `${index * 100}ms` }}
+              >
+                <div className="hospital-gallery-image">
+                  <img src={item.image} alt={item.title} />
+
+                  <div className="hospital-gallery-overlay">
+                    <span>{item.category}</span>
+                    <h3>{item.title}</h3>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="hospital-gallery-action hospital-reveal">
+            <Link to="/gallery" className="hospital-btn hospital-btn-dark">
+              View Complete Gallery
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================= FACILITIES ================= */}
+
+      <section className="hospital-facilities hospital-section">
+        <div className="hospital-container">
+
+          <div className="hospital-section-heading hospital-reveal">
+            <span className="hospital-section-label">
+              OUR FACILITIES
+            </span>
+
+            <h2>
+              Supporting Your
+              <span> Healthcare Needs</span>
+            </h2>
+
+            <p>
+              Our healthcare facilities are designed to support
+              patient care and medical services.
+            </p>
+          </div>
+
+          <div className="hospital-facility-grid">
+            {facilities.map((facility, index) => {
+              const Icon = facility.icon;
+
+              return (
+                <article
+                  className="hospital-facility-card hospital-reveal"
+                  key={facility.title}
+                  style={{ "--card-delay": `${index * 100}ms` }}
+                >
+                  <div className="hospital-facility-icon">
+                    <Icon size={29} />
+                  </div>
+
+                  <h3>{facility.title}</h3>
+
+                  <p>{facility.description}</p>
+
+                  <Link to="/services" className="hospital-card-link">
+                    Learn More
+                    <ArrowRight size={16} />
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ================= CLINICAL STRENGTHS ================= */}
+
+      <section className="hospital-clinical hospital-section">
+        <div className="hospital-container hospital-clinical-grid">
+
+          <div className="hospital-clinical-intro hospital-reveal">
+            <span className="hospital-section-label">
+              MEDICAL EXPERTISE
+            </span>
+
+            <h2>
+              Focused On
+              <span> Better Health</span>
+            </h2>
+
+            <p>
+              Medical expertise and individual attention play an
+              important role in understanding and managing health
+              concerns.
+            </p>
+
+            <Link to="/doctor" className="hospital-btn hospital-btn-primary">
+              Meet Our Doctor
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+
+          <div className="hospital-clinical-list">
+            {clinicalStrengths.map((strength, index) => (
+              <div
+                className="hospital-clinical-card hospital-reveal"
+                key={strength}
+                style={{ "--card-delay": `${index * 100}ms` }}
+              >
+                <span className="hospital-clinical-number">
+                  0{index + 1}
                 </span>
 
-                <ArrowRight size={18} />
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-
-      <div className="hospital-gallery-bottom">
-        <HeartHandshake size={25} />
-
-        <p>
-          <strong>Care that goes beyond the consultation.</strong>
-          <span>
-            We value respectful communication, responsible care and
-            community health awareness.
-          </span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  {/* ================= FACILITIES ================= */}
-  <section className="hospital-facilities">
-    <div className="hospital-facilities-background" />
-
-    <div className="hospital-container hospital-facilities-content">
-      <div className="hospital-section-heading hospital-heading-light">
-        <span className="hospital-section-label">
-          <Building2 size={17} />
-          CARE UNDER ONE ROOF
-        </span>
-
-        <h2>
-          Facilities for Your <span>Healthcare Journey</span>
-        </h2>
-
-        <p>
-          Essential healthcare facilities and services that support
-          assessment, treatment and follow-up care.
-        </p>
-      </div>
-
-      <div className="hospital-facilities-grid">
-        {facilities.map((facility) => {
-          const Icon = facility.icon;
-
-          return (
-            <article
-              className="hospital-facility-card"
-              key={facility.title}
-            >
-              <div className="hospital-facility-top">
-                <div className="hospital-facility-icon">
-                  <Icon size={27} strokeWidth={1.9} />
+                <div className="hospital-clinical-icon">
+                  <Stethoscope size={23} />
                 </div>
 
-                <span>{facility.number}</span>
+                <h3>{strength}</h3>
+
+                <ArrowRight className="hospital-clinical-arrow" size={20} />
               </div>
+            ))}
+          </div>
 
-              <h3>{facility.title}</h3>
-
-              <p>{facility.description}</p>
-
-              <div className="hospital-facility-divider" />
-
-              <div className="hospital-facility-footer">
-                <CheckCircle2 size={16} />
-                <span>Patient-focused support</span>
-              </div>
-            </article>
-          );
-        })}
-      </div>
-
-      <div className="hospital-facilities-callout">
-        <div className="hospital-facilities-callout-icon">
-          <ShieldCheck size={29} />
         </div>
+      </section>
 
-        <div className="hospital-facilities-callout-copy">
-          <h3>Care with Comfort and Respect</h3>
+      {/* ================= PATIENT CARE PROMISE ================= */}
+
+      <section className="hospital-promise">
+        <div className="hospital-promise-background"></div>
+
+        <div className="hospital-container hospital-promise-inner hospital-reveal">
+          <div className="hospital-promise-icon">
+            <Sparkles size={35} />
+          </div>
+
+          <span className="hospital-section-label">
+            OUR COMMITMENT
+          </span>
+
+          <h2>
+            Your Health.
+            <span> Our Commitment.</span>
+          </h2>
 
           <p>
-            Our goal is to make healthcare information clear and the
-            patient experience as supportive as possible.
+            Every patient deserves care, respect, and attention.
+            At Sri Sakthi Hospital, we are committed to making
+            your healthcare experience supportive and comfortable.
           </p>
+
+          <Link to="/appointment" className="hospital-btn hospital-btn-light">
+            Schedule an Appointment
+            <ArrowRight size={18} />
+          </Link>
         </div>
+      </section>
 
-        <Link to="/contact" className="hospital-btn hospital-btn-light">
-          Contact Hospital
-          <ArrowRight size={18} />
-        </Link>
-      </div>
-    </div>
-  </section>
+      {/* ================= OPD TIMINGS ================= */}
 
-  {/* ================= CLINICAL STRENGTHS ================= */}
-  <section className="hospital-clinical hospital-section-space">
-    <div className="hospital-container hospital-clinical-layout">
-      <div className="hospital-clinical-intro">
-        <span className="hospital-section-label">
-          <Stethoscope size={17} />
-          OUR CLINICAL APPROACH
-        </span>
+      <section className="hospital-timings hospital-section">
+        <div className="hospital-container hospital-timings-inner hospital-reveal">
 
-        <h2>
-          Focused on <span>Better Health</span>
-        </h2>
-
-        <div className="hospital-title-line" />
-
-        <p>
-          Our clinical approach focuses on careful assessment,
-          evidence-informed decisions, appropriate treatment and
-          continuity of care.
-        </p>
-
-        <div className="hospital-clinical-highlight">
-          <div className="hospital-clinical-highlight-icon">
-            <HeartPulse size={26} />
+          <div className="hospital-timing-icon">
+            <Clock size={35} />
           </div>
 
-          <div>
-            <strong>Every Patient Matters</strong>
-            <span>Individual needs guide the care journey.</span>
+          <div className="hospital-timing-content">
+            <span className="hospital-section-label">
+              VISIT OUR HOSPITAL
+            </span>
+
+            <h2>OPD Consultation Timings</h2>
+
+            <p>
+              Monday to Saturday
+            </p>
+
+            <div className="hospital-timing-slots">
+              <span>9:00 AM – 12:30 PM</span>
+              <span>5:30 PM – 9:00 PM</span>
+            </div>
           </div>
+
+          <div className="hospital-timing-action">
+            <a href="tel:9494456007" className="hospital-btn hospital-btn-primary">
+              <Phone size={18} />
+              Call 9494456007
+            </a>
+
+            <Link to="/contact" className="hospital-text-link">
+              Contact Us
+              <ArrowRight size={17} />
+            </Link>
+          </div>
+
         </div>
+      </section>
 
-        <Link to="/about-doctor" className="hospital-btn hospital-btn-navy">
-          About Our Doctor
-          <ArrowRight size={18} />
-        </Link>
-      </div>
-
-      <div className="hospital-clinical-grid">
-        {clinicalStrengths.map((strength, index) => {
-          const Icon = strength.icon;
-
-          return (
-            <article
-              className="hospital-clinical-card"
-              key={strength.title}
-              style={{ "--clinical-index": index }}
-            >
-              <div className="hospital-clinical-icon">
-                <Icon size={25} strokeWidth={1.9} />
-              </div>
-
-              <div className="hospital-clinical-card-copy">
-                <h3>{strength.title}</h3>
-                <p>{strength.description}</p>
-              </div>
-
-              <span className="hospital-clinical-number">
-                0{index + 1}
-              </span>
-            </article>
-          );
-        })}
-      </div>
-    </div>
-  </section>
-
-  {/* ================= PATIENT CARE PROMISE ================= */}
-  <section className="hospital-promise">
-    <div className="hospital-promise-bg" />
-
-    <div className="hospital-container hospital-promise-inner">
-      <div className="hospital-promise-emblem">
-        <HeartHandshake size={35} />
-      </div>
-
-      <div className="hospital-promise-copy">
-        <span>OUR COMMITMENT TO YOU</span>
-
-        <h2>Compassion in Every Consultation</h2>
-
-        <p>
-          Clear communication, respectful treatment and thoughtful
-          healthcare guidance are at the heart of our approach.
-        </p>
-      </div>
-
-      <div className="hospital-promise-actions">
-        <a
-          href="tel:+919494456007"
-          className="hospital-btn hospital-btn-gold"
-        >
-          <PhoneCall size={18} />
-          Call Hospital
-        </a>
-
-        <Link to="/appointment" className="hospital-btn hospital-btn-outline">
-          Book a Visit
-          <ArrowRight size={18} />
-        </Link>
-      </div>
-    </div>
-  </section>
-
-  {/* ================= OPD TIMINGS ================= */}
-  <section className="hospital-timings">
-    <div className="hospital-container hospital-timings-inner">
-      <div className="hospital-timings-icon">
-        <Clock size={28} />
-      </div>
-
-      <div className="hospital-timings-copy">
-        <span>OUTPATIENT CONSULTATION</span>
-        <h3>Plan Your Hospital Visit</h3>
-
-        <p>
-          Monday – Saturday
-          <span>9:00 AM – 12:30 PM</span>
-          <span>5:30 PM – 9:00 PM</span>
-        </p>
-      </div>
-
-      <Link to="/contact" className="hospital-timings-link">
-        <MapPin size={17} />
-        Get Contact Details
-        <ChevronRight size={18} />
-      </Link>
-    </div>
-  </section>
-</main>
-
-);
+    </main>
+  );
 }
 
 export default Hospital;
