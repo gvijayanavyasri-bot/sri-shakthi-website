@@ -1,14 +1,161 @@
-export default function Services() {
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import {
+  HeartPulse,
+  Stethoscope,
+  Activity,
+  Microscope,
+  BedDouble,
+  Clock,
+  ShieldCheck,
+  HeartHandshake,
+  ClipboardCheck,
+  Syringe,
+  Ambulance,
+  ArrowRight,
+  CheckCircle2,
+  Phone,
+  Sparkles,
+} from "lucide-react";
+
+import "./Services.css";
+
+const services = [
+  {
+    id: 1,
+    icon: HeartPulse,
+    title: "General Medicine",
+    description:
+      "Complete medical consultation, diagnosis and treatment for common health conditions and everyday medical concerns.",
+    features: [
+      "General health checkups",
+      "Fever and infections",
+      "Blood pressure management",
+    ],
+  },
+  {
+    id: 2,
+    icon: Stethoscope,
+    title: "Family & Internal Medicine",
+    description:
+      "Personalized healthcare for individuals and families with a focus on preventive care and long-term wellness.",
+    features: [
+      "Family healthcare",
+      "Medical consultations",
+      "Preventive healthcare",
+    ],
+  },
+  {
+    id: 3,
+    icon: Activity,
+    title: "Clinical Diabetology",
+    description:
+      "Diabetes evaluation, monitoring and guidance to support better blood sugar management and healthy living.",
+    features: [
+      "Diabetes assessment",
+      "Blood sugar monitoring",
+      "Lifestyle guidance",
+    ],
+  },
+  {
+    id: 4,
+    icon: Microscope,
+    title: "Diagnostic Services",
+    description:
+      "Diagnostic support to help identify health conditions and assist doctors in planning appropriate treatment.",
+    features: [
+      "Diagnostic investigations",
+      "Medical evaluation",
+      "Health monitoring",
+    ],
+  },
+  {
+    id: 5,
+    icon: BedDouble,
+    title: "Inpatient Care",
+    description:
+      "Comfortable inpatient care with medical supervision and attention to patient needs during treatment.",
+    features: [
+      "Patient admission",
+      "Medical supervision",
+      "Patient support",
+    ],
+  },
+  {
+    id: 6,
+    icon: Ambulance,
+    title: "Emergency Assistance",
+    description:
+      "Medical assistance for urgent health concerns with prompt attention and appropriate clinical guidance.",
+    features: [
+      "Urgent medical assessment",
+      "Initial medical care",
+      "Emergency guidance",
+    ],
+  },
+  {
+    id: 7,
+    icon: Syringe,
+    title: "Day Care Services",
+    description:
+      "Medical procedures and treatments that may be completed during a hospital visit without overnight admission.",
+    features: [
+      "Day care treatment",
+      "Patient observation",
+      "Medical assistance",
+    ],
+  },
+  {
+    id: 8,
+    icon: ClipboardCheck,
+    title: "IV Therapy & Nebulization",
+    description:
+      "Clinically supervised IV therapy and nebulization services when prescribed by the treating doctor.",
+    features: [
+      "IV fluid administration",
+      "Nebulization support",
+      "Patient monitoring",
+    ],
+  },
+];
+
+const benefits = [
+  {
+    icon: ShieldCheck,
+    title: "Trusted Medical Care",
+    description:
+      "Patient-focused medical attention with an emphasis on safety and quality.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Personal Attention",
+    description:
+      "We value every patient and understand that every health concern is different.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Accurate Evaluation",
+    description:
+      "Careful clinical assessment to support appropriate diagnosis and treatment.",
+  },
+  {
+    icon: Clock,
+    title: "Convenient Consultation",
+    description:
+      "Organized consultation hours to help patients access medical care.",
+  },
+];
+
+function Services() {
   useEffect(() => {
-    const elements = document.querySelectorAll(
-      ".svc-intro-grid, .svc-section-heading, .svc-card, .svc-care-card, .svc-consultation-grid, .svc-final-cta-content"
-    );
+    const elements = document.querySelectorAll(".service-reveal");
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("svc-visible");
+            entry.target.classList.add("service-visible");
             observer.unobserve(entry.target);
           }
         });
@@ -18,304 +165,220 @@ export default function Services() {
       }
     );
 
-    elements.forEach((element) => {
-      element.classList.add("svc-reveal");
-      observer.observe(element);
-    });
+    elements.forEach((element) => observer.observe(element));
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <main className="services-page">
-
+    <main className="sri-services">
       {/* HERO SECTION */}
+      <section className="services-hero">
+        <div className="services-hero-overlay"></div>
 
-      <section className="svc-hero">
-        <div className="svc-hero-background" aria-hidden="true" />
-        <div className="svc-hero-overlay" aria-hidden="true" />
-        <div className="svc-hero-pattern" aria-hidden="true" />
-
-        <div className="svc-container svc-hero-content">
-
-          <div className="svc-breadcrumb">
-            <Link to="/">Home</Link>
-            <span>/</span>
-            <span>Our Services</span>
-          </div>
-
-          <span className="svc-eyebrow svc-hero-eyebrow">
-            <HeartPulse size={17} />
+        <div className="services-hero-content">
+          <span className="services-label">
+            <Sparkles size={17} />
             OUR MEDICAL SERVICES
           </span>
 
           <h1>
-            Complete care.
+            Complete Care.
             <br />
-            <span>A healthier tomorrow.</span>
+            <span>Better Health.</span>
           </h1>
 
           <p>
-            Discover our medical services, designed around careful
-            assessment, responsible treatment, and a compassionate
-            approach to healthcare.
+            Comprehensive healthcare services with compassion, medical
+            expertise and a commitment to your well-being.
           </p>
 
-          <div className="svc-hero-buttons">
-            <Link to="/contact" className="svc-button svc-button-primary">
-              Enquire About Services
-              <ArrowRight size={19} />
+          <div className="services-hero-buttons">
+            <Link to="/contact" className="services-primary-btn">
+              Contact Us <ArrowRight size={18} />
             </Link>
 
-            <a href="tel:9494456007" className="svc-button svc-button-outline">
-              <PhoneCall size={18} />
-              Call Hospital
-            </a>
+            <Link to="/about-doctor" className="services-outline-btn">
+              Meet Our Doctor
+            </Link>
           </div>
-
-          <div className="svc-hero-note">
-            <ShieldCheck size={19} />
-            <span>Patient-first care. Clear medical guidance.</span>
-          </div>
-
         </div>
 
-        <div className="svc-hero-bottom-line" />
+        <div className="services-hero-bottom">
+          <span>Professional Care</span>
+          <span className="services-dot"></span>
+          <span>Patient First</span>
+          <span className="services-dot"></span>
+          <span>Healthy Living</span>
+        </div>
       </section>
 
       {/* INTRODUCTION */}
-
-      <section className="svc-intro-section">
-        <div className="svc-container svc-intro-grid">
-
-          <div className="svc-intro-heading">
-            <span className="svc-section-label">
-              <span />
-              HOW WE CAN HELP
-            </span>
-
-            <h2>
-              Healthcare focused on
-              <span> your needs.</span>
-            </h2>
-          </div>
-
-          <div className="svc-intro-content">
-            <p>
-              Every health concern deserves attention. Sri Sakthi Hospital
-              offers a range of medical services to support consultation,
-              assessment, treatment, and ongoing healthcare needs.
-            </p>
-
-            <Link to="/about-doctor" className="svc-text-link">
-              Meet Our Doctor
-              <ArrowRight size={18} />
-            </Link>
-          </div>
-
+      <section className="services-intro service-reveal">
+        <div className="services-section-tag">
+          <span></span> WHAT WE OFFER
         </div>
+
+        <h2>
+          Healthcare Services Designed
+          <br />
+          <span>Around You</span>
+        </h2>
+
+        <p>
+          At Sri Sakthi Hospital, we aim to provide accessible and
+          patient-focused medical care. Our services cover general medical
+          consultation, diabetes care, diagnostic support and other healthcare
+          needs.
+        </p>
       </section>
 
       {/* SERVICES GRID */}
+      <section className="services-list-section">
+        <div className="services-grid">
+          {services.map((service, index) => {
+            const Icon = service.icon;
 
-      <section className="svc-list-section">
-        <div className="svc-container">
+            return (
+              <article
+                className="service-card service-reveal"
+                key={service.id}
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                <div className="service-card-top">
+                  <div className="service-icon">
+                    <Icon size={30} strokeWidth={1.8} />
+                  </div>
 
-          <div className="svc-section-heading">
-            <span className="svc-section-label">
-              <span />
-              MEDICAL CARE &amp; SUPPORT
-            </span>
+                  <span className="service-number">
+                    {String(service.id).padStart(2, "0")}
+                  </span>
+                </div>
+
+                <h3>{service.title}</h3>
+
+                <p>{service.description}</p>
+
+                <div className="service-divider"></div>
+
+                <ul>
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex}>
+                      <CheckCircle2 size={16} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link to="/contact" className="service-card-link">
+                  Enquire Now <ArrowRight size={17} />
+                </Link>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="services-why-section">
+        <div className="services-why-container">
+          <div className="services-why-image service-reveal">
+            <img
+              src="https://www.srisakthihospital.com/assets/doctor-photo-EMUL-gY8.jpg"
+              alt="Doctor at Sri Sakthi Hospital"
+            />
+
+            <div className="services-image-caption">
+              <span>YOUR HEALTH MATTERS</span>
+              <h3>Care with Compassion</h3>
+            </div>
+          </div>
+
+          <div className="services-why-content service-reveal">
+            <div className="services-section-tag">
+              <span></span> WHY CHOOSE US
+            </div>
 
             <h2>
-              Our healthcare
-              <span> services.</span>
+              Your Health Is Our
+              <span> Priority</span>
             </h2>
 
             <p>
-              Explore our services and contact the hospital for further
-              information about availability and suitability.
+              We believe healthcare should be built on trust, understanding
+              and personal attention. Our approach focuses on listening to
+              patients and providing appropriate medical guidance.
             </p>
-          </div>
 
-          <div className="svc-grid">
-            {services.map((service, index) => {
-              const ServiceIcon = service.icon;
+            <div className="services-benefits">
+              {benefits.map((benefit, index) => {
+                const Icon = benefit.icon;
 
-              return (
-                <article
-                  className="svc-card"
-                  key={service.number}
-                  style={{ "--svc-index": index }}
-                >
-                  <div className="svc-card-top">
-                    <div className="svc-card-icon">
-                      <ServiceIcon size={29} strokeWidth={1.9} />
+                return (
+                  <div className="services-benefit" key={index}>
+                    <div className="benefit-icon">
+                      <Icon size={23} />
                     </div>
 
-                    <span className="svc-card-number">
-                      {service.number}
-                    </span>
+                    <div>
+                      <h4>{benefit.title}</h4>
+                      <p>{benefit.description}</p>
+                    </div>
                   </div>
-
-                  <span className="svc-card-category">
-                    {service.category}
-                  </span>
-
-                  <h3>{service.title}</h3>
-
-                  <p className="svc-card-description">
-                    {service.description}
-                  </p>
-
-                  <div className="svc-card-features">
-                    {service.features.map((feature) => (
-                      <div className="svc-card-feature" key={feature}>
-                        <CheckCircle2 size={16} />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="svc-card-footer">
-                    <Link
-                      to="/contact"
-                      className="svc-card-link"
-                      aria-label={`Enquire about ${service.title}`}
-                    >
-                      Enquire Now
-                      <ArrowRight size={17} />
-                    </Link>
-                  </div>
-
-                  <div className="svc-card-bottom-line" />
-                </article>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
-
         </div>
       </section>
 
-      {/* CARE HIGHLIGHTS */}
-
-      <section className="svc-care-section">
-        <div className="svc-container">
-
-          <div className="svc-section-heading svc-care-heading">
-            <span className="svc-section-label svc-label-light">
-              <span />
-              THE WAY WE CARE
-            </span>
-
-            <h2>
-              More than treatment.
-              <br />
-              <span>A thoughtful approach.</span>
-            </h2>
-
-            <p>
-              Clear communication and responsible medical guidance are
-              important parts of a positive healthcare experience.
-            </p>
-          </div>
-
-          <div className="svc-care-grid">
-            {careHighlights.map((item, index) => {
-              const CareIcon = item.icon;
-
-              return (
-                <article
-                  className="svc-care-card"
-                  key={item.title}
-                  style={{ "--svc-index": index }}
-                >
-                  <div className="svc-care-icon">
-                    <CareIcon size={28} />
-                  </div>
-
-                  <span className="svc-care-number">
-                    0{index + 1}
-                  </span>
-
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </article>
-              );
-            })}
-          </div>
-
+      {/* OPD SECTION */}
+      <section className="services-opd service-reveal">
+        <div className="services-opd-icon">
+          <Clock size={32} />
         </div>
-      </section>
 
-      {/* CONSULTATION INFORMATION */}
+        <div className="services-opd-text">
+          <span>CONSULTATION HOURS</span>
+          <h2>We Are Here to Care for You</h2>
 
-      <section className="svc-consultation-section">
-        <div className="svc-container svc-consultation-grid">
-
-          <div className="svc-consultation-icon">
-            <Clock3 size={30} />
-          </div>
-
-          <div className="svc-consultation-content">
-            <span>CONSULTATION INFORMATION</span>
-
-            <h2>Planning a visit to the hospital?</h2>
-
-            <p>
-              OPD timings listed by the hospital are Monday to Saturday,
-              9:00 AM–12:30 PM and 5:30 PM–9:00 PM. Please contact the
-              hospital to confirm availability before visiting.
-            </p>
-          </div>
-
-          <Link to="/contact" className="svc-button svc-button-dark">
-            Plan Your Visit
-            <ArrowRight size={18} />
-          </Link>
-
+          <p>
+            Monday – Saturday: 9:00 AM – 12:30 PM
+            <br />
+            Evening: 5:30 PM – 9:00 PM
+          </p>
         </div>
+
+        <Link to="/contact" className="services-opd-btn">
+          Contact Hospital <ArrowRight size={18} />
+        </Link>
       </section>
 
       {/* FINAL CTA */}
+      <section className="services-cta service-reveal">
+        <div className="services-cta-content">
+          <span>WE ARE READY TO HELP</span>
 
-      <section className="svc-final-cta">
-        <div className="svc-container svc-final-cta-content">
+          <h2>
+            Your Health. Our Commitment.
+          </h2>
 
-          <div className="svc-final-decoration" aria-hidden="true">
-            <Sparkles size={48} />
-          </div>
+          <p>
+            Take the next step towards better health. Contact Sri Sakthi
+            Hospital for consultation and medical assistance.
+          </p>
 
-          <div className="svc-final-icon">
-            <HeartPulse size={31} />
-          </div>
-
-          <div className="svc-final-text">
-            <span>YOUR HEALTH. OUR COMMITMENT.</span>
-
-            <h2>Let us help you find the right care.</h2>
-
-            <p>
-              Contact our hospital team for service information and
-              consultation enquiries.
-            </p>
-          </div>
-
-          <div className="svc-final-buttons">
-            <Link to="/contact" className="svc-button svc-button-gold">
-              Contact Us
-              <ArrowRight size={18} />
-            </Link>
-
-            <a href="tel:9494456007" className="svc-final-phone">
-              <PhoneCall size={17} />
-              +91 94944 56007
-            </a>
-          </div>
-
+          <Link to="/contact" className="services-cta-btn">
+            <Phone size={18} />
+            Get In Touch
+            <ArrowRight size={18} />
+          </Link>
         </div>
       </section>
-
     </main>
   );
 }
+
+export default Services;
